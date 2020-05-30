@@ -7,7 +7,6 @@ import { InterService } from '.././Services/inter.service';
   styleUrls: ['./filter-sector.component.css']
 })
 
-
 export class FilterSectorComponent implements OnInit {
 	sectorVals:string;
 	c1="BASIC INDUSTRIES";
@@ -66,6 +65,7 @@ export class FilterSectorComponent implements OnInit {
 					li[i].style.display="none";	
 			}
 		}
+
 		addServers1(event:any){
 			if(this.check1===true)
 			{

@@ -8,6 +8,7 @@ body{
 }
 
 .searchIn{
+
     font-family: "Times New Roman";
     margin-left:3.5%;
     font-size:15px;
@@ -73,6 +74,7 @@ li:hover{
     background-color: dodgerblue; 
     color: white;
   }
+
 p{
     font-size:15px;
     font-family: "Times New Roman";
@@ -85,3 +87,4 @@ p{
     overflow: hidden;
     overflow-y: scroll;
 }
+

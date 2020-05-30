@@ -174,7 +174,6 @@ export class FilterListComponent implements OnInit {
 	lcheck80=true;
 	
 
-
   constructor() {
 	  }
 
