@@ -1,0 +1,100 @@
+<body>
+    
+    <input class="searchInput" type="text" (keyup)="filterList()" placeholder="Search for companies.."
+    [(ngModel)]="listVals">
+    <nav>
+        <ul class="listOfNations">
+            <li id="AF" (click)="addComp1($event)" >ABBOTT LABORATORIES</li>
+            <li id="AX" (click)="addComp2($event)" >ABBVIE INC</li>
+            <li id="AL" (click)="addComp3($event)" >ACCENTURE PLC</li>
+            <li id="DZ" (click)="addComp4($event)" >ALIBABA GROUP HOLDING LTD</li>
+            <li id="AS" (click)="addComp5($event)" >ALTRIA GROUP INC</li>
+            <li id="AD" (click)="addComp6($event)" >AMERICAN EXPRESS CO</li>
+            <li id="AO" (click)="addComp7($event)" >AMERICAN TOWER CORP</li>
+            <li id="AI" (click)="addComp8($event)" >ANHEUSER-BUSCH INBEV SA/NV</li>
+            <li id="AQ" (click)="addComp9($event)" >ANTHEM INC</li>
+            <li id="AG" (click)="addComp10($event)" >ASTRAZENECA PLC</li>
+            <li id="AR" (click)="addComp11($event)" >AT&T INC</li>
+            <li id="AM" (click)="addComp12($event)" >BANCO SANTANDER BRASIL SA</li>
+            <li id="AW" (click)="addComp13($event)" >BANCO SANTANDER CHILE</li>
+            <li id="AU" (click)="addComp14($event)" >BANCO SANTANDER MEXICO SA INSTITUCION DE BANCA MULTIPLE GRUPO FINANCIERO SANTAND</li>
+            <li id="AT" (click)="addComp15($event)" >BANCO SANTANDER RIO SA</li>
+            <li id="AZ" (click)="addComp16($event)" >BANCO SANTANDER SA</li>
+            <li id="BS" (click)="addComp17($event)" >BANK OF AMERICA CORP</li>
+            <li id="BH" (click)="addComp18($event)" >BANK OF NOVA SCOTIA/THE</li>
+            <li id="BD" (click)="addComp19($event)" >BECTON DICKINSON AND CO</li>
+            <li id="BB" (click)="addComp20($event)" >BERKSHIRE HATHAWAY INC</li>
+            <li id="BY" (click)="addComp21($event)" >BLACKROCK INC</li>
+            <li id="BE" (click)="addComp22($event)" >BRISTOL-MYERS SQUIBB CO</li>
+            <li id="BZ" (click)="addComp23($event)" >BRITISH AMERICAN TOBACCO MALAYSIA BHD</li>
+            <li id="BJ" (click)="addComp24($event)" >BRITISH AMERICAN TOBACCO PLC</li>
+            <li id="BM" (click)="addComp25($event)" >CANADIAN NATIONAL RAILWAY CO</li>
+            <li id="BT" (click)="addComp26($event)" >CATERPILLAR INC</li>
+            <li id="BO" (click)="addComp27($event)" >CHINA LIFE INSURANCE CO LTD</li>
+            <li id="BQ" (click)="addComp28($event)" >CHINA PETROLEUM  CHEMICAL CORP</li>
+            <li id="BA" (click)="addComp29($event)" >CITIGROUP INC</li>
+            <li id="BW" (click)="addComp30($event)" >CVS HEALTH CORP</li>
+            <li id="BV" (click)="addComp31($event)" >DIAGEO PLC</li>
+            <li id="BR" (click)="addComp32($event)" >DOMINION ENERGY INC</li>
+            <li id="IO" (click)="addComp33($event)" >DUKE ENERGY CORP</li>
+            <li id="BN" (click)="addComp34($event)" >ELI LILLY AND CO</li>
+            <li id="BG" (click)="addComp35($event)" >ENBRIDGE INC</li>
+            <li id="BF" (click)="addComp36($event)" >EQUINOR ASA</li>
+            <li id="BI" (click)="addComp37($event)" >ESTEE LAUDER COS INCTHE</li>
+            <li id="KH" (click)="addComp38($event)" >EXXON MOBIL CORP</li>
+            <li id="CM" (click)="addComp39($event)" >FIDELITY NATIONAL INFORMATION SERVICES INC</li>
+            <li id="CA" (click)="addComp40($event)" >GENERAL ELECTRIC CO</li>
+            <li id="CV" (click)="addComp41($event)" >GLAXOSMITHKLINE PLC</li>
+            <li id="KY" (click)="addComp42($event)" >GOLDMAN SACHS GROUP INC/THE</li>
+            <li id="CF" (click)="addComp43($event)" >HOME DEPOT INCTHE</li>
+            <li id="TD" (click)="addComp44($event)" >HONEYWELL INTERNATIONAL INC</li>
+            <li id="CL" (click)="addComp45($event)" >HSBC HOLDINGS PLC</li>
+            <li id="CN" (click)="addComp46($event)" >JOHNSON & JOHNSON</li>
+            <li id="CX" (click)="addComp47($event)" >JPMORGAN CHASE  CO</li>
+            <li id="CC" (click)="addComp48($event)" >LOCKHEED MARTIN CORP</li>
+            <li id="CO" (click)="addComp49($event)" >LOWELL COPPER LTD</li>
+            <li id="KM" (click)="addComp50($event)" >MASTERCARD INC</li>
+            <li id="CG" (click)="addComp51($event)" >MEDTRONIC PLC</li>
+            <li id="CD" (click)="addComp52($event)" >MITSUBISHI UFJ FINANCIAL GROUP INC</li>
+            <li id="CK" (click)="addComp53($event)" >MORGAN STANLEY</li>
+            <li id="CR" (click)="addComp54($event)" >NEXTERA ENERGY INC</li>
+            <li id="CI" (click)="addComp55($event)" >NIKE INC</li>
+            <li id="HR" (click)="addComp56($event)" >NOVARTIS AG</li>
+            <li id="CU" (click)="addComp57($event)" >NOVO NORDISK A/S</li>
+            <li id="CW" (click)="addComp58($event)" >PETROLEO BRASILEIRO SA</li>
+            <li id="CY" (click)="addComp59($event)" >PFIZER INC</li>
+            <li id="CZ" (click)="addComp60($event)" >PHILIP MORRIS INTERNATIONAL INC</li>
+            <li id="DK" (click)="addComp61($event)" >PNC FINANCIAL SERVICES GROUP INC/THE</li>
+            <li id="DJ" (click)="addComp62($event)" >RIO TINTO PLC</li>
+            <li id="DM" (click)="addComp63($event)" >ROYAL BANK OF CANADA</li>
+            <li id="DO" (click)="addComp64($event)" >ROYAL DUTCH SHELL PLC</li>
+            <li id="EC" (click)="addComp65($event)" >SALESFORCE.COM INC</li>
+            <li id="EG" (click)="addComp66($event)" >SAP SE</li>
+            <li id="SV" (click)="addComp67($event)" >TAIWAN SEMICONDUCTOR MANUFACTURING CO LTD</li>
+            <li id="GQ" (click)="addComp68($event)" >THERMO FISHER SCIENTIFIC INC</li>
+            <li id="ER" (click)="addComp69($event)" >TOYOTA MOTOR CORP</li>
+            <li id="EE" (click)="addComp70($event)" >UNILEVER NV</li>
+            <li id="ET" (click)="addComp71($event)" >UNION PACIFIC CORP</li>
+            <li id="FK" (click)="addComp72($event)" >UNITED PARCEL SERVICE INC</li>
+            <li id="FO" (click)="addComp73($event)" >UNITED TECHNOLOGIES CORP</li>
+            <li id="FJ" (click)="addComp74($event)" >UNITEDHEALTH GROUP INC</li>
+            <li id="FI" (click)="addComp75($event)" >UNITEDHEALTH GROUP INC</li>
+            <li id="FR" (click)="addComp76($event)" >VERIZON COMMUNICATIONS INC</li>
+            <li id="GF" (click)="addComp77($event)" >VISA INC</li>
+            <li id="PF" (click)="addComp78($event)" >VMWARE INC</li>
+            <li id="TF" (click)="addComp79($event)" >WALMART INC</li>
+            <li id="GA" (click)="addComp80($event)" >WELLS FARGO & CO</li>
+        </ul>
+    </nav>	
+
+    <p style="margin-top:0px;  margin-left:350px">Selected Companies:</p>
+    <div class="jumbotron jumbotron-fluid" style="border: 1px solid; height: 200px; border-color: black; padding:0px; border-radius: 6px; float: left; margin-left:350px; margin-top:0px;
+    width:15%">
+        <div class="jarvis">
+        <li style="list-style-type:circle;" *ngFor="let compa of compLists">
+          {{ compa }}
+        </li>
+         </div>
+    </div>
+
+    </body>

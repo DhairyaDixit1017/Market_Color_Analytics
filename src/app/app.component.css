@@ -1,0 +1,51 @@
+.citi-blue-bar {
+    height: 86px;
+    background: url("src/assets/img/bluebar.jpg") repeat-x;
+    
+}
+
+.citi-logo {
+    
+    position: relative;
+    z-index: 2500;
+}
+
+img{
+    height: 86px;
+    width:150px;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: xx-large;
+    color: midnightblue;
+  }
+
+body{
+    background-image: url(src/assets/img/BackGround.jpeg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+}
+
+button{
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 6px;
+    border: 2px solid lightblue;
+    transition-duration: 0.4s;
+}
+  
+button:hover {
+    background-color: dodgerblue; 
+    color: white;
+  }
+
+
+ 
+
+
+

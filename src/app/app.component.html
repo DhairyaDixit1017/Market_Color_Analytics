@@ -1,0 +1,44 @@
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+<body>
+
+<div class="citi-blue-bar" >
+    <div class="container">		
+      <div class="citi-logo">			
+        <a href="//www.citigroup.com/citi/"><img src="assets/img/logo-citi.jpg"></a>	
+        <div class="centered"><b>Covid-19 Impact Analysis By Citi (CPT)</b></div>	
+      </div>	
+    </div>
+</div>
+
+<div class="jumbotron jumbotron-fluid" style="border: 4px solid; height: 600px; border-color: black; width:97%; padding: 15px; border-radius: 6px; float: left; margin:20px">
+
+      <div class="jumbotron jumbotron-fluid" style="border: 1.5px solid; height: 350px; border-color: black; width:46%; padding: 15px; border-radius: 6px; float: left; margin:20px">
+        <h4>Filter By Company</h4>
+        <app-filter-list></app-filter-list>
+      </div>
+
+      <div class="jumbotron jumbotron-fluid" style="border: 1.5px solid; height: 350px; border-color: black; width:46%; padding: 15px; border-radius: 6px; float: right; margin:20px">
+        <h4>Filter By Sector</h4>
+        <app-filter-sector></app-filter-sector>
+      </div>
+
+      <div class="jumbotron jumbotron-fluid" style="border: 1.5px solid; border-color: black; width:45%; padding: 15px; border-radius: 6px; float: left; margin:20px">
+        <h4>Filter By Date Range</h4>
+        
+        <p-dropdown [options]="dates" [(ngModel)]="selectedDate" placeholder="-- Select --" optionLabel="name"></p-dropdown>
+      </div>
+
+      <div class="jumbotron-fluid" style="border: 1.5px solid; border-color: black; height: 127px;width: 45%; padding: 15px; border-radius: 6px; float: right; margin: 20px">
+        <h4>Select what data you wish to view on your graph.</h4>
+        <button [disabled]="sectorVals===''">Stock Price</button>
+        <button>Volume</button>
+      </div>
+</div>
+    </body>
+
+</html>

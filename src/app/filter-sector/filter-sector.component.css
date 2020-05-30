@@ -1,0 +1,87 @@
+
+body{
+    margin-top:0%;
+    padding:0%;
+    margin-left:0%;
+    width: 100vw;
+    height: 100vh;
+}
+
+.searchIn{
+    font-family: "Times New Roman";
+    margin-left:3.5%;
+    font-size:15px;
+    width:20%;
+    
+
+}
+h1{
+    margin-top:0.1%;
+    font-family: "Times New Roman";
+    margin-left:0%;
+    padding-top:2%;
+    text-align:center;
+    color:#52FC17;
+    font-size:40px;
+}
+
+h2{
+    font-family:"Abhaya Libre";
+    padding-left:3.5%;
+    padding-top:6%;
+    color:orange;
+}
+nav ul{
+    font-family:"Alegreya SC";
+    padding-left:3.5%;
+    height: 200px;
+    width: 20%;
+    color:white;
+    font-size:15px;
+
+}
+nav ul{
+    position:absolute;
+    margin-left:3.5%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+ul{
+    list-style: hidden;
+    padding:0;
+}
+
+li{
+    color: black;
+}
+
+li:hover{
+    color: black;
+    background-color:yellow;
+}
+
+.sbutton{
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 6px;
+    border: 2px solid lightblue;
+    transition-duration: 0.4s;
+}
+
+.sbutton:hover {
+    background-color: dodgerblue; 
+    color: white;
+  }
+p{
+    font-size:15px;
+    font-family: "Times New Roman";
+}
+
+.sel{
+    font-family:"Alegreya SC";
+    font-size:14px;
+    height:180px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
