@@ -9,13 +9,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { FilterListComponent } from './filter-list/filter-list.component';
 import { FilterSectorComponent } from './filter-sector/filter-sector.component';
 import { InterService } from './Services/inter.service';
-
+import { BarGraphComponent } from './bar-graph/bar-graph.component';
+import {ChartModule} from 'primeng/chart';
+import { GridBaseComponent } from './grid-base/grid-base.component';
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   declarations: [
     AppComponent,
     FilterListComponent,
     FilterSectorComponent,
+    BarGraphComponent,
+    GridBaseComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +28,9 @@ import { InterService } from './Services/inter.service';
     DropdownModule,
     FormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartModule,
+    TableModule
   ],
   providers: [ InterService ],
   bootstrap: [AppComponent, FilterListComponent]

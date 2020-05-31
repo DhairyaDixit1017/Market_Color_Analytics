@@ -24,13 +24,6 @@ img{
     color: midnightblue;
   }
 
-body{
-    background-image: url(src/assets/img/BackGround.jpeg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;  
-    background-size: cover;
-}
-
 button{
     margin-left: 20px;
     margin-right: 20px;
@@ -43,6 +36,10 @@ button:hover {
     background-color: dodgerblue; 
     color: white;
   }
+h1{
+     font-family: "Times New Roman";
+      text-align: center;
+}
 
 
  

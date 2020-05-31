@@ -69,7 +69,7 @@ export class FilterSectorComponent implements OnInit {
 		addServers1(event:any){
 			if(this.check1===true)
 			{
-			this.sectorVals=this.c1;
+			this.connect.editInterim(this.c1);
 			this.taskInput = this.c1;
 			this.clickServer();
 			}
@@ -79,7 +79,7 @@ export class FilterSectorComponent implements OnInit {
 		addServers2(event:any){
 			if(this.check2===true)
 			{
-			this.sectorVals=this.c2;
+			this.connect.editInterim(this.c2);
 			this.taskInput = this.c2;
 			this.clickServer();
 			}
@@ -89,7 +89,7 @@ export class FilterSectorComponent implements OnInit {
 		addServers3(event:any){
 			if(this.check3===true)
 			{
-			this.sectorVals=this.c3;
+			this.connect.editInterim(this.c3);
 			this.taskInput = this.c3;
 			this.clickServer();
 			}
@@ -99,7 +99,7 @@ export class FilterSectorComponent implements OnInit {
 		addServers4(event:any){
 			if(this.check4===true)
 			{
-			this.sectorVals=this.c4;
+			this.connect.editInterim(this.c4);
 			this.taskInput = this.c4;
 			this.clickServer();
 			}
@@ -109,7 +109,7 @@ export class FilterSectorComponent implements OnInit {
 		addServers5(event:any){
 			if(this.check5===true)
 			{
-			this.sectorVals=this.c5;
+			this.connect.editInterim(this.c5);
 			this.taskInput = this.c5;
 			this.clickServer();
 			}
@@ -119,7 +119,7 @@ export class FilterSectorComponent implements OnInit {
 		addServers6(event:any){
 			if(this.check6===true)
 			{
-			this.sectorVals=this.c6;
+			this.connect.editInterim(this.c6);
 			this.taskInput = this.c6;
 			this.clickServer();
 			}
@@ -129,7 +129,7 @@ export class FilterSectorComponent implements OnInit {
 		addServers7(event:any){
 			if(this.check7===true)
 			{
-			this.sectorVals=this.c7;
+			this.connect.editInterim(this.c7);
 			this.taskInput = this.c7;
 			this.clickServer();
 			}
@@ -139,7 +139,7 @@ export class FilterSectorComponent implements OnInit {
 		addServers8(event:any){
 			if(this.check8===true)
 			{
-			this.sectorVals=this.c8;
+			this.connect.editInterim(this.c8);
 			this.taskInput = this.c8;
 			this.clickServer();
 			}
@@ -149,7 +149,7 @@ export class FilterSectorComponent implements OnInit {
 		addServers9(event:any){
 			if(this.check9===true)
 			{
-			this.sectorVals=this.c9;
+			this.connect.editInterim(this.c9);
 			this.taskInput = this.c9;
 			this.clickServer();
 			}
@@ -159,7 +159,7 @@ export class FilterSectorComponent implements OnInit {
 		addServers10(event:any){
 			if(this.check10===true)
 			{
-			this.sectorVals=this.c10;
+			this.connect.editInterim(this.c10);
 			this.taskInput = this.c10;
 			this.clickServer();
 			}
@@ -169,7 +169,7 @@ export class FilterSectorComponent implements OnInit {
 		addServers11(event:any){
 			if(this.check11===true)
 			{
-			this.sectorVals=this.c11;
+			this.connect.editInterim(this.c11);
 			this.taskInput = this.c11;
 			this.clickServer();
 			}

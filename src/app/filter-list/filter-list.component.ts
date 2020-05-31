@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InterService } from '.././Services/inter.service';
 
 @Component({
   selector: 'app-filter-list',
@@ -6,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter-list.component.css']
 })
 export class FilterListComponent implements OnInit {
-	listVals="";
 
+	listVals:string;
 	l1="ABBOTT LABORATORIES";
 	l2="ABBVIE INC";
 	l3="ACCENTURE PLC";
@@ -174,10 +175,11 @@ export class FilterListComponent implements OnInit {
 	lcheck80=true;
 	
 
-  constructor() {
+  constructor( private connect:InterService ) {
 	  }
 
   ngOnInit(): void {
+	  this.connect.ultra.subscribe(listVals=> this.listVals=listVals);
   }
 
   prefixMatch(textValue,filter){
@@ -208,7 +210,7 @@ export class FilterListComponent implements OnInit {
 		addComp1(event:any){
 			if(this.lcheck1===true)
 			{
-			this.listVals=this.l1;
+			this.connect.editHola(this.l1);
 			this.compInput = this.l1;
 			this.clickComp();
 			}
@@ -218,7 +220,7 @@ export class FilterListComponent implements OnInit {
 		addComp2(event:any){
 			if(this.lcheck2===true)
 			{
-			this.listVals=this.l2;
+			this.connect.editHola(this.l2);
 			this.compInput = this.l2;
 			this.clickComp();
 			}
@@ -227,7 +229,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp3(event:any){
 			if(this.lcheck3===true){
-			this.listVals=this.l3;
+			this.connect.editHola(this.l3);
 			this.compInput = this.l3;
 			this.clickComp();
 			}
@@ -236,7 +238,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp4(event:any){
 			if(this.lcheck4===true){
-			this.listVals=this.l4;
+			this.connect.editHola(this.l4);
 			this.compInput = this.l4;
 			this.clickComp();
 			}
@@ -245,7 +247,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp5(event:any){
 			if(this.lcheck5===true){
-			this.listVals=this.l5;
+			this.connect.editHola(this.l5);
 			this.compInput = this.l5;
 			this.clickComp();
 			}
@@ -254,7 +256,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp6(event:any){
 			if(this.lcheck6===true){
-			this.listVals=this.l6;
+			this.connect.editHola(this.l6);
 			this.compInput = this.l6;
 			this.clickComp();
 			}
@@ -263,7 +265,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp7(event:any){
 			if(this.lcheck7===true){
-			this.listVals=this.l7;
+			this.connect.editHola(this.l7);
 			this.compInput = this.l7;
 			this.clickComp();
 			}
@@ -272,7 +274,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp8(event:any){
 			if(this.lcheck8===true){
-			this.listVals=this.l8;
+			this.connect.editHola(this.l8);
 			this.compInput = this.l8;
 			this.clickComp();
 			}
@@ -281,7 +283,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp9(event:any){
 			if(this.lcheck9===true){
-			this.listVals=this.l9;
+			this.connect.editHola(this.l9);
 			this.compInput = this.l9;
 			this.clickComp();
 			}
@@ -290,7 +292,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp10(event:any){
 			if(this.lcheck10===true){
-			this.listVals=this.l10;
+			this.connect.editHola(this.l10);
 			this.compInput = this.l10;
 			this.clickComp();
 			}
@@ -299,7 +301,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp11(event:any){
 			if(this.lcheck11===true){
-			this.listVals=this.l11;
+			this.connect.editHola(this.l11);
 			this.compInput = this.l11;
 			this.clickComp();
 			}
@@ -308,7 +310,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp12(event:any){
 			if(this.lcheck12===true){
-			this.listVals=this.l12;
+			this.connect.editHola(this.l12);
 			this.compInput = this.l12;
 			this.clickComp();
 			}
@@ -317,7 +319,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp13(event:any){
 			if(this.lcheck13===true){
-			this.listVals=this.l13;
+			this.connect.editHola(this.l13);
 			this.compInput = this.l13;
 			this.clickComp();
 			}
@@ -326,7 +328,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp14(event:any){
 			if(this.lcheck14===true){
-			this.listVals=this.l14;
+			this.connect.editHola(this.l14);
 			this.compInput = this.l14;
 			this.clickComp();
 			}
@@ -335,7 +337,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp15(event:any){
 			if(this.lcheck15===true){
-			this.listVals=this.l15;
+			this.connect.editHola(this.l15);
 			this.compInput = this.l15;
 			this.clickComp();
 			}
@@ -344,7 +346,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp16(event:any){
 			if(this.lcheck16===true){
-			this.listVals=this.l16;
+			this.connect.editHola(this.l16);
 			this.compInput = this.l16;
 			this.clickComp();
 			}
@@ -353,7 +355,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp17(event:any){
 			if(this.lcheck17===true){
-			this.listVals=this.l17;
+			this.connect.editHola(this.l17);
 			this.compInput = this.l17;
 			this.clickComp();
 			}
@@ -362,7 +364,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp18(event:any){
 			if(this.lcheck18===true){
-			this.listVals=this.l18;
+			this.connect.editHola(this.l18);
 			this.compInput = this.l18;
 			this.clickComp();
 			}
@@ -371,7 +373,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp19(event:any){
 			if(this.lcheck19===true){
-			this.listVals=this.l19;
+			this.connect.editHola(this.l19);
 			this.compInput = this.l19;
 			this.clickComp();
 			}
@@ -380,7 +382,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp20(event:any){
 			if(this.lcheck20===true){
-			this.listVals=this.l20;
+			this.connect.editHola(this.l20);
 			this.compInput = this.l20;
 			this.clickComp();
 			}
@@ -389,7 +391,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp21(event:any){
 			if(this.lcheck21===true){
-			this.listVals=this.l21;
+			this.connect.editHola(this.l21);
 			this.compInput = this.l21;
 			this.clickComp();
 			}
@@ -398,7 +400,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp22(event:any){
 			if(this.lcheck22===true){
-			this.listVals=this.l22;
+			this.connect.editHola(this.l22);
 			this.compInput = this.l22;
 			this.clickComp();
 			}
@@ -407,7 +409,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp23(event:any){
 			if(this.lcheck23===true){
-			this.listVals=this.l23;
+			this.connect.editHola(this.l23);
 			this.compInput = this.l23;
 			this.clickComp();
 			}
@@ -416,7 +418,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp24(event:any){
 			if(this.lcheck24===true){
-			this.listVals=this.l24;
+			this.connect.editHola(this.l24);
 			this.compInput = this.l24;
 			this.clickComp();
 			}
@@ -425,7 +427,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp25(event:any){
 			if(this.lcheck25===true){
-			this.listVals=this.l25;
+			this.connect.editHola(this.l25);
 			this.compInput = this.l25;
 			this.clickComp();
 			}
@@ -434,7 +436,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp26(event:any){
 			if(this.lcheck26===true){
-			this.listVals=this.l26;
+			this.connect.editHola(this.l26);
 			this.compInput = this.l26;
 			this.clickComp();
 			}
@@ -443,7 +445,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp27(event:any){
 			if(this.lcheck27===true){
-			this.listVals=this.l27;
+			this.connect.editHola(this.l27);
 			this.compInput = this.l27;
 			this.clickComp();
 			}
@@ -452,7 +454,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp28(event:any){
 			if(this.lcheck28===true){
-			this.listVals=this.l28;
+			this.connect.editHola(this.l28);
 			this.compInput = this.l28;
 			this.clickComp();
 			}
@@ -461,7 +463,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp29(event:any){
 			if(this.lcheck29===true){
-			this.listVals=this.l29;
+			this.connect.editHola(this.l29);
 			this.compInput = this.l29;
 			this.clickComp();
 			}
@@ -470,7 +472,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp30(event:any){
 			if(this.lcheck30===true){
-			this.listVals=this.l30;
+			this.connect.editHola(this.l30);
 			this.compInput = this.l30;
 			this.clickComp();
 			}
@@ -479,7 +481,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp31(event:any){
 			if(this.lcheck31===true){
-			this.listVals=this.l31;
+			this.connect.editHola(this.l31);
 			this.compInput = this.l31;
 			this.clickComp();
 			}
@@ -488,7 +490,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp32(event:any){
 			if(this.lcheck32===true){
-			this.listVals=this.l32;
+			this.connect.editHola(this.l32);
 			this.compInput = this.l32;
 			this.clickComp();
 			}
@@ -497,7 +499,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp33(event:any){
 			if(this.lcheck33===true){
-			this.listVals=this.l33;
+			this.connect.editHola(this.l33);
 			this.compInput = this.l33;
 			this.clickComp();
 			}
@@ -506,7 +508,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp34(event:any){
 			if(this.lcheck34===true){
-			this.listVals=this.l34;
+			this.connect.editHola(this.l34);
 			this.compInput = this.l34;
 			this.clickComp();
 			}
@@ -515,7 +517,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp35(event:any){
 			if(this.lcheck35===true){
-			this.listVals=this.l35;
+			this.connect.editHola(this.l35);
 			this.compInput = this.l35;
 			this.clickComp();
 			}
@@ -524,7 +526,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp36(event:any){
 			if(this.lcheck36===true){
-			this.listVals=this.l36;
+			this.connect.editHola(this.l36);
 			this.compInput = this.l36;
 			this.clickComp();
 			}
@@ -533,7 +535,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp37(event:any){
 			if(this.lcheck37===true){
-			this.listVals=this.l37;
+			this.connect.editHola(this.l37);
 			this.compInput = this.l37;
 			this.clickComp();
 			}
@@ -542,7 +544,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp38(event:any){
 			if(this.lcheck38===true){
-			this.listVals=this.l38;
+			this.connect.editHola(this.l38);
 			this.compInput = this.l38;
 			this.clickComp();
 			}
@@ -551,7 +553,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp39(event:any){
 			if(this.lcheck39===true){
-			this.listVals=this.l39;
+			this.connect.editHola(this.l39);
 			this.compInput = this.l39;
 			this.clickComp();
 			}
@@ -560,7 +562,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp40(event:any){
 			if(this.lcheck40===true){
-			this.listVals=this.l40;
+			this.connect.editHola(this.l40);
 			this.compInput = this.l40;
 			this.clickComp();
 			}
@@ -569,7 +571,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp41(event:any){
 			if(this.lcheck41===true){
-			this.listVals=this.l41;
+			this.connect.editHola(this.l41);
 			this.compInput = this.l41;
 			this.clickComp();
 			}
@@ -578,7 +580,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp42(event:any){
 			if(this.lcheck42===true){
-			this.listVals=this.l42;
+			this.connect.editHola(this.l42);
 			this.compInput = this.l42;
 			this.clickComp();
 			}
@@ -587,7 +589,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp43(event:any){
 			if(this.lcheck43===true){
-			this.listVals=this.l43;
+			this.connect.editHola(this.l43);
 			this.compInput = this.l43;
 			this.clickComp();
 			}
@@ -596,7 +598,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp44(event:any){
 			if(this.lcheck44===true){
-			this.listVals=this.l44;
+			this.connect.editHola(this.l44);
 			this.compInput = this.l44;
 			this.clickComp();
 			}
@@ -605,7 +607,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp45(event:any){
 			if(this.lcheck45===true){
-			this.listVals=this.l45;
+			this.connect.editHola(this.l45);
 			this.compInput = this.l45;
 			this.clickComp();
 			}
@@ -614,7 +616,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp46(event:any){
 			if(this.lcheck46===true){
-			this.listVals=this.l46;
+			this.connect.editHola(this.l46);
 			this.compInput = this.l46;
 			this.clickComp();
 			}
@@ -623,7 +625,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp47(event:any){
 			if(this.lcheck47===true){
-			this.listVals=this.l47;
+			this.connect.editHola(this.l47);
 			this.compInput = this.l47;
 			this.clickComp();
 			}
@@ -632,7 +634,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp48(event:any){
 			if(this.lcheck48===true){
-			this.listVals=this.l48;
+			this.connect.editHola(this.l48);
 			this.compInput = this.l48;
 			this.clickComp();
 			}
@@ -641,7 +643,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp49(event:any){
 			if(this.lcheck49===true){
-			this.listVals=this.l49;
+			this.connect.editHola(this.l49);
 			this.compInput = this.l49;
 			this.clickComp();
 			}
@@ -650,7 +652,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp50(event:any){
 			if(this.lcheck50===true){
-			this.listVals=this.l50;
+			this.connect.editHola(this.l50);
 			this.compInput = this.l50;
 			this.clickComp();
 			}
@@ -659,7 +661,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp51(event:any){
 			if(this.lcheck51===true){
-			this.listVals=this.l51;
+			this.connect.editHola(this.l51);
 			this.compInput = this.l51;
 			this.clickComp();
 			}
@@ -668,7 +670,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp52(event:any){
 			if(this.lcheck52===true){
-			this.listVals=this.l52;
+			this.connect.editHola(this.l52);
 			this.compInput = this.l52;
 			this.clickComp();
 			}
@@ -677,7 +679,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp53(event:any){
 			if(this.lcheck53===true){
-			this.listVals=this.l53;
+			this.connect.editHola(this.l53);
 			this.compInput = this.l53;
 			this.clickComp();
 			}
@@ -686,7 +688,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp54(event:any){
 			if(this.lcheck54===true){
-			this.listVals=this.l54;
+			this.connect.editHola(this.l54);
 			this.compInput = this.l54;
 			this.clickComp();
 			}
@@ -695,7 +697,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp55(event:any){
 			if(this.lcheck55===true){
-			this.listVals=this.l55;
+			this.connect.editHola(this.l55);
 			this.compInput = this.l55;
 			this.clickComp();
 			}
@@ -704,7 +706,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp56(event:any){
 			if(this.lcheck56===true){
-			this.listVals=this.l56;
+			this.connect.editHola(this.l56);
 			this.compInput = this.l56;
 			this.clickComp();
 			}
@@ -713,7 +715,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp57(event:any){
 			if(this.lcheck57===true){
-			this.listVals=this.l57;
+			this.connect.editHola(this.l57);
 			this.compInput = this.l57;
 			this.clickComp();
 			}
@@ -722,7 +724,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp58(event:any){
 			if(this.lcheck58===true){
-			this.listVals=this.l58;
+			this.connect.editHola(this.l58);
 			this.compInput = this.l58;
 			this.clickComp();
 			}
@@ -731,7 +733,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp59(event:any){
 			if(this.lcheck59===true){
-			this.listVals=this.l59;
+			this.connect.editHola(this.l59);
 			this.compInput = this.l59;
 			this.clickComp();
 			}
@@ -740,7 +742,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp60(event:any){
 			if(this.lcheck60===true){
-			this.listVals=this.l60;
+			this.connect.editHola(this.l60);
 			this.compInput = this.l60;
 			this.clickComp();
 			}
@@ -749,7 +751,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp61(event:any){
 			if(this.lcheck61===true){
-			this.listVals=this.l61;
+			this.connect.editHola(this.l61);
 			this.compInput = this.l61;
 			this.clickComp();
 			}
@@ -758,7 +760,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp62(event:any){
 			if(this.lcheck62===true){
-			this.listVals=this.l62;
+			this.connect.editHola(this.l62);
 			this.compInput = this.l62;
 			this.clickComp();
 			}
@@ -767,7 +769,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp63(event:any){
 			if(this.lcheck63===true){
-			this.listVals=this.l63;
+			this.connect.editHola(this.l63);
 			this.compInput = this.l63;
 			this.clickComp();
 			}
@@ -776,7 +778,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp64(event:any){
 			if(this.lcheck64===true){
-			this.listVals=this.l64;
+			this.connect.editHola(this.l64);
 			this.compInput = this.l64;
 			this.clickComp();
 			}
@@ -785,7 +787,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp65(event:any){
 			if(this.lcheck65===true){
-			this.listVals=this.l65;
+			this.connect.editHola(this.l65);
 			this.compInput = this.l65;
 			this.clickComp();
 			}
@@ -794,7 +796,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp66(event:any){
 			if(this.lcheck66===true){
-			this.listVals=this.l66;
+			this.connect.editHola(this.l66);
 			this.compInput = this.l66;
 			this.clickComp();
 			}
@@ -803,7 +805,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp67(event:any){
 			if(this.lcheck67===true){
-			this.listVals=this.l67;
+			this.connect.editHola(this.l67);
 			this.compInput = this.l67;
 			this.clickComp();
 			}
@@ -812,7 +814,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp68(event:any){
 			if(this.lcheck68===true){
-			this.listVals=this.l68;
+			this.connect.editHola(this.l68);
 			this.compInput = this.l68;
 			this.clickComp();
 			}
@@ -821,7 +823,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp69(event:any){
 			if(this.lcheck69===true){
-			this.listVals=this.l69;
+			this.connect.editHola(this.l69);
 			this.compInput = this.l69;
 			this.clickComp();
 			}
@@ -830,7 +832,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp70(event:any){
 			if(this.lcheck70===true){
-			this.listVals=this.l70;
+			this.connect.editHola(this.l70);
 			this.compInput = this.l70;
 			this.clickComp();
 			}
@@ -839,7 +841,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp71(event:any){
 			if(this.lcheck71===true){
-			this.listVals=this.l71;
+			this.connect.editHola(this.l71);
 			this.compInput = this.l71;
 			this.clickComp();
 			}
@@ -848,7 +850,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp72(event:any){
 			if(this.lcheck72===true){
-			this.listVals=this.l72;
+			this.connect.editHola(this.l72);
 			this.compInput = this.l72;
 			this.clickComp();
 			}
@@ -857,7 +859,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp73(event:any){
 			if(this.lcheck73===true){
-			this.listVals=this.l73;
+			this.connect.editHola(this.l73);
 			this.compInput = this.l73;
 			this.clickComp();
 			}
@@ -866,7 +868,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp74(event:any){
 			if(this.lcheck74===true){
-			this.listVals=this.l74;
+			this.connect.editHola(this.l74);
 			this.compInput = this.l74;
 			this.clickComp();
 			}
@@ -875,7 +877,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp75(event:any){
 			if(this.lcheck75===true){
-			this.listVals=this.l75;
+			this.connect.editHola(this.l75);
 			this.compInput = this.l75;
 			this.clickComp();
 			}
@@ -884,7 +886,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp76(event:any){
 			if(this.lcheck76===true){
-			this.listVals=this.l76;
+			this.connect.editHola(this.l76);
 			this.compInput = this.l76;
 			this.clickComp();
 			}
@@ -893,7 +895,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp77(event:any){
 			if(this.lcheck77===true){
-			this.listVals=this.l77;
+			this.connect.editHola(this.l77);
 			this.compInput = this.l77;
 			this.clickComp();
 			}
@@ -902,7 +904,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp78(event:any){
 			if(this.lcheck78===true){
-			this.listVals=this.l78;
+			this.connect.editHola(this.l78);
 			this.compInput = this.l78;
 			this.clickComp();
 			}
@@ -911,7 +913,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp79(event:any){
 			if(this.lcheck79===true){
-			this.listVals=this.l79;
+			this.connect.editHola(this.l79);
 			this.compInput = this.l79;
 			this.clickComp();
 			}
@@ -920,7 +922,7 @@ export class FilterListComponent implements OnInit {
 
 		addComp80(event:any){
 			if(this.lcheck80===true){
-			this.listVals=this.l80;
+			this.connect.editHola(this.l80);
 			this.compInput = this.l80;
 			this.clickComp();
 			}

@@ -15,6 +15,7 @@ interface DateRange {
 })
 export class AppComponent implements OnInit {
   sectorVals:string;
+  listVals:string;
   title = 'market-color-analytics';
   dates: DateRange[];
   selectedDate:string;
@@ -30,9 +31,9 @@ export class AppComponent implements OnInit {
 ];
 
    }
-
    ngOnInit(): void {
 	  this.connect.cast.subscribe(sectorVals=> this.sectorVals=sectorVals);
+    this.connect.ultra.subscribe(listVals=> this.listVals=listVals);
   }
 
 }

@@ -35,10 +35,23 @@
 
       <div class="jumbotron-fluid" style="border: 1.5px solid; border-color: black; height: 127px;width: 45%; padding: 15px; border-radius: 6px; float: right; margin: 20px">
         <h4>Select what data you wish to view on your graph.</h4>
-        <button [disabled]="sectorVals===''">Stock Price</button>
-        <button>Volume</button>
+        <button [disabled]="sectorVals!=='' && listVals!=='' ">Stock Price</button>
+        <button [disabled]="sectorVals!=='' && listVals!=='' ">Volume </button>
       </div>
 </div>
+<hr>
+<br>
+<hr>
+<h1>GRID:USING DUMMY DATA</h1>
+<app-grid-base></app-grid-base>
+<br>
+<hr>
+<br>
+<hr>
+<h1>GRAPH:USING THE SAME DUMMY DATA</h1>
+<app-bar-graph></app-bar-graph>
     </body>
 
 </html>
+
+
