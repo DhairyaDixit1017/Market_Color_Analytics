@@ -24,6 +24,7 @@ import { CalComponent } from './cal/cal.component';
 import {CalendarModule} from 'primeng/calendar';
 import {TabViewModule} from 'primeng/tabview';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +52,7 @@ import {TabViewModule} from 'primeng/tabview';
     MultiSelectModule,
     CalendarModule,
     TabViewModule
+
   ],
   providers: [ InterService ],
   bootstrap: [AppComponent, FilterListComponent]
