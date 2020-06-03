@@ -1,0 +1,47 @@
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+<body>
+
+<div class="citi-blue-bar" >
+    <div class="container">		
+      <div class="citi-logo">				
+        <div class="centered"><b>Covid-19 Impact Analysis By Citi (CPT)</b></div>	
+      </div>	
+    </div>
+</div>
+
+<div class="Input-Bar">
+  <app-company-drop></app-company-drop>
+  <app-sector-drop></app-sector-drop>
+  <app-cal></app-cal>
+  <div class="drange">
+    <h4>Filter By Group</h4>
+    <p-dropdown [options]="dates" [(ngModel)]="selectedDate" placeholder="-- Select --" optionLabel="name"></p-dropdown>
+  </div>
+</div>
+<div class="Tabs">
+  
+  <p-tabView>
+    <p-tabPanel header="GRID">
+       <app-grid-base></app-grid-base>
+    </p-tabPanel>
+    <p-tabPanel header="GRAPHS">
+    <ng-template pTemplate="content">
+            <app-bar-graph></app-bar-graph>
+        </ng-template>
+    </p-tabPanel>
+</p-tabView>
+
+</div>
+
+
+
+    </body>
+
+</html>
+
+
