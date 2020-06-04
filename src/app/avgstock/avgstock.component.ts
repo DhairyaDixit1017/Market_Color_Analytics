@@ -15,6 +15,8 @@ export class AvgstockComponent implements OnInit {
   public val="";
   public v="";
   public tickers = [];
+  public tut: number[] =[];
+  temp : number;
 
   constructor(private _dataService: DataservService) { 
 
@@ -46,7 +48,8 @@ export class AvgstockComponent implements OnInit {
     this._dataService.getDataS(this.v)
       .subscribe(data => 
         {this.data = data;
-        console.log(data);
+        //this.temp = data.preCovidPrice;
+        this.tut.push(this.temp);
         });
   }
 

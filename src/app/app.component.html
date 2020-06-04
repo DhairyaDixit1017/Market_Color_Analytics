@@ -23,18 +23,24 @@
     <p-dropdown [options]="dates" [(ngModel)]="selectedDate" placeholder="-- Select --" optionLabel="name"></p-dropdown>
   </div>
 </div>
+
 <div class="Tabs">
   
   <p-tabView>
     <p-tabPanel header="GRID">
        <app-grid-base></app-grid-base>
     </p-tabPanel>
-    <p-tabPanel header="GRAPHS">
-    <ng-template pTemplate="content">
+    <p-tabPanel header=" BAR GRAPH">
+        <ng-template pTemplate="content">
             <app-bar-graph></app-bar-graph>
         </ng-template>
-    </p-tabPanel>
-</p-tabView>
+      </p-tabPanel>
+      <p-tabPanel header=" LINE GRAPH">
+        <ng-template pTemplate="content">
+            <app-line-graph></app-line-graph>
+        </ng-template>
+      </p-tabPanel>
+  </p-tabView>
 
 </div>
 

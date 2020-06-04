@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FilterListComponent } from './filter-list/filter-list.component';
 import { FilterSectorComponent } from './filter-sector/filter-sector.component';
 import { InterService } from './Services/inter.service';
+import {DataservService} from './dataserv.service';
 import { BarGraphComponent } from './bar-graph/bar-graph.component';
 import {ChartModule} from 'primeng/chart';
 import { GridBaseComponent } from './grid-base/grid-base.component';
@@ -23,6 +24,7 @@ import { CompanyDropComponent } from './company-drop/company-drop.component';
 import { CalComponent } from './cal/cal.component';
 import {CalendarModule} from 'primeng/calendar';
 import {TabViewModule} from 'primeng/tabview';
+import { LineGraphComponent } from './line-graph/line-graph.component';
 
 
 @NgModule({
@@ -39,6 +41,7 @@ import {TabViewModule} from 'primeng/tabview';
     SectorDropComponent,
     CompanyDropComponent,
     CalComponent,
+    LineGraphComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,7 @@ import {TabViewModule} from 'primeng/tabview';
     TabViewModule
 
   ],
-  providers: [ InterService ],
+  providers: [ InterService , DataservService],
   bootstrap: [AppComponent, FilterListComponent]
 })
 export class AppModule { 

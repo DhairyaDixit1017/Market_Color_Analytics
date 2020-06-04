@@ -29,11 +29,11 @@ img{
 
 
 h4{
-    margin-top:5px;
+    margin-top:0px;
 }
 
 .Input-Bar{
-     height:90px;
+     height:80px;
      background-color: red;
 }
 
@@ -42,7 +42,7 @@ h4{
         float:left;
         width:25%;
         margin-left:1210px;
-        margin-top:5px;
+        margin-top:0px;
         }
 
 
@@ -57,7 +57,7 @@ button{
 
 .Tabs{
     position:absolute;
-    margin-top:120px;
+    margin-top:50px;
 }
 
 button:hover {

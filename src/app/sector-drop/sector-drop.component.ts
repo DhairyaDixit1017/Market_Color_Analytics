@@ -10,10 +10,10 @@ import {SelectItem} from 'primeng/api';
         float:left;
         width:25%;
         margin-left:450px;
-        margin-top:5px;
+        margin-top:0px;
         }
          h4{
-            margin-top:5px;
+            margin-top:0px;
          }
          p{
             font-size:14px;
@@ -57,8 +57,10 @@ export class SectorDropComponent implements OnInit {
             {label: 'HEALTH CARE', value: 'HEALTH CARE'},
             {label: 'MISCELLANEOUS', value: 'MISCELLANEOUS'},
             {label: 'PUBLIC UTILITIES', value: 'PUBLIC UTILITIES'},
+            {label: 'RETAIL', value: 'RETAIL'},
             {label: 'TECHNOLOGY', value: 'TECHNOLOGY'},
             {label: 'TRANSPORTATION', value: 'TRANSPORTATION'},
+            
         ];
 
     }

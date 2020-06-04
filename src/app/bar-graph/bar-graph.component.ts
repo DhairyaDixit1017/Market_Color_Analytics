@@ -11,23 +11,23 @@ export class BarGraphComponent implements OnInit {
   
     constructor() {
         this.data = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            labels: ['ABBOTT LABORATORIES', 'ABBVIE INC', 'ACCENTURE PLC'],
             datasets: [
                 {
                     label: 'PRE-COVID',
-                    backgroundColor: 'yellow',
-                    borderColor: 'yellow',
-                    data: [65, 59, 80, 81, 56, 55, 40]
+                    backgroundColor: '#9CCC65',
+                    borderColor: '#7CB342',
+                    data: [65, 59, 46]
                 },
                 {
                     label: 'POST-COVID',
-                    backgroundColor: 'red',
-                    borderColor: 'red',
-                    data: [28, 48, 40, 19, 86, 27, 90]
+                    backgroundColor: '#42A5F5',
+                    borderColor: '#1E88E5',
+                    data: [28, 48, 19]
                 }
             ]
         }
-    }
+    }              
 
 
   ngOnInit(): void {
