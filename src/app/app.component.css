@@ -1,5 +1,5 @@
 .citi-blue-bar {
-    height: 86px;
+    height: 70px;
     background: url("src/assets/img/bluebar.jpg") repeat-x;
     
 }
@@ -7,7 +7,8 @@
 .citi-logo {
     
     position: relative;
-    z-index: 2500;
+    background-image: url("src/assets/img/logo-citi.jpg");
+    /* z-index: 2500; */
 }
 
 img{
@@ -33,16 +34,18 @@ h4{
 }
 
 .Input-Bar{
-     height:80px;
-     background-color: red;
+     height:70px;
+     background-color:lightgray;
 }
 
 .drange{
         position:absolute;
         float:left;
         width:25%;
-        margin-left:1210px;
-        margin-top:0px;
+        margin-left:790px;
+        margin-top:10px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
         }
 
 
@@ -57,7 +60,7 @@ button{
 
 .Tabs{
     position:absolute;
-    margin-top:50px;
+    margin-top:20px;
 }
 
 button:hover {
@@ -69,7 +72,18 @@ h1{
       text-align: center;
 }
 
+.sbut{
+    float: right;
+    border-radius: 6px;
+    margin-right: 100px;
+    margin-top: 30px;
+    font-size: 18px;
+}
 
+.sbut:hover{
+    background-color: skyblue;
+    
+}
 
  
 

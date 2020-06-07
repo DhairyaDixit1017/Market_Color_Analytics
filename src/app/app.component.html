@@ -19,9 +19,11 @@
   <app-sector-drop></app-sector-drop>
   <app-cal></app-cal>
   <div class="drange">
-    <h4>Filter By Group</h4>
+    <h4 style="margin-bottom: 3px;"> Filter By Group</h4>
     <p-dropdown [options]="dates" [(ngModel)]="selectedDate" placeholder="-- Select --" optionLabel="name"></p-dropdown>
   </div>
+  <button class="button sbut" (click)="cd.sendSelected(); sd.sendSelectedSector(); c.sendDates()">Submit</button>
+  <app-company-drop #cd></app-company-drop><app-sector-drop #sd></app-sector-drop><app-cal #c></app-cal>
 </div>
 
 <div class="Tabs">

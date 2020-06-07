@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatastoreService } from '../datastore.service';
 
 @Component({
   selector: 'app-cal',
@@ -10,11 +11,12 @@ export class CalComponent implements OnInit {
   dates: Date[];
   rangeDates: Date[];
 
-  constructor() { }
+  constructor(private _datastoreservice: DatastoreService) { }
 
   ngOnInit(): void {
 
         let today = new Date();
+        console.log(today.toISOString().split('T')[0]);
         let firstDate = new Date('01/01/2020');
         this.rangeDates = [ firstDate, today];
         let month = today.getMonth();
@@ -25,5 +27,18 @@ export class CalComponent implements OnInit {
         let nextYear = (nextMonth === 0) ? year + 1 : year;
 
   }
+
+  sendDates(){
+    let start = this.rangeDates[0];
+    var startString = new Date(start.getTime() - (start.getTimezoneOffset() * 60000 ))
+                    .toISOString()
+                    .split("T")[0];
+    let end = this.rangeDates[1];
+    var endString = new Date(end.getTime() - (end.getTimezoneOffset() * 60000 ))
+                    .toISOString()
+                    .split("T")[0];
+    let range = [startString, endString];
+    this._datastoreservice.getDates(range);
+}
  
 }

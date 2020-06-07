@@ -1,7 +1,0 @@
-<select #drops >
-    <option selected>Select TCKR</option>
-    <option *ngFor="let tck of tickers" [value]="tck">{{tck}}</option>
-    </select>
-    <button (click)="sendVals(drops.value); diss(drops.value)" >Submit</button> 
-    
-    <h2 id="demos" style="display:none">{{tut | json}}</h2>

@@ -6,18 +6,11 @@ import {DropdownModule} from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { FilterListComponent } from './filter-list/filter-list.component';
-import { FilterSectorComponent } from './filter-sector/filter-sector.component';
 import { InterService } from './Services/inter.service';
-import {DataservService} from './dataserv.service';
 import { BarGraphComponent } from './bar-graph/bar-graph.component';
 import {ChartModule} from 'primeng/chart';
 import { GridBaseComponent } from './grid-base/grid-base.component';
 import {TableModule} from 'primeng/table';
-import { AvgvolComponent } from './avgvol/avgvol.component';
-import { AvgstockComponent } from './avgstock/avgstock.component';
-import { AvgvolsecComponent } from './avgvolsec/avgvolsec.component';
-import { AvgstocksecComponent } from './avgstocksec/avgstocksec.component';
 import { SectorDropComponent } from './sector-drop/sector-drop.component';
 import {MultiSelectModule} from 'primeng/multiselect';
 import { CompanyDropComponent } from './company-drop/company-drop.component';
@@ -25,19 +18,14 @@ import { CalComponent } from './cal/cal.component';
 import {CalendarModule} from 'primeng/calendar';
 import {TabViewModule} from 'primeng/tabview';
 import { LineGraphComponent } from './line-graph/line-graph.component';
+import { GridModule, PagerModule, PageService } from '@syncfusion/ej2-angular-grids';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilterListComponent,
-    FilterSectorComponent,
     BarGraphComponent,
     GridBaseComponent,
-    AvgvolComponent,
-    AvgstockComponent,
-    AvgvolsecComponent,
-    AvgstocksecComponent,
     SectorDropComponent,
     CompanyDropComponent,
     CalComponent,
@@ -54,11 +42,12 @@ import { LineGraphComponent } from './line-graph/line-graph.component';
     TableModule,
     MultiSelectModule,
     CalendarModule,
-    TabViewModule
+    TabViewModule,
+    GridModule, PagerModule
 
   ],
-  providers: [ InterService , DataservService],
-  bootstrap: [AppComponent, FilterListComponent]
+  providers: [ InterService, PageService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { 
 

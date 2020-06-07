@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SelectItem} from 'primeng/api';
+import { DatastoreService } from '../datastore.service';
 
 @Component({
   selector: 'app-sector-drop',
@@ -9,11 +10,14 @@ import {SelectItem} from 'primeng/api';
         position:absolute;
         float:left;
         width:25%;
-        margin-left:450px;
-        margin-top:0px;
+        margin-left:270px;
+        margin-top:10px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
         }
          h4{
             margin-top:0px;
+            margin-bottom:3px;
          }
          p{
             font-size:14px;
@@ -46,20 +50,19 @@ export class SectorDropComponent implements OnInit {
   sectors: SelectItem[];
   selectedSectors: string[] = [];
 
-    constructor() {
+    constructor(private _datastoreservice: DatastoreService) {
         this.sectors = [
-            {label: 'BASIC INDUSTRIES', value: 'BASIC INDUSTRIES'},
-            {label: 'CAPITAL GOODS', value: 'CAPITAL GOODS'},
-            {label: 'CONSUMER NON-DURABLES', value: 'CONSUMER NON-DURABLES'},
-            {label: 'CONSUMER SERVICES', value: 'CONSUMER SERVICES'},
-            {label: 'ENERGY', value: 'ENERGY'},
-            {label: 'FINANCE', value: 'FINANCE'},
-            {label: 'HEALTH CARE', value: 'HEALTH CARE'},
-            {label: 'MISCELLANEOUS', value: 'MISCELLANEOUS'},
-            {label: 'PUBLIC UTILITIES', value: 'PUBLIC UTILITIES'},
-            {label: 'RETAIL', value: 'RETAIL'},
-            {label: 'TECHNOLOGY', value: 'TECHNOLOGY'},
-            {label: 'TRANSPORTATION', value: 'TRANSPORTATION'},
+            {label: 'BASIC INDUSTRIES', value: 'Basic Industries'},
+            {label: 'CAPITAL GOODS', value: 'Capital Goods'},
+            {label: 'CONSUMER NON-DURABLES', value: 'Consumer Non-Durables'},
+            {label: 'CONSUMER SERVICES', value: 'Consumer Services'},
+            {label: 'ENERGY', value: 'Energy'},
+            {label: 'FINANCE', value: 'Finance'},
+            {label: 'HEALTH CARE', value: 'Health Care'},
+            {label: 'MISCELLANEOUS', value: 'Miscellaneous'},
+            {label: 'PUBLIC UTILITIES', value: 'Public Utilities'},
+            {label: 'TECHNOLOGY', value: 'Technology'},
+            {label: 'TRANSPORTATION', value: 'Transportation'},
             
         ];
 
@@ -67,5 +70,10 @@ export class SectorDropComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  sendSelectedSector(){
+    console.log(this.selectedSectors+" this is from sendselected inside sectordrop");
+    this._datastoreservice.getSelSec(this.selectedSectors);
+}
 
 }

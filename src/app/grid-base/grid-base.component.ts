@@ -1,37 +1,47 @@
 import { Component, OnInit } from '@angular/core';
+import { PageSettingsModel } from '@syncfusion/ej2-angular-grids';
+import { DataManager, ODataAdaptor } from '@syncfusion/ej2-data';
+import { ChangeEventArgs } from '@syncfusion/ej2-inputs';
+import {Observable} from 'rxjs';
+import { DataStateChangeEventArgs } from '@syncfusion/ej2-angular-grids';
+import {DatastoreService} from '../datastore.service';
+import {CompanyDropComponent} from '../company-drop/company-drop.component';
+
 
 @Component({
   selector: 'app-grid-base',
-  templateUrl: './grid-base.component.html',
+//  templateUrl: './grid-base.component.html',
+template:`
+ <ejs-grid [dataSource]="data | async" [allowPaging]="false" [pageSettings]= "pageSettings">
+    <e-columns>
+        <e-column field="date" headerText="Date" ></e-column>
+        <e-column class="head" field="companyName" headerText='Company' style="font-style:bold"></e-column>
+        <e-column field="sector" headerText="Sector"></e-column>
+        <e-column field="ticker" headerText="Ticker"></e-column>
+        <e-column field="price" headerText="Stock Price"></e-column>
+        <e-column field="volume" headerText="Volume"></e-column>
+    </e-columns>
+  </ejs-grid>
+ `,
   styleUrls: ['./grid-base.component.css']
 })
 export class GridBaseComponent implements OnInit {
 
-  constructor() { }
+  public data: Observable<DataStateChangeEventArgs>;
 
-  users: User[];
+  public sel = [];
 
-  cols: any[];
+  public tck = "";
+
+  public pageSettings: PageSettingsModel = { pageSize: 5 };
+
+  private companydrop: CompanyDropComponent;
+
+  constructor(private dataService: DatastoreService){
+    this.data = dataService;
+}
+  
   ngOnInit() {
-    this.users = [
-      { month: 'January', pre: '65',post:'28' },
-      { month: 'February', pre: '59',post:'48' },
-      { month: 'March', pre: '80',post:'40' },
-      { month: 'April', pre: '81',post:'19' },
-      { month: 'May', pre: '56',post:'86' },
-      { month: 'June', pre: '55',post:'27' },
-      { month: 'July', pre: '40',post:'90' },
-  ];
-    this.cols = [
-        { field: 'month', header: 'Month' },
-        { field: 'pre', header: 'PRE-COVID' },
-        { field: 'post', header: 'POST-COVID' },
-    ];
-}
-}
+  }
 
-export interface User {
-  month;
-  pre;
-  post;
 }

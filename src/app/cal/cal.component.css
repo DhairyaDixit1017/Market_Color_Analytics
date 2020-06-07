@@ -3,13 +3,43 @@
         position:absolute;
         float:left;
         width:20%;
-        margin-left:850px;
-        margin-top:0px;
-        
+        margin-left:520px;
+        margin-top:10px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;           
 }
 
 h4{
      margin-top:0px;
+     margin-bottom: 3px;
 }
 
+
+/* .ui-calendar.ui-datepicker-inline.ui-widget-content {
+        width: 200px;
+        height: 200px;
+} */
+
+/* .ui-calendar.ui-datepicker{
+        width: 200px;
+        height: 200px;
+}
+
+body .ui-datepicker:not(.ui-datepicker-inline){
+        
+} */
+
+:host ::ng-deep .ui-datepicker{
+        width: 200px;
+        height: 200px;
+    }
+
+    :host ::ng-deep .ui-datepicker-touch-ui{
+        width: 200px;
+        height: 200px;
+    }
+
+  
+
+  
 

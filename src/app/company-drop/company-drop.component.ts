@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SelectItem} from 'primeng/api';
+import { DatastoreService } from '../datastore.service';
 
 @Component({
   selector: 'app-company-drop',
@@ -11,10 +12,13 @@ import {SelectItem} from 'primeng/api';
         float:left;
         width:28%;
         margin-left:10px;
-        margin-top:0px;
+        margin-top:10px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
         }
         h4{
             margin-top:0px;
+            margin-bottom:3px;
         }
         p{
             font-size:14px;
@@ -22,6 +26,7 @@ import {SelectItem} from 'primeng/api';
 
         :host ::ng-deep .ui-multiselect {
             min-width: 15em;
+            margin-top:0px;
         }
         :host ::ng-deep .ui-multiselected-item-token,
         :host ::ng-deep .ui-multiselected-empty-token {
@@ -46,7 +51,7 @@ export class CompanyDropComponent implements OnInit {
   companies: SelectItem[];
   selectedCompanies: string[] = [];
 
-    constructor() {
+    constructor(private _datastoreservice: DatastoreService) {
         this.companies = [
             {label: 'AAPL - APPLE INC', value: 'AAPL'},
             {label: 'ABT - ABBOTT LABORATORIES', value: 'ABT'},
@@ -156,5 +161,10 @@ export class CompanyDropComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  sendSelected(){
+    console.log(this.selectedCompanies+" tis is from sendselected inside companydrop");
+    this._datastoreservice.getSelCom(this.selectedCompanies);
+}
 
 }
