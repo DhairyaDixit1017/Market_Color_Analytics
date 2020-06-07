@@ -1,10 +1,6 @@
-<html>
-
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-
-<body>
+ <!-- <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head> -->
 
 <div class="citi-blue-bar" >
     <div class="container">		
@@ -14,9 +10,9 @@
     </div>
 </div>
 
+
 <div class="Input-Bar">
   <app-company-drop></app-company-drop>
-  <app-sector-drop></app-sector-drop>
   <app-cal></app-cal>
   <div class="drange">
     <h4>Filter By Group</h4>
@@ -24,28 +20,8 @@
   </div>
 </div>
 
-<div class="Tabs">
-  
-  <p-tabView>
-    <p-tabPanel header="GRID">
-       <app-grid-base></app-grid-base>
-    </p-tabPanel>
-    <p-tabPanel header=" BAR GRAPH">
-        <ng-template pTemplate="content">
-            <app-bar-graph></app-bar-graph>
-        </ng-template>
-      </p-tabPanel>
-      <p-tabPanel header=" LINE GRAPH">
-        <ng-template pTemplate="content">
-            <app-line-graph></app-line-graph>
-        </ng-template>
-      </p-tabPanel>
-  </p-tabView>
-
-</div>
-
-    </body>
-
-</html>
+<!-- <h4>Select a Ticker to view Stock Price Information</h4>
+<app-avgstock></app-avgstock> -->
 
 
+<!-- </html> -->

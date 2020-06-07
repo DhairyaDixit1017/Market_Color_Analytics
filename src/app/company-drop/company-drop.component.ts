@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SelectItem} from 'primeng/api';
+import {DataservService} from '../dataserv.service';
 
 @Component({
   selector: 'app-company-drop',
@@ -9,13 +10,41 @@ import {SelectItem} from 'primeng/api';
         .hard{
         position:absolute;
         float:left;
-        width:28%;
+        width:20%;
         margin-left:10px;
         margin-top:0px;
         }
+
+        .work{
+        position:absolute;
+        float:left;
+        width:20%;
+        margin-left:300px;
+        margin-top:0px;
+        }
+
+        .Sto{
+        position:absolute;
+        margin-left: 1130px;
+        margin-top:45px;
+        border-radius: 6px;
+        border: 2px solid lightblue;
+        transition-duration: 0.4s;
+        }
+
+        .Vol{
+        position:absolute;
+        margin-left: 1290px;
+        margin-top:45px;
+        border-radius: 6px;
+        border: 2px solid lightblue;
+        transition-duration: 0.4s;
+        }
+
         h4{
             margin-top:0px;
         }
+
         p{
             font-size:14px;
         }
@@ -39,14 +68,113 @@ import {SelectItem} from 'primeng/api';
             background: #d95f00;
             color: #ffffff;
         }
+
+        .almost{
+            position:absolute;
+            margin-top:110px;
+        }
     `]
 })
 export class CompanyDropComponent implements OnInit {
 
-  companies: SelectItem[];
-  selectedCompanies: string[] = [];
+  public companies: SelectItem[];
+  public selectedCompanies: string[] = [];
+  public shareCompanies: string[];
+  public sectors: SelectItem[];
+  public selectedSectors: string[] = [];
+  public shareSectors: string[];
+  public decider:string;
+  public data = [];
+  data2:any;
+  choose=false;
+  users: User[];
+  cols: any[];
 
-    constructor() {
+
+  sendVals(){
+    if(this.shareSectors.length==0)
+    {
+      console.log(100);
+      this._dataService.getDataS(this.shareCompanies)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.datasets = this.data;
+          console.log(data);
+        });
+    }
+    else if(this.shareCompanies.length==0)
+    {
+      console.log(500);
+      this._dataService.getDataSecP(this.shareSectors)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.datasets = this.data;
+          console.log(data);
+        });
+    }
+    else{
+      console.log(3000);
+      this._dataService.getDataAllP(this.shareCompanies,this.shareSectors)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.datasets = this.data;
+          console.log(data);
+        });
+
+    }
+  }
+
+  sendVols(){
+     if(this.shareSectors.length==0)
+    {
+    console.log(100);
+    this._dataService.getDataV(this.shareCompanies)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.datasets = this.data;
+          console.log(data);
+        });
+    }
+    else if(this.shareCompanies.length==0)
+    {
+      console.log(500);
+      this._dataService.getDataSecV(this.shareSectors)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.datasets = this.data;
+          console.log(data);
+        });
+    }
+    else{
+      console.log(3000);
+      this._dataService.getDataAllV(this.shareCompanies,this.shareSectors)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.datasets = this.data;
+          console.log(data);
+        });
+
+    }
+  }
+
+  setchoose(){
+      this.choose=true;
+  }
+
+
+    constructor(private _dataService: DataservService) {
+
+        this.data2 = 
+        {
+            labels: ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today']
+        }
+
         this.companies = [
             {label: 'AAPL - APPLE INC', value: 'AAPL'},
             {label: 'ABT - ABBOTT LABORATORIES', value: 'ABT'},
@@ -151,10 +279,63 @@ export class CompanyDropComponent implements OnInit {
 
         ];
 
+         this.sectors = [
+            {label: 'BASIC INDUSTRIES', value: 'Basic Industries'},
+            {label: 'CAPITAL GOODS', value: 'Capital Goods'},
+            {label: 'CONSUMER NON-DURABLES', value: 'Consumer Non-Durables'},
+            {label: 'CONSUMER SERVICES', value: 'Consumer Services'},
+            {label: 'ENERGY', value: 'Energy'},
+            {label: 'FINANCE', value: 'Finance'},
+            {label: 'HEALTH CARE', value: 'Health Care'},
+            {label: 'MISCELLANEOUS', value: 'Miscellaneous'},
+            {label: 'PUBLIC UTILITIES', value: 'Public Utilities'},
+            {label: 'RETAIL', value: 'Retail'},
+            {label: 'TECHNOLOGY', value: 'Technology'},
+            {label: 'TRANSPORTATION', value: 'Transportation'},
+            
+        ];
+
+
     }
-
-
   ngOnInit(): void {
+    this._dataService.cast1.subscribe(decider=> this.decider=decider);
+    this._dataService.ultra1.subscribe(shareCompanies=> this.shareCompanies=shareCompanies);
+    this._dataService.ultra2.subscribe(shareSectors=> this.shareSectors=shareSectors);
+    this.users = [
+      { month: 'January', pre: '65',post:'28' },
+      { month: 'February', pre: '59',post:'48' },
+      { month: 'March', pre: '80',post:'40' },
+      { month: 'April', pre: '81',post:'19' },
+      { month: 'May', pre: '56',post:'86' },
+      { month: 'June', pre: '55',post:'27' },
+      { month: 'July', pre: '40',post:'90' },
+  ];
+    this.cols = [
+        { field: 'month', header: 'Month' },
+        { field: 'pre', header: 'PRE-COVID' },
+        { field: 'post', header: 'POST-COVID' },
+    ];
   }
 
+  setPrice(){
+    this._dataService.editHola1(this.selectedCompanies);
+    this._dataService.editHola2(this.selectedSectors);
+    console.log(this.shareCompanies);
+    console.log(this.shareSectors);
+    this._dataService.editInterim1("Price");
+}
+
+setVolume(){
+    this._dataService.editHola1(this.selectedCompanies);
+    this._dataService.editHola2(this.selectedSectors);
+    console.log(this.shareCompanies);
+    console.log(this.shareSectors);
+    this._dataService.editInterim1("Volume");
+}
+
+}
+export interface User {
+  month;
+  pre;
+  post;
 }

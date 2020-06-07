@@ -65,7 +65,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "market-color-analytics:build"
+            "browserTarget": "market-color-analytics:build",
+            "port": 4201
           },
           "configurations": {
             "production": {

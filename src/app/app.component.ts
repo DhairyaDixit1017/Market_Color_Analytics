@@ -1,5 +1,4 @@
 import { Component, OnInit} from '@angular/core';
-import { FilterListComponent } from './filter-list/filter-list.component';
 import { InterService } from './Services/inter.service';
 
 

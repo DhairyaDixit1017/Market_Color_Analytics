@@ -6,7 +6,6 @@ import {DropdownModule} from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { FilterListComponent } from './filter-list/filter-list.component';
 import { FilterSectorComponent } from './filter-sector/filter-sector.component';
 import { InterService } from './Services/inter.service';
 import {DataservService} from './dataserv.service';
@@ -30,7 +29,6 @@ import { LineGraphComponent } from './line-graph/line-graph.component';
 @NgModule({
   declarations: [
     AppComponent,
-    FilterListComponent,
     FilterSectorComponent,
     BarGraphComponent,
     GridBaseComponent,
@@ -57,8 +55,8 @@ import { LineGraphComponent } from './line-graph/line-graph.component';
     TabViewModule
 
   ],
-  providers: [ InterService , DataservService],
-  bootstrap: [AppComponent, FilterListComponent]
+  providers: [ InterService, DataservService ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { 
 

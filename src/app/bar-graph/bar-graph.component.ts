@@ -15,15 +15,21 @@ export class BarGraphComponent implements OnInit {
             datasets: [
                 {
                     label: 'PRE-COVID',
-                    backgroundColor: '#9CCC65',
+                    data: [65, 59, 46],
+                    fill: false,
                     borderColor: '#7CB342',
-                    data: [65, 59, 46]
+                    backgroundColor: '#9CCC65',
+                    
+                    
                 },
                 {
                     label: 'POST-COVID',
-                    backgroundColor: '#42A5F5',
+                    data: [28, 48, 19],
+                    fill: false,
                     borderColor: '#1E88E5',
-                    data: [28, 48, 19]
+                    backgroundColor: '#42A5F5',
+                    
+                    
                 }
             ]
         }

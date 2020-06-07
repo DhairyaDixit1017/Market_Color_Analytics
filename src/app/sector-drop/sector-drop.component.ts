@@ -5,13 +5,7 @@ import {SelectItem} from 'primeng/api';
   selector: 'app-sector-drop',
   templateUrl: './sector-drop.component.html',
  styles: [`
-        .work{
-        position:absolute;
-        float:left;
-        width:25%;
-        margin-left:450px;
-        margin-top:0px;
-        }
+        
          h4{
             margin-top:0px;
          }
@@ -43,26 +37,10 @@ import {SelectItem} from 'primeng/api';
 
 export class SectorDropComponent implements OnInit {
 
-  sectors: SelectItem[];
-  selectedSectors: string[] = [];
+  
 
     constructor() {
-        this.sectors = [
-            {label: 'BASIC INDUSTRIES', value: 'BASIC INDUSTRIES'},
-            {label: 'CAPITAL GOODS', value: 'CAPITAL GOODS'},
-            {label: 'CONSUMER NON-DURABLES', value: 'CONSUMER NON-DURABLES'},
-            {label: 'CONSUMER SERVICES', value: 'CONSUMER SERVICES'},
-            {label: 'ENERGY', value: 'ENERGY'},
-            {label: 'FINANCE', value: 'FINANCE'},
-            {label: 'HEALTH CARE', value: 'HEALTH CARE'},
-            {label: 'MISCELLANEOUS', value: 'MISCELLANEOUS'},
-            {label: 'PUBLIC UTILITIES', value: 'PUBLIC UTILITIES'},
-            {label: 'RETAIL', value: 'RETAIL'},
-            {label: 'TECHNOLOGY', value: 'TECHNOLOGY'},
-            {label: 'TRANSPORTATION', value: 'TRANSPORTATION'},
-            
-        ];
-
+       
     }
 
   ngOnInit(): void {
