@@ -3,7 +3,7 @@
         position:absolute;
         float:left;
         width:20%;
-        margin-left:590px;
+        margin-left:650px;
         margin-top:0px;
         
 }
@@ -11,6 +11,23 @@
 h4{
      margin-top:0px;
 }
+
+.Sto{
+        position:absolute;
+        margin-left: 1250px;
+        margin-top:45px;
+        border-radius: 6px;
+        border: 2px solid lightblue;
+        transition-duration: 0.4s;
+        }
+        
+.drange{
+        position:absolute;
+        float:left;
+        width:15%;
+        margin-left:970px;
+        margin-top:0px;
+        }
 
 
 

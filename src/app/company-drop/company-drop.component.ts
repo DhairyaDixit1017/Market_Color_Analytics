@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {SelectItem} from 'primeng/api';
 import {DataservService} from '../dataserv.service';
+import {ChartModule} from 'primeng/chart';
+import { SimpleChanges } from '@angular/core';
+import { UIChart } from 'primeng/primeng';
 
 @Component({
   selector: 'app-company-drop',
@@ -19,7 +22,7 @@ import {DataservService} from '../dataserv.service';
         position:absolute;
         float:left;
         width:20%;
-        margin-left:300px;
+        margin-left:330px;
         margin-top:0px;
         }
 
@@ -84,14 +87,35 @@ export class CompanyDropComponent implements OnInit {
   public selectedSectors: string[] = [];
   public shareSectors: string[];
   public decider:string;
-  public data = [];
+  public data:any;
   data2:any;
   choose=false;
   users: User[];
   cols: any[];
+  Mode: SelectItem[];
+  selectedModel: Modes;
+  startDate:string;
+  endDate:string;
+  grouping:string;
+
+  @ViewChild('chart') chart: UIChart;
+  @ViewChild('chartline') chart1: UIChart;
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   if (changes.inputData.currentValue) {
+  //     console.log(this.chart);
+  //     // this.chart.data = this.data2;
+  //    // then chart is getting updated
+  //     setTimeout(() => {
+  //       this.chart.reinit();
+  //     }, 500);
+  //      setTimeout(() => {
+  //       this.chart1.reinit();
+  //     }, 500);
+  //   }
+  // }
 
 
-  sendVals(){
+  sendPrice(){
     if(this.shareSectors.length==0)
     {
       console.log(100);
@@ -102,6 +126,12 @@ export class CompanyDropComponent implements OnInit {
           this.data2.datasets = this.data;
           console.log(data);
         });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 200);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 200);
     }
     else if(this.shareCompanies.length==0)
     {
@@ -113,6 +143,12 @@ export class CompanyDropComponent implements OnInit {
           this.data2.datasets = this.data;
           console.log(data);
         });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 320);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 320);
     }
     else{
       console.log(3000);
@@ -123,9 +159,16 @@ export class CompanyDropComponent implements OnInit {
           this.data2.datasets = this.data;
           console.log(data);
         });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 450);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 450);
 
     }
   }
+
 
   sendVols(){
      if(this.shareSectors.length==0)
@@ -138,6 +181,12 @@ export class CompanyDropComponent implements OnInit {
           this.data2.datasets = this.data;
           console.log(data);
         });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 200);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 200);
     }
     else if(this.shareCompanies.length==0)
     {
@@ -149,6 +198,12 @@ export class CompanyDropComponent implements OnInit {
           this.data2.datasets = this.data;
           console.log(data);
         });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 320);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 320);
     }
     else{
       console.log(3000);
@@ -159,17 +214,439 @@ export class CompanyDropComponent implements OnInit {
           this.data2.datasets = this.data;
           console.log(data);
         });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 450);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 450);
 
     }
   }
+
+
+
+  sendMonthPrice(){
+    if(this.shareSectors.length==0)
+    {
+      console.log(100);
+      this._dataService.getDataMonthP(this.shareCompanies ,this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 200);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 200);
+    }
+    else if(this.shareCompanies.length==0)
+    {
+      console.log(500);
+      this._dataService.getDataMonthSectP(this.shareSectors, this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 320);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 320);
+    }
+    else{
+      console.log(3000);
+      this._dataService.getDataMonthAllP(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 450);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 450);
+    }
+  }
+
+
+
+  sendMonthVolume(){
+    if(this.shareSectors.length==0)
+    {
+      console.log(100);
+      this._dataService.getDataMonthV(this.shareCompanies ,this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 200);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 200);
+    }
+    else if(this.shareCompanies.length==0)
+    {
+      console.log(500);
+      this._dataService.getDataMonthSectV(this.shareSectors, this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 320);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 320);
+    }
+    else{
+      console.log(3000);
+      this._dataService.getDataMonthAllV(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 450);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 450);
+    }
+  }
+
+
+  sendWeekPrice()
+  {
+    if(this.shareSectors.length==0)
+    {
+      console.log(100);
+      this._dataService.getDataWeekP(this.shareCompanies ,this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 200);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 200);
+    }
+    else if(this.shareCompanies.length==0)
+    {
+      console.log(500);
+      this._dataService.getDataWeekSectP(this.shareSectors, this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 320);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 320);
+    }
+    else{
+      console.log(3000);
+      this._dataService.getDataWeekAllP(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 450);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 450);
+    }
+  }
+
+
+
+  sendWeekVolume()
+  {
+    if(this.shareSectors.length==0)
+    {
+      console.log(100);
+      this._dataService.getDataWeekV(this.shareCompanies ,this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 200);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 200);
+    }
+    else if(this.shareCompanies.length==0)
+    {
+      console.log(500);
+      this._dataService.getDataWeekSectV(this.shareSectors, this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 320);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 320);
+    }
+    else{
+      console.log(3000);
+      this._dataService.getDataWeekAllV(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 450);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 450);
+    }
+  }
+
+
+
+
+  sendDailyPrice()
+  {
+    if(this.shareSectors.length==0)
+    {
+      console.log(100);
+      this._dataService.getDataDailyP(this.shareCompanies ,this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 200);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 200);
+    }
+    else if(this.shareCompanies.length==0)
+    {
+      console.log(500);
+      this._dataService.getDataDailySectP(this.shareSectors, this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 320);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 320);
+    }
+    else{
+      console.log(3000);
+      this._dataService.getDataDailyAllP(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 450);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 450);
+    }
+  }
+
+
+  sendDailyVolume()
+  {
+    if(this.shareSectors.length==0)
+    {
+      console.log(100);
+      this._dataService.getDataDailyV(this.shareCompanies ,this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 200);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 200);
+    }
+    else if(this.shareCompanies.length==0)
+    {
+      console.log(500);
+      this._dataService.getDataDailySectV(this.shareSectors, this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 320);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 320);
+    }
+    else{
+      console.log(3000);
+      this._dataService.getDataDailyAllV(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 450);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 450);
+    }
+  }
+
+
+
 
   setchoose(){
       this.choose=true;
   }
 
 
-    constructor(private _dataService: DataservService) {
 
+  soft(event){
+    console.log("Soft");
+    console.log(this.data2);
+    if(this.grouping=="Pre Covid vs Post Covid")
+    {
+      if(this.selectedModel.take=="Stock Price")
+      {
+        this.setPrice();
+        this.sendPrice();
+      }
+      else if(this.selectedModel.take=="Volume")
+      {
+        this.setVolume();
+        this.sendVols();
+      }
+    }
+    else if(this.grouping=="Monthly")
+    {
+      if(this.selectedModel.take=="Stock Price")
+      {
+        this.setPrice();
+        this.sendMonthPrice();
+      }
+      else if(this.selectedModel.take=="Volume")
+      {
+        this.setVolume();
+        this.sendMonthVolume();
+      }
+    }
+    else if(this.grouping=="Weekly")
+    {
+      if(this.selectedModel.take=="Stock Price")
+      {
+        this.setPrice();
+        this.sendWeekPrice();
+      }
+      else if(this.selectedModel.take=="Volume")
+      {
+        this.setVolume();
+        this.sendWeekVolume();
+      }
+    }
+    else if(this.grouping=="Daily")
+    {
+      if(this.selectedModel.take=="Stock Price")
+      {
+        this.setPrice();
+        this.sendDailyPrice();
+      }
+      else if(this.selectedModel.take=="Volume")
+      {
+        this.setVolume();
+        this.sendDailyVolume();
+      }
+    }
+  }
+
+
+    constructor(private _dataService: DataservService) {
+      this.Mode = [
+            {label:'Stock Price', value:{take: 'Stock Price'}},
+            {label:'Volume', value:{take: 'Volume'}}
+        ];
         this.data2 = 
         {
             labels: ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today']
@@ -301,6 +778,9 @@ export class CompanyDropComponent implements OnInit {
     this._dataService.cast1.subscribe(decider=> this.decider=decider);
     this._dataService.ultra1.subscribe(shareCompanies=> this.shareCompanies=shareCompanies);
     this._dataService.ultra2.subscribe(shareSectors=> this.shareSectors=shareSectors);
+    this._dataService.cast2.subscribe(startDate=> this.startDate=startDate);
+    this._dataService.cast3.subscribe(endDate=> this.endDate=endDate);
+    this._dataService.cast4.subscribe(grouping=> this.grouping=grouping);
     this.users = [
       { month: 'January', pre: '65',post:'28' },
       { month: 'February', pre: '59',post:'48' },
@@ -338,4 +818,8 @@ export interface User {
   month;
   pre;
   post;
+}
+interface Modes {
+  take: string;
+
 }

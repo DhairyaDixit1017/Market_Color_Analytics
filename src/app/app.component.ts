@@ -16,18 +16,18 @@ export class AppComponent implements OnInit {
   sectorVals:string;
   listVals:string;
   title = 'market-color-analytics';
-  dates: DateRange[];
-  selectedDate:string;
+  // datesmodef: DateRange[];
+  // selectedDate:string;
 
   constructor( private connect:InterService ) {
 
-  this.dates = [
-    {name: 'Pre Covid vs Post Covid'},
-    {name: 'Weekly'},
-    {name: 'Monthly'},
-    {name: 'Daily'},
+//   this.datesmodef = [
+//     {name: 'Pre Covid vs Post Covid'},
+//     {name: 'Weekly'},
+//     {name: 'Monthly'},
+//     {name: 'Daily'},
   
-];
+// ];
 
    }
    ngOnInit(): void {

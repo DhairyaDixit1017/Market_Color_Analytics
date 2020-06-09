@@ -24,6 +24,7 @@ import { CalComponent } from './cal/cal.component';
 import {CalendarModule} from 'primeng/calendar';
 import {TabViewModule} from 'primeng/tabview';
 import { LineGraphComponent } from './line-graph/line-graph.component';
+import { GraphDirDirective } from './HelpingDir/graph-dir.directive';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { LineGraphComponent } from './line-graph/line-graph.component';
     CompanyDropComponent,
     CalComponent,
     LineGraphComponent,
+    GraphDirDirective,
   ],
   imports: [
     BrowserModule,
