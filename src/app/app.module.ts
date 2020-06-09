@@ -25,6 +25,7 @@ import {CalendarModule} from 'primeng/calendar';
 import {TabViewModule} from 'primeng/tabview';
 import { LineGraphComponent } from './line-graph/line-graph.component';
 import { GraphDirDirective } from './HelpingDir/graph-dir.directive';
+import { GridModule, PagerModule } from '@syncfusion/ej2-angular-grids';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { GraphDirDirective } from './HelpingDir/graph-dir.directive';
     TableModule,
     MultiSelectModule,
     CalendarModule,
-    TabViewModule
+    TabViewModule,
+    GridModule, PagerModule
 
   ],
   providers: [ InterService, DataservService ],

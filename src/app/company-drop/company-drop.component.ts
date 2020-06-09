@@ -4,6 +4,7 @@ import {DataservService} from '../dataserv.service';
 import {ChartModule} from 'primeng/chart';
 import { SimpleChanges } from '@angular/core';
 import { UIChart } from 'primeng/primeng';
+import { DatastoreService } from '../datastore.service';
 
 @Component({
   selector: 'app-company-drop',
@@ -15,15 +16,20 @@ import { UIChart } from 'primeng/primeng';
         float:left;
         width:20%;
         margin-left:10px;
-        margin-top:0px;
+        margin-top:10px;
+        color:black;
+        margin-bottom: 0px;
         }
 
         .work{
         position:absolute;
         float:left;
         width:20%;
-        margin-left:330px;
-        margin-top:0px;
+        margin-left:270px;
+        margin-top:10px;
+        color: black;
+        margin-bottom: 0px;
+
         }
 
         .Sto{
@@ -46,6 +52,9 @@ import { UIChart } from 'primeng/primeng';
 
         h4{
             margin-top:0px;
+            margin-bottom: 3px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
         }
 
         p{
@@ -113,6 +122,19 @@ export class CompanyDropComponent implements OnInit {
   //     }, 500);
   //   }
   // }
+
+
+  sendSelected(){
+    console.log(this.selectedCompanies+" this is from sendSelected() inside companydrop");
+    this._datastoreservice.getSelCom(this.selectedCompanies);
+}
+
+  sendSelectedSector(){
+    console.log(this.selectedSectors+" this is from sendSelectedSector() inside companydrop");
+    this._datastoreservice.getSelSec(this.selectedSectors);
+}
+
+
 
 
   sendPrice(){
@@ -642,7 +664,7 @@ export class CompanyDropComponent implements OnInit {
   }
 
 
-    constructor(private _dataService: DataservService) {
+    constructor(private _dataService: DataservService, private _datastoreservice: DatastoreService) {
       this.Mode = [
             {label:'Stock Price', value:{take: 'Stock Price'}},
             {label:'Volume', value:{take: 'Volume'}}

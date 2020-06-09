@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DataservService} from '../dataserv.service';
+import { DatastoreService } from '../datastore.service';
 
 @Component({
   selector: 'app-cal',
@@ -17,7 +18,7 @@ export class CalComponent implements OnInit {
   endDate:string;
   grouping:string;
 
-  constructor(private _dataService: DataservService) {
+  constructor(private _dataService: DataservService, private _datastoreservice: DatastoreService) {
 
     this.datesmodef = [
     {name: 'Pre Covid vs Post Covid'},
@@ -61,6 +62,20 @@ export class CalComponent implements OnInit {
     this._dataService.editInterim4(this.selectedDate.name);
     // this._datastoreservice.getDates(range);
 }
+
+sendDatesGrid(){
+  let start = this.rangeDates[0];
+  var startString = new Date(start.getTime() - (start.getTimezoneOffset() * 60000 ))
+                  .toISOString()
+                  .split("T")[0];
+  let end = this.rangeDates[1];
+  var endString = new Date(end.getTime() - (end.getTimezoneOffset() * 60000 ))
+                  .toISOString()
+                  .split("T")[0];
+  let range = [startString, endString];
+  this._datastoreservice.getDates(range);
+}
+
 }
 interface DateRange {
   name: string;
