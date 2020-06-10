@@ -5,6 +5,7 @@ import {ChartModule} from 'primeng/chart';
 import { SimpleChanges } from '@angular/core';
 import { UIChart } from 'primeng/primeng';
 import { DatastoreService } from '../datastore.service';
+import {IGoal} from '.././goal';
 
 @Component({
   selector: 'app-company-drop',
@@ -97,7 +98,7 @@ export class CompanyDropComponent implements OnInit {
   public shareSectors: string[];
   public decider:string;
   public data:any;
-  data2:any;
+  data2:IGoal;
   choose=false;
   users: User[];
   cols: any[];
@@ -145,6 +146,7 @@ export class CompanyDropComponent implements OnInit {
       .subscribe(data => 
         {
           this.data =data;
+          this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
           this.data2.datasets = this.data;
           console.log(data);
         });
@@ -162,6 +164,7 @@ export class CompanyDropComponent implements OnInit {
       .subscribe(data => 
         {
           this.data =data;
+          this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
           this.data2.datasets = this.data;
           console.log(data);
         });
@@ -178,6 +181,7 @@ export class CompanyDropComponent implements OnInit {
       .subscribe(data => 
         {
           this.data =data;
+          this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
           this.data2.datasets = this.data;
           console.log(data);
         });
@@ -200,6 +204,7 @@ export class CompanyDropComponent implements OnInit {
       .subscribe(data => 
         {
           this.data =data;
+          this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
           this.data2.datasets = this.data;
           console.log(data);
         });
@@ -217,6 +222,7 @@ export class CompanyDropComponent implements OnInit {
       .subscribe(data => 
         {
           this.data =data;
+          this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
           this.data2.datasets = this.data;
           console.log(data);
         });
@@ -233,6 +239,7 @@ export class CompanyDropComponent implements OnInit {
       .subscribe(data => 
         {
           this.data =data;
+          this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
           this.data2.datasets = this.data;
           console.log(data);
         });
@@ -671,7 +678,8 @@ export class CompanyDropComponent implements OnInit {
         ];
         this.data2 = 
         {
-            labels: ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today']
+            labels: [],
+            datasets:[]
         }
 
         this.companies = [

@@ -9,7 +9,7 @@
 </div>
 
 
-<div *ngIf="choose===false; else dhairya">
+<!-- <div *ngIf="choose===false; else dhairya">
     <div class="almost">
     <p-tabView>
         <p-tabPanel header="GRID">
@@ -28,27 +28,37 @@
     </p-tabView>
 </div>
     
-</div>
+</div> -->
 
-<ng-template #dhairya>
+<!-- <ng-template #dhairya> -->
     <div class="almost">
         <p-tabView>
             <p-tabPanel header="GRID">
-                <!-- <app-grid-base></app-grid-base> -->
+                <app-grid-base></app-grid-base>
             </p-tabPanel>
             <p-tabPanel header="GRAPHS">
                 <p-tabView>
                     <p-tabPanel header="BAR GRAPH">
-                        <p-dropdown (onClick)="soft($event)" [options]="Mode" [(ngModel)]="selectedModel" placeholder="Select a Mode"></p-dropdown>       
+                        <p-dropdown (onClick)="setchoose(); soft($event)"  [options]="Mode" [(ngModel)]="selectedModel" placeholder="Select a Mode"></p-dropdown>       
+                        <div *ngIf="choose===false; else dhairya1">
+                        <p>Dhairya 1</p>
+                        </div>
+                        <ng-template #dhairya1>
                         <p-chart #chart type="bar" [data]="data2" width="87vw" height="87vh"></p-chart>
+                        </ng-template>
                     </p-tabPanel>
                     <p-tabPanel header="LINE GRAPH">
-                        <p-dropdown (onClick)="soft($event)" [options]="Mode" [(ngModel)]="selectedModel" placeholder="Select a Mode"></p-dropdown>
+                        <p-dropdown (onClick)="setchoose();soft($event)" [options]="Mode" [(ngModel)]="selectedModel" placeholder="Select a Mode"></p-dropdown>
+                        <div *ngIf="choose===false; else dhairya2">
+                        <p>Dhairya 2</p>
+                        </div>
+                        <ng-template #dhairya2>
                         <p-chart #chartline type="line" [data]="data2" width="87vw" height="87vh"></p-chart>
+                        </ng-template>
                     </p-tabPanel>
                 </p-tabView>
             </p-tabPanel>
         </p-tabView>
     </div>
-</ng-template>
+<!-- </ng-template> -->
 <!-- *appGraphDir  -->
