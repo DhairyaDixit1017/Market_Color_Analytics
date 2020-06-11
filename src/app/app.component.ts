@@ -1,5 +1,4 @@
 import { Component, OnInit} from '@angular/core';
-import { FilterListComponent } from './filter-list/filter-list.component';
 import { InterService } from './Services/inter.service';
 
 
@@ -17,18 +16,10 @@ export class AppComponent implements OnInit {
   sectorVals:string;
   listVals:string;
   title = 'market-color-analytics';
-  dates: DateRange[];
-  selectedDate:string;
+  // datesmodef: DateRange[];
+  // selectedDate:string;
 
   constructor( private connect:InterService ) {
-
-  this.dates = [
-    {name: 'By A Date Range'},
-    {name: 'Weekly'},
-    {name: 'Monthly'},
-    {name: 'Daily'},
-    {name: 'Pre Covid vs Post Covid'}
-];
 
    }
    ngOnInit(): void {

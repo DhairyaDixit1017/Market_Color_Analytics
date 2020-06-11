@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FilterListComponent } from './filter-list.component';
+import { CompanyDropComponent } from './company-drop.component';
 
-describe('FilterListComponent', () => {
-  let component: FilterListComponent;
-  let fixture: ComponentFixture<FilterListComponent>;
+describe('CompanyDropComponent', () => {
+  let component: CompanyDropComponent;
+  let fixture: ComponentFixture<CompanyDropComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FilterListComponent ]
+      declarations: [ CompanyDropComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FilterListComponent);
+    fixture = TestBed.createComponent(CompanyDropComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
