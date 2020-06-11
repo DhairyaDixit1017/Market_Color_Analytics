@@ -6,5 +6,5 @@
     <h4>Filter By Group</h4>
     <p-dropdown [options]="datesmodef" [(ngModel)]="selectedDate" placeholder="-- Select --" optionLabel="name"></p-dropdown>
   </div>
-<button class="sbut" (click)="cd.sendSelected(); cd.sendSelectedSector(); sendDatesGrid(); sendDates()"><b>Apply</b></button>
+<button class="sbut" (click)="cd.sendSelected(); cd.sendSelectedSector(); sendDatesGrid(); sendDates()">Apply</button>
 <app-company-drop #cd></app-company-drop>

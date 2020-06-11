@@ -41,19 +41,19 @@
                     <p-tabPanel header="BAR GRAPH">
                         <p-dropdown (onClick)="setchoose(); soft($event)"  [options]="Mode" [(ngModel)]="selectedModel" placeholder="Select a Mode"></p-dropdown>       
                         <div *ngIf="choose===false; else dhairya1">
-                        <p>Dhairya 1</p>
+                        <!-- <p>Dhairya 1</p> -->
                         </div>
                         <ng-template #dhairya1>
-                        <p-chart #chart type="bar" [data]="data2" width="87vw" height="87vh"></p-chart>
+                        <p-chart #chart type="bar" [data]="data2" width="93vw" height="87vh"></p-chart>
                         </ng-template>
                     </p-tabPanel>
                     <p-tabPanel header="LINE GRAPH">
                         <p-dropdown (onClick)="setchoose();soft($event)" [options]="Mode" [(ngModel)]="selectedModel" placeholder="Select a Mode"></p-dropdown>
                         <div *ngIf="choose===false; else dhairya2">
-                        <p>Dhairya 2</p>
+                        <!-- <p>Dhairya 2</p> -->
                         </div>
                         <ng-template #dhairya2>
-                        <p-chart #chartline type="line" [data]="data2" width="87vw" height="87vh"></p-chart>
+                        <p-chart #chartline type="line" [data]="data2" width="93vw" height="87vh"></p-chart>
                         </ng-template>
                     </p-tabPanel>
                 </p-tabView>
