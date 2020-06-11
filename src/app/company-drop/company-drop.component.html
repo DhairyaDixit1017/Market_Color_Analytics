@@ -7,7 +7,12 @@
 <h4>Filter By Sector</h4>
 <p-multiSelect [options]="sectors" [(ngModel)]="selectedSectors" [virtualScroll]="true" [filter]="true" ></p-multiSelect>
 </div>
-
+<div class="drange">
+    <h4>Filter By Group</h4>
+    <p-dropdown [options]="datesmodef" [(ngModel)]="selectedDate" placeholder="-- Select --" optionLabel="name"></p-dropdown>
+</div>
+<button class="sbut" (click)="sendSelected();sendSelectedSector(); setModeG(); shouldTime(); cali.sendDatesGrid(); cali.sendDates()"><b>Apply</b></button>
+<app-cal #cali></app-cal>
 
 <!-- <div *ngIf="choose===false; else dhairya">
     <div class="almost">

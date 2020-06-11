@@ -10,83 +10,7 @@ import {IGoal} from '.././goal';
 @Component({
   selector: 'app-company-drop',
   templateUrl: './company-drop.component.html',
- styles: [`
-
-        .hard{
-        position:absolute;
-        float:left;
-        width:20%;
-        margin-left:10px;
-        margin-top:10px;
-        color:black;
-        margin-bottom: 0px;
-        }
-
-        .work{
-        position:absolute;
-        float:left;
-        width:20%;
-        margin-left:270px;
-        margin-top:10px;
-        color: black;
-        margin-bottom: 0px;
-
-        }
-
-        .Sto{
-        position:absolute;
-        margin-left: 1130px;
-        margin-top:45px;
-        border-radius: 6px;
-        border: 2px solid lightblue;
-        transition-duration: 0.4s;
-        }
-
-        .Vol{
-        position:absolute;
-        margin-left: 1290px;
-        margin-top:45px;
-        border-radius: 6px;
-        border: 2px solid lightblue;
-        transition-duration: 0.4s;
-        }
-
-        h4{
-            margin-top:0px;
-            margin-bottom: 3px;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 14px;
-        }
-
-        p{
-            font-size:14px;
-        }
-
-        :host ::ng-deep .ui-multiselect {
-            min-width: 15em;
-        }
-        :host ::ng-deep .ui-multiselected-item-token,
-        :host ::ng-deep .ui-multiselected-empty-token {
-            padding: 2px 4px;
-            margin: 0 0.286em 0 0;
-            display: inline-block;
-            vertical-align:middle;
-            height: 1.857em;
-        }
-        :host ::ng-deep .ui-multiselected-item-token {
-            background: #007ad9;
-            color: #ffffff;
-        }
-        :host ::ng-deep .ui-multiselected-empty-token {
-            background: #d95f00;
-            color: #ffffff;
-        }
-
-        .almost{
-            position:absolute;
-            margin-top:110px;
-        }
-    `]
+  styleUrls: ['./company-drop.component.css']
 })
 export class CompanyDropComponent implements OnInit {
 
@@ -106,7 +30,10 @@ export class CompanyDropComponent implements OnInit {
   selectedModel: Modes;
   startDate:string;
   endDate:string;
-  grouping:string;
+  // grouping:string;
+  datesmodef: DateRange[];
+  selectedDate:DateRange;
+  house:string;
 
   @ViewChild('chart') chart: UIChart;
   @ViewChild('chartline') chart1: UIChart;
@@ -135,6 +62,23 @@ export class CompanyDropComponent implements OnInit {
     this._datastoreservice.getSelSec(this.selectedSectors);
 }
 
+  setModeG(){
+    this.house=this.selectedDate.name;
+    console.log(this.house);
+  }
+
+  shouldTime(){
+    if(this.choose==true)
+    {
+      setTimeout(() => {
+        this.chart.reinit();
+      }, 200);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 200);
+      this.soft(event);
+    }
+  }
 
 
 
@@ -611,12 +555,21 @@ export class CompanyDropComponent implements OnInit {
       this.choose=true;
   }
 
+  // setTime(){
+  //   setTimeout(() => {
+  //       this.chart.reinit();
+  //     }, 100);
+  //     setTimeout(() => {
+  //       this.chart1.reinit();
+  //     }, 100);
+  // }
+
 
 
   soft(event){
     console.log("Soft");
     console.log(this.data2);
-    if(this.grouping=="Pre Covid vs Post Covid")
+    if(this.house=="Pre Covid vs Post Covid")
     {
       if(this.selectedModel.take=="Stock Price")
       {
@@ -629,8 +582,9 @@ export class CompanyDropComponent implements OnInit {
         this.sendVols();
       }
     }
-    else if(this.grouping=="Monthly")
+    else if(this.house=="Monthly")
     {
+      console.log("MONTHLY");
       if(this.selectedModel.take=="Stock Price")
       {
         this.setPrice();
@@ -642,7 +596,7 @@ export class CompanyDropComponent implements OnInit {
         this.sendMonthVolume();
       }
     }
-    else if(this.grouping=="Weekly")
+    else if(this.house=="Weekly")
     {
       if(this.selectedModel.take=="Stock Price")
       {
@@ -655,7 +609,7 @@ export class CompanyDropComponent implements OnInit {
         this.sendWeekVolume();
       }
     }
-    else if(this.grouping=="Daily")
+    else if(this.house=="Daily")
     {
       if(this.selectedModel.take=="Stock Price")
       {
@@ -672,6 +626,16 @@ export class CompanyDropComponent implements OnInit {
 
 
     constructor(private _dataService: DataservService, private _datastoreservice: DatastoreService) {
+
+        this.datesmodef = [
+      {name: 'Pre Covid vs Post Covid'},
+      {name: 'Weekly'},
+      {name: 'Monthly'},
+      {name: 'Daily'},
+    
+      ];
+
+
       this.Mode = [
             {label:'Stock Price', value:{take: 'Stock Price'}},
             {label:'Volume', value:{take: 'Volume'}}
@@ -810,7 +774,7 @@ export class CompanyDropComponent implements OnInit {
     this._dataService.ultra2.subscribe(shareSectors=> this.shareSectors=shareSectors);
     this._dataService.cast2.subscribe(startDate=> this.startDate=startDate);
     this._dataService.cast3.subscribe(endDate=> this.endDate=endDate);
-    this._dataService.cast4.subscribe(grouping=> this.grouping=grouping);
+    // this._dataService.cast4.subscribe(grouping=> this.grouping=grouping);
     this.users = [
       { month: 'January', pre: '65',post:'28' },
       { month: 'February', pre: '59',post:'48' },
@@ -852,4 +816,7 @@ export interface User {
 interface Modes {
   take: string;
 
+}
+interface DateRange {
+  name: string;
 }
