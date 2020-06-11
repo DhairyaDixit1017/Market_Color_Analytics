@@ -1,7 +1,25 @@
 <select #drops >
     <option selected>Select TCKR</option>
     <option *ngFor="let tck of tickers" [value]="tck">{{tck}}</option>
-    </select>
-    <button (click)="sendVals(drops.value); diss(drops.value)" >Submit</button> 
-    
-    <h2 id="demos" style="display:none">{{data | json}}</h2>
+</select>
+ <button (click)="sendVals(drops.value); diss(drops.value)">Submit</button>
+<p>{{ decider }}</p>
+<p>{{ shareCompanies }}</p>
+<p>{{ shareSectors }}</p>
+<p-tabView>
+    <p-tabPanel header="Header 1">
+       Content 1
+    </p-tabPanel>
+    <p-tabPanel header="GRAPHS" >
+        <p-tabView>
+             <p-tabPanel header="BAR GRAPH">
+                Content 2            
+                <p-chart type="bar" [data]="data2" width="70vw" height="80vh"></p-chart>
+             </p-tabPanel>
+              <p-tabPanel header="LINE GRAPH">
+              <p-chart type="line" [data]="data2" width="70vw" height="80vh"></p-chart>
+                Content 3
+             </p-tabPanel>
+        </p-tabView>
+    </p-tabPanel>
+</p-tabView>

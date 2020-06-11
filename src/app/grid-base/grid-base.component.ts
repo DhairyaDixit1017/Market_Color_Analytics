@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { PageSettingsModel } from '@syncfusion/ej2-angular-grids';
+import {Observable} from 'rxjs';
+import { DataStateChangeEventArgs } from '@syncfusion/ej2-angular-grids';
+import {DatastoreService} from '../datastore.service';
+import {CompanyDropComponent} from '../company-drop/company-drop.component';
+
 
 @Component({
   selector: 'app-grid-base',
@@ -6,32 +12,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./grid-base.component.css']
 })
 export class GridBaseComponent implements OnInit {
+  
+  public data: Observable<DataStateChangeEventArgs>;
 
-  constructor() { }
+  public pageSettings: PageSettingsModel = {pageSize: 5};
 
-  users: User[];
+  private companydrop: CompanyDropComponent;
 
-  cols: any[];
-  ngOnInit() {
-    this.users = [
-      { month: 'January', pre: '65',post:'28' },
-      { month: 'February', pre: '59',post:'48' },
-      { month: 'March', pre: '80',post:'40' },
-      { month: 'April', pre: '81',post:'19' },
-      { month: 'May', pre: '56',post:'86' },
-      { month: 'June', pre: '55',post:'27' },
-      { month: 'July', pre: '40',post:'90' },
-  ];
-    this.cols = [
-        { field: 'month', header: 'Month' },
-        { field: 'pre', header: 'PRE-COVID' },
-        { field: 'post', header: 'POST-COVID' },
-    ];
-}
+  constructor(private dataService: DatastoreService){
+    this.data = dataService;
 }
 
-export interface User {
-  month;
-  pre;
-  post;
+ngOnInit() {
+}
+
 }

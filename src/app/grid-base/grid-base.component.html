@@ -1,16 +1,10 @@
-<p-table [value]="users">
-  <ng-template pTemplate="header">
-      <tr>
-          <th>MONTH</th>
-          <th>PRE-COVID</th>
-          <th>POST-COVID</th>
-      </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-user>
-      <tr>
-          <td>{{user.month}}</td>
-          <td>{{user.pre}}</td>
-          <td>{{user.post}}</td>
-      </tr>
-  </ng-template>
-</p-table>
+<ejs-grid [dataSource]="data | async" [allowPaging]="true" [pageSettings]="pageSettings">
+    <e-columns>
+        <e-column field="date" headerText="Date" ></e-column>
+        <e-column class="head" field="companyName" headerText='Company' style="font-style:bold"></e-column>
+        <e-column field="sector" headerText="Sector"></e-column>
+        <e-column field="ticker" headerText="Ticker"></e-column>
+        <e-column field="price" headerText="Stock Price"></e-column>
+        <e-column field="volume" headerText="Volume"></e-column>
+    </e-columns>
+  </ejs-grid>

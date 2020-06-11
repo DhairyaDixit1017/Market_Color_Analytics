@@ -6,9 +6,9 @@ import {DropdownModule} from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { FilterListComponent } from './filter-list/filter-list.component';
 import { FilterSectorComponent } from './filter-sector/filter-sector.component';
 import { InterService } from './Services/inter.service';
+import {DataservService} from './dataserv.service';
 import { BarGraphComponent } from './bar-graph/bar-graph.component';
 import {ChartModule} from 'primeng/chart';
 import { GridBaseComponent } from './grid-base/grid-base.component';
@@ -17,11 +17,19 @@ import { AvgvolComponent } from './avgvol/avgvol.component';
 import { AvgstockComponent } from './avgstock/avgstock.component';
 import { AvgvolsecComponent } from './avgvolsec/avgvolsec.component';
 import { AvgstocksecComponent } from './avgstocksec/avgstocksec.component';
+import { SectorDropComponent } from './sector-drop/sector-drop.component';
+import {MultiSelectModule} from 'primeng/multiselect';
+import { CompanyDropComponent } from './company-drop/company-drop.component';
+import { CalComponent } from './cal/cal.component';
+import {CalendarModule} from 'primeng/calendar';
+import {TabViewModule} from 'primeng/tabview';
+import { LineGraphComponent } from './line-graph/line-graph.component';
+import { GraphDirDirective } from './HelpingDir/graph-dir.directive';
+import { GridModule, PagerModule } from '@syncfusion/ej2-angular-grids';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilterListComponent,
     FilterSectorComponent,
     BarGraphComponent,
     GridBaseComponent,
@@ -29,6 +37,11 @@ import { AvgstocksecComponent } from './avgstocksec/avgstocksec.component';
     AvgstockComponent,
     AvgvolsecComponent,
     AvgstocksecComponent,
+    SectorDropComponent,
+    CompanyDropComponent,
+    CalComponent,
+    LineGraphComponent,
+    GraphDirDirective,
   ],
   imports: [
     BrowserModule,
@@ -38,12 +51,15 @@ import { AvgstocksecComponent } from './avgstocksec/avgstocksec.component';
     BrowserAnimationsModule,
     HttpClientModule,
     ChartModule,
-    TableModule
+    TableModule,
+    MultiSelectModule,
+    CalendarModule,
+    TabViewModule,
+    GridModule, PagerModule
   ],
-  providers: [ InterService ],
-  bootstrap: [AppComponent, FilterListComponent]
+  providers: [ InterService, DataservService ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { 
 
 }
-

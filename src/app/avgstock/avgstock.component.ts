@@ -11,10 +11,51 @@ export class AvgstockComponent implements OnInit {
 
   public data = [];
   public d = [];
-  public name="";
+  public name=[];
   public val="";
-  public v="";
+  public v=[];
   public tickers = [];
+  public nomu =["ABBV","C"];
+  data2:any;
+  public decider:string;
+  public shareCompanies: string[];
+  public shareSectors: string[];
+  public test:string;
+
+  sendVals(val){
+    this.name = this.shareCompanies;
+    this.callGetData();
+    console.log("Sending the value of selected tckr to getVal")
+  }
+
+  getval(): string[]{
+    return this.name;
+  }
+
+  callGetData(){
+    console.log("Now in callGetData");
+    this.v = this.getval()
+    this._dataService.getDataS(this.v)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.datasets = this.data;
+          console.log(data);
+        });
+      
+  }
+
+  diss(value) {
+
+    var myDemo = document.getElementById('demos');
+    for(let i in this.tickers){
+        if(value==this.tickers[i]){
+          console.log(value);          
+          break;
+        }
+        else console.log("No Matches");
+        }
+    }
 
   constructor(private _dataService: DataservService) { 
 
@@ -25,43 +66,17 @@ export class AvgstockComponent implements OnInit {
     "NVS","PBR","PFE","PM","PNC","RIO","RY","SAP","SNP","T","TM","TMO","TSM","UN","UNH",
     "UNP","UPS","UTX","XOM"];
 
+    this.data2 = 
+    {
+      labels: ['PRE-COVID', 'POST-COVID']
+    }
+
   }
 
   ngOnInit(): void {
+    this._dataService.cast1.subscribe(decider=> this.decider=decider);
+    this._dataService.ultra1.subscribe(shareCompanies=> this.shareCompanies=shareCompanies);
+    this._dataService.ultra2.subscribe(shareSectors=> this.shareSectors=shareSectors);
   }
-
-  sendVals(val){
-    this.name = val;
-    this.callGetData();
-    console.log("Sending the value of selected tckr to getVal")
-  }
-
-  getval(): string{
-    return this.name;
-  }
-
-  callGetData(){
-    console.log("Now in callGetData");
-    this.v = this.getval()
-    this._dataService.getDataS(this.v)
-      .subscribe(data => 
-        {this.data = data;
-        console.log(data);
-        });
-  }
-
-  diss(value) {
-
-    var myDemo = document.getElementById('demos');
-    for(let i in this.tickers){
-        if(value==this.tickers[i]){
-          console.log(value);
-          myDemo.style.display="block";
-          this.val=value;
-          break;
-        }
-        else console.log("No Matches");
-        }
-    }
 
 }

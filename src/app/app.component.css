@@ -1,5 +1,5 @@
 .citi-blue-bar {
-    height: 86px;
+    height: 70px;
     background: url("src/assets/img/bluebar.jpg") repeat-x;
     
 }
@@ -17,6 +17,7 @@ img{
 
 .centered {
     position: absolute;
+    margin-top:40px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -24,14 +25,40 @@ img{
     color: midnightblue;
   }
 
+
+h4{
+    margin-top:0px;
+}
+
+.Input-Bar{
+     height:70px;
+     background-color: lightgray;
+     color:white;
+}
+
+.drange{
+        position:absolute;
+        float:left;
+        width:15%;
+        margin-left:880px;
+        margin-top:0px;
+        }
+
+
 button{
-    margin-left: 20px;
+    margin-left: 200px;
     margin-right: 20px;
     border-radius: 6px;
     border: 2px solid lightblue;
     transition-duration: 0.4s;
 }
   
+
+.Tabs{
+    position:absolute;
+    margin-top:50px;
+}
+
 button:hover {
     background-color: dodgerblue; 
     color: white;
@@ -40,10 +67,3 @@ h1{
      font-family: "Times New Roman";
       text-align: center;
 }
-
-
-
- 
-
-
-
