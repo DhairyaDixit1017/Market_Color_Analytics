@@ -6,14 +6,12 @@ import {DatastoreService} from '../datastore.service';
 import {CompanyDropComponent} from '../company-drop/company-drop.component';
 
 
-
 @Component({
   selector: 'app-grid-base',
   templateUrl: './grid-base.component.html',
   styleUrls: ['./grid-base.component.css']
 })
 export class GridBaseComponent implements OnInit {
-
   
   public data: Observable<DataStateChangeEventArgs>;
 
@@ -29,4 +27,3 @@ ngOnInit() {
 }
 
 }
-

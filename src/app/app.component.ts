@@ -21,14 +21,6 @@ export class AppComponent implements OnInit {
 
   constructor( private connect:InterService ) {
 
-//   this.datesmodef = [
-//     {name: 'Pre Covid vs Post Covid'},
-//     {name: 'Weekly'},
-//     {name: 'Monthly'},
-//     {name: 'Daily'},
-  
-// ];
-
    }
    ngOnInit(): void {
 	  this.connect.cast.subscribe(sectorVals=> this.sectorVals=sectorVals);

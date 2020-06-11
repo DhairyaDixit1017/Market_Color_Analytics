@@ -27,7 +27,6 @@ import { LineGraphComponent } from './line-graph/line-graph.component';
 import { GraphDirDirective } from './HelpingDir/graph-dir.directive';
 import { GridModule, PagerModule } from '@syncfusion/ej2-angular-grids';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +56,6 @@ import { GridModule, PagerModule } from '@syncfusion/ej2-angular-grids';
     CalendarModule,
     TabViewModule,
     GridModule, PagerModule
-
   ],
   providers: [ InterService, DataservService ],
   bootstrap: [AppComponent]
@@ -65,4 +63,3 @@ import { GridModule, PagerModule } from '@syncfusion/ej2-angular-grids';
 export class AppModule { 
 
 }
-

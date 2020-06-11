@@ -34,8 +34,6 @@ export class BarGraphComponent implements OnInit {
             ]
         }
     }              
-
-
   ngOnInit(): void {
   }
 

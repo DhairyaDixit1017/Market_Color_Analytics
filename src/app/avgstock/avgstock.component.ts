@@ -32,7 +32,6 @@ export class AvgstockComponent implements OnInit {
     return this.name;
   }
 
-
   callGetData(){
     console.log("Now in callGetData");
     this.v = this.getval()
@@ -57,8 +56,6 @@ export class AvgstockComponent implements OnInit {
         else console.log("No Matches");
         }
     }
-
-  
 
   constructor(private _dataService: DataservService) { 
 

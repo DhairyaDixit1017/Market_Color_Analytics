@@ -187,15 +187,6 @@ export class DataservService {
     return myobj23;
   }
 
-
-
-
-
-
-
-
-
-
   getDataVolSec(sec): Observable<IData[]>{
     console.log("in getdata this is "+ sec);
     return this.http.get<IData[]>(this._baseurlvolsec + sec);
