@@ -2,10 +2,18 @@
     background-color: lightgray;
     font-size: large;
     color: black;
-    height: 30px;
+    height: 20px;
     
 }
 .e-grid .e-headertext{
     font-weight: 600;
     font-size: 15px;
+}
+
+.e-grid .e-rowcell{
+    padding: 0px;
+}
+
+.e-grid .e-altrow{
+    background-color: rgb(224, 241, 247);
 }
