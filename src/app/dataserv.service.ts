@@ -20,6 +20,8 @@ export class DataservService {
 
   private _baseurlsSect: string = "http://localhost:51535/data/chartSectorObject/";
 
+  private _baseurlsSelectCompAll: string = "http://localhost:51535/data/chartCompanySectorObject/";
+
   private _baseurlsSelectAll: string = "http://localhost:51535/data/chartAvgCompanySectorObject/";
 
   private _baseurlvolsec: string = "http://localhost:51535/data/average-volume-sector/";
@@ -32,17 +34,23 @@ export class DataservService {
 
   private _baseurlsDataMonthAllP: string = "http://localhost:51535/data/chartCMAvgCompanySector/";
 
+  private _baseurlsDataMonthAllCompP: string = "http://localhost:51535/data/chartCMCompanySector/";
+
   private _baseurlsDataWeekP: string = "http://localhost:51535/data/chartCWCompany/";
 
   private _baseurlsDataWeekSectP: string = "http://localhost:51535/data/chartCWSector/";
 
   private _baseurlsDataWeekAllP: string = "http://localhost:51535/data/chartCWAvgCompanySector/";
 
+  private _baseurlsDataWeekAllCompP: string = "http://localhost:51535/data/chartCWCompanySector/";
+
   private _baseurlsDataDailyP: string = "http://localhost:51535/data/chartCDCompany/";
 
   private _baseurlsDataDailySectP: string = "http://localhost:51535/data/chartCDSector/";
 
   private _baseurlsDataDailyAllP: string = "http://localhost:51535/data/chartCDAvgCompanySector/";
+
+  private _baseurlsDataDailyAllCompP: string = "http://localhost:51535/data/chartCDCompanySector/";
 
 
 
@@ -196,6 +204,48 @@ export class DataservService {
     console.log("in getdata this is "+ sec);
     return this.http.get<IData[]>(this._baseurlstocksec + sec);
   }
+
+  getDataCompP(tckr,tckr1): Observable<any>{
+    let myobj24 =  this.http.get(this._baseurlsSelectCompAll +tckr +"/"+tckr1 +"?type=price");
+    return myobj24;
+  }
+
+  getDataCompV(tckr,tckr1): Observable<any>{
+    let myobj25 =  this.http.get(this._baseurlsSelectCompAll +tckr +"/"+tckr1 +"?type=volume");
+    return myobj25;
+  }
+
+  getDataMonthAllCompP(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let myobj26 =  this.http.get<IGoal[]>(this._baseurlsDataMonthAllCompP + tckr +"/"+ tckr1 +"/"+ tckr2 +"/"+ tckr3+"?type=price");
+    return myobj26;
+  }
+
+  getDataMonthAllCompV(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let myobj27 =  this.http.get<IGoal[]>(this._baseurlsDataMonthAllCompP + tckr +"/"+ tckr1 +"/"+ tckr2 +"/"+ tckr3+"?type=volume");
+    return myobj27;
+  }
+
+   getDataWeekAllCompP(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let myobj28 =  this.http.get<IGoal[]>(this._baseurlsDataWeekAllCompP + tckr +"/"+ tckr1 +"/"+ tckr2 +"/"+ tckr3+"?type=price");
+    return myobj28;
+  }
+
+   getDataWeekAllCompV(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let myobj29 =  this.http.get<IGoal[]>(this._baseurlsDataWeekAllCompP + tckr +"/"+ tckr1 +"/"+ tckr2 +"/"+ tckr3+"?type=volume");
+    return myobj29;
+  }
+
+  getDataDailyAllCompP(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let myobj30 =  this.http.get<IGoal[]>(this._baseurlsDataDailyAllCompP + tckr +"/"+ tckr1 +"/"+ tckr2 +"/"+ tckr3+"?type=price");
+    return myobj30;
+  }
+
+  getDataDailyAllCompV(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let myobj31 =  this.http.get<IGoal[]>(this._baseurlsDataDailyAllCompP + tckr +"/"+ tckr1 +"/"+ tckr2 +"/"+ tckr3+"?type=volume");
+    return myobj31;
+  }
+
+
 
   sendDataTo(tot){
     this.data2 = tot;

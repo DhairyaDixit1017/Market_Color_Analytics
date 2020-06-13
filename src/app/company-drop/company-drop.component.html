@@ -7,12 +7,15 @@
 <h4>Filter By Sector</h4>
 <p-multiSelect [options]="sectors" [(ngModel)]="selectedSectors" [virtualScroll]="true" [filter]="true" ></p-multiSelect>
 </div>
+<div class="calen">
+    <h4>Filter By Time Range</h4>
+    <p-calendar [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" [showIcon]="true"></p-calendar>
+</div>
 <div class="drange">
     <h4>Filter By Group</h4>
     <p-dropdown [options]="datesmodef" [(ngModel)]="selectedDate" placeholder="-- Select --" optionLabel="name"></p-dropdown>
 </div>
-<button class="sbut" (click)="sendSelected();sendSelectedSector(); setModeG(); shouldTime(); cali.sendDatesGrid(); cali.sendDates()"><b>Apply</b></button>
-<app-cal #cali></app-cal>
+<button class="sbut" (click)="sendSelected();sendSelectedSector(); setModeG(); shouldTime(); sendDatesGrid(); sendDates()"><b>Apply</b></button>
 
 <!-- <div *ngIf="choose===false; else dhairya">
     <div class="almost">
@@ -49,7 +52,13 @@
                         <!-- <p>Dhairya 1</p> -->
                         </div>
                         <ng-template #dhairya1>
+                         <div  *ngIf="toll===true">
+                             <p-dropdown (onClick)="soft($event)" [options]="Friday" [(ngModel)]="selectedFri" placeholder="Select View Option"></p-dropdown>       
+                        </div>
                         <p-chart #chart type="bar" [data]="data2" width="93vw" height="87vh"></p-chart>
+                        <!-- <div>
+                            <p-calendar [(ngModel)]="date1" [showIcon]="true" ></p-calendar>
+                        </div> -->
                         </ng-template>
                     </p-tabPanel>
                     <p-tabPanel header="LINE GRAPH">
@@ -58,7 +67,13 @@
                         <!-- <p>Dhairya 2</p> -->
                         </div>
                         <ng-template #dhairya2>
+                        <div *ngIf="toll===true">
+                             <p-dropdown (onClick)="soft($event)" [options]="Friday" [(ngModel)]="selectedFri" placeholder="Select View Option"></p-dropdown>       
+                        </div>
                         <p-chart #chartline type="line" [data]="data2" width="93vw" height="87vh"></p-chart>
+                        <!-- <div>
+                            <p-calendar [(ngModel)]="date1" [showIcon]="true" ></p-calendar>
+                        </div> -->
                         </ng-template>
                     </p-tabPanel>
                 </p-tabView>

@@ -1,7 +1,7 @@
        .hard{
         position:absolute;
         float:left;
-        width:20%;
+        width:15%;
         margin-left:10px;
         margin-top:10px;
         color:black;
@@ -11,7 +11,7 @@
         .work{
         position:absolute;
         float:left;
-        width:20%;
+        width:15%;
         margin-left:235px;
         margin-top:10px;
         color: black;
@@ -19,10 +19,22 @@
 
         }
 
+        .calen{
+
+        position:absolute;
+        float:left;
+        width:15%;
+        margin-left:460px;
+        margin-top:0px;
+        color: black;
+        margin-bottom: 0px;
+        margin-top: 10px;
+}
+
         .drange{
         position:absolute;
         float:left;
-        width:20%;
+        width:13%;
         margin-left:680px;
         margin-top:0px;
         color: black;
@@ -99,3 +111,20 @@
             position:absolute;
             margin-top:70px;
         }
+
+        /* .checko{
+            position:absolute;
+            margin-left:0px;
+            margin-top:0px;
+            width:10%;
+            height:5%;
+            margin-bottom:10px;
+        }
+        .pros{
+            width:10%;
+            height:5%;
+            position:absolute;
+            margin-left:240px;
+            margin-top:0px;
+            margin-bottom:10px;
+        } */

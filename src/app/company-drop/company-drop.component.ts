@@ -30,10 +30,16 @@ export class CompanyDropComponent implements OnInit {
   selectedModel: Modes;
   startDate:string;
   endDate:string;
+  Friday: SelectItem[];
+  selectedFri:Toggy;
   // grouping:string;
   datesmodef: DateRange[];
   selectedDate:DateRange;
   house:string;
+  toll=false;
+  date1: Date;
+  rangeDates: Date[];
+  picks:any;
 
   @ViewChild('chart') chart: UIChart;
   @ViewChild('chartline') chart1: UIChart;
@@ -71,12 +77,8 @@ export class CompanyDropComponent implements OnInit {
     if(this.choose==true)
     {
       setTimeout(() => {
-        this.chart.reinit();
-      }, 200);
-      setTimeout(() => {
-        this.chart1.reinit();
-      }, 200);
-      this.soft(event);
+        this.soft(event);
+      }, 500);
     }
   }
 
@@ -85,6 +87,7 @@ export class CompanyDropComponent implements OnInit {
   sendPrice(){
     if(this.shareSectors.length==0)
     {
+      this.toll=false;
       console.log(100);
       this._dataService.getDataS(this.shareCompanies)
       .subscribe(data => 
@@ -96,13 +99,14 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 200);
+      }, 500);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 200);
+      }, 500);
     }
     else if(this.shareCompanies.length==0)
     {
+      this.toll=false;
       console.log(500);
       this._dataService.getDataSecP(this.shareSectors)
       .subscribe(data => 
@@ -114,13 +118,35 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 320);
+      }, 500);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 320);
+      }, 500);
     }
     else{
+      this.toll=true;
       console.log(3000);
+
+      if(this.selectedFri.give=="Only Companies")
+      {
+        this._dataService.getDataCompP(this.shareCompanies,this.shareSectors)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
+          this.data2.datasets = this.data;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 800);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 800);
+
+      }
+
+      else{
       this._dataService.getDataAllP(this.shareCompanies,this.shareSectors)
       .subscribe(data => 
         {
@@ -131,11 +157,11 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 450);
+      }, 800);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 450);
-
+      }, 800);
+    }
     }
   }
 
@@ -143,6 +169,7 @@ export class CompanyDropComponent implements OnInit {
   sendVols(){
      if(this.shareSectors.length==0)
     {
+      this.toll=false;
     console.log(100);
     this._dataService.getDataV(this.shareCompanies)
       .subscribe(data => 
@@ -154,13 +181,14 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 200);
+      }, 500);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 200);
+      }, 500);
     }
     else if(this.shareCompanies.length==0)
     {
+      this.toll=false;
       console.log(500);
       this._dataService.getDataSecV(this.shareSectors)
       .subscribe(data => 
@@ -172,13 +200,33 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 320);
+      }, 500);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 320);
+      }, 500);
     }
     else{
+      this.toll=true;
       console.log(3000);
+     if(this.selectedFri.give=="Only Companies")
+      {
+        this._dataService.getDataCompV(this.shareCompanies,this.shareSectors)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
+          this.data2.datasets = this.data;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 800);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 800);
+
+      }
+      else{
       this._dataService.getDataAllV(this.shareCompanies,this.shareSectors)
       .subscribe(data => 
         {
@@ -189,19 +237,18 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 450);
+      }, 800);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 450);
-
+      }, 800);
+    }
     }
   }
-
-
 
   sendMonthPrice(){
     if(this.shareSectors.length==0)
     {
+      this.toll=false;
       console.log(100);
       this._dataService.getDataMonthP(this.shareCompanies ,this.startDate,this.endDate)
       .subscribe(data => 
@@ -213,13 +260,14 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 200);
+      }, 500);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 200);
+      }, 500);
     }
     else if(this.shareCompanies.length==0)
     {
+      this.toll=false;
       console.log(500);
       this._dataService.getDataMonthSectP(this.shareSectors, this.startDate,this.endDate)
       .subscribe(data => 
@@ -231,13 +279,34 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 320);
+      }, 500);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 320);
+      }, 500);
     }
     else{
+      this.toll=true;
       console.log(3000);
+
+       if(this.selectedFri.give=="Only Companies")
+      {
+        this._dataService.getDataMonthAllCompP(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 800);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 800);
+      }
+
+      else{
       this._dataService.getDataMonthAllP(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
       .subscribe(data => 
         {
@@ -248,11 +317,12 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 450);
+      }, 800);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 450);
+      }, 800);
     }
+  }
   }
 
 
@@ -260,6 +330,7 @@ export class CompanyDropComponent implements OnInit {
   sendMonthVolume(){
     if(this.shareSectors.length==0)
     {
+      this.toll=false;
       console.log(100);
       this._dataService.getDataMonthV(this.shareCompanies ,this.startDate,this.endDate)
       .subscribe(data => 
@@ -271,13 +342,14 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 200);
+      }, 500);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 200);
+      }, 500);
     }
     else if(this.shareCompanies.length==0)
     {
+      this.toll=false;
       console.log(500);
       this._dataService.getDataMonthSectV(this.shareSectors, this.startDate,this.endDate)
       .subscribe(data => 
@@ -289,13 +361,33 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 320);
+      }, 500);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 320);
+      }, 500);
     }
     else{
+      this.toll=true;
       console.log(3000);
+       if(this.selectedFri.give=="Only Companies")
+      {
+        this._dataService.getDataMonthAllCompV(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 800);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 800);
+      }
+
+      else{
       this._dataService.getDataMonthAllV(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
       .subscribe(data => 
         {
@@ -306,11 +398,12 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 450);
+      }, 800);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 450);
+      }, 800);
     }
+  }
   }
 
 
@@ -318,6 +411,7 @@ export class CompanyDropComponent implements OnInit {
   {
     if(this.shareSectors.length==0)
     {
+      this.toll=false;
       console.log(100);
       this._dataService.getDataWeekP(this.shareCompanies ,this.startDate,this.endDate)
       .subscribe(data => 
@@ -329,13 +423,14 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 200);
+      }, 500);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 200);
+      }, 500);
     }
     else if(this.shareCompanies.length==0)
     {
+      this.toll=false;
       console.log(500);
       this._dataService.getDataWeekSectP(this.shareSectors, this.startDate,this.endDate)
       .subscribe(data => 
@@ -347,13 +442,34 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 320);
+      }, 500);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 320);
+      }, 500);
     }
     else{
+      this.toll=true;
       console.log(3000);
+
+       if(this.selectedFri.give=="Only Companies")
+      {
+        this._dataService.getDataWeekAllCompP(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 800);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 800);
+      }
+
+      else{
       this._dataService.getDataWeekAllP(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
       .subscribe(data => 
         {
@@ -364,11 +480,12 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 450);
+      }, 800);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 450);
+      }, 800);
     }
+  }
   }
 
 
@@ -377,6 +494,7 @@ export class CompanyDropComponent implements OnInit {
   {
     if(this.shareSectors.length==0)
     {
+      this.toll=false;
       console.log(100);
       this._dataService.getDataWeekV(this.shareCompanies ,this.startDate,this.endDate)
       .subscribe(data => 
@@ -388,13 +506,14 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 200);
+      }, 500);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 200);
+      }, 500);
     }
     else if(this.shareCompanies.length==0)
     {
+      this.toll=false;
       console.log(500);
       this._dataService.getDataWeekSectV(this.shareSectors, this.startDate,this.endDate)
       .subscribe(data => 
@@ -406,13 +525,34 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 320);
+      }, 500);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 320);
+      }, 500);
     }
     else{
+      this.toll=true;
       console.log(3000);
+
+       if(this.selectedFri.give=="Only Companies")
+      {
+        this._dataService.getDataWeekAllCompV(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 800);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 800);
+      }
+
+      else{
       this._dataService.getDataWeekAllV(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
       .subscribe(data => 
         {
@@ -423,11 +563,12 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 450);
+      }, 800);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 450);
+      }, 800);
     }
+  }
   }
 
 
@@ -437,6 +578,7 @@ export class CompanyDropComponent implements OnInit {
   {
     if(this.shareSectors.length==0)
     {
+      this.toll=false;
       console.log(100);
       this._dataService.getDataDailyP(this.shareCompanies ,this.startDate,this.endDate)
       .subscribe(data => 
@@ -448,13 +590,14 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 200);
+      }, 500);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 200);
+      }, 500);
     }
     else if(this.shareCompanies.length==0)
     {
+      this.toll=false;
       console.log(500);
       this._dataService.getDataDailySectP(this.shareSectors, this.startDate,this.endDate)
       .subscribe(data => 
@@ -466,13 +609,34 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 320);
+      }, 500);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 320);
+      }, 500);
     }
     else{
+      this.toll=true;
       console.log(3000);
+
+       if(this.selectedFri.give=="Only Companies")
+      {
+        this._dataService.getDataDailyAllCompP(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 800);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 800);
+      }
+
+      else{
       this._dataService.getDataDailyAllP(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
       .subscribe(data => 
         {
@@ -483,11 +647,12 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 450);
+      }, 800);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 450);
+      }, 800);
     }
+  }
   }
 
 
@@ -495,6 +660,7 @@ export class CompanyDropComponent implements OnInit {
   {
     if(this.shareSectors.length==0)
     {
+      this.toll=false;
       console.log(100);
       this._dataService.getDataDailyV(this.shareCompanies ,this.startDate,this.endDate)
       .subscribe(data => 
@@ -506,13 +672,14 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 200);
+      }, 500);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 200);
+      }, 500);
     }
     else if(this.shareCompanies.length==0)
     {
+      this.toll=false;
       console.log(500);
       this._dataService.getDataDailySectV(this.shareSectors, this.startDate,this.endDate)
       .subscribe(data => 
@@ -524,13 +691,34 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 320);
+      }, 500);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 320);
+      }, 500);
     }
     else{
+      this.toll=true;
       console.log(3000);
+
+       if(this.selectedFri.give=="Only Companies")
+      {
+        this._dataService.getDataDailyAllCompV(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+      .subscribe(data => 
+        {
+          this.data =data;
+          this.data2.labels = this.data.labels;
+          this.data2.datasets = this.data.datasets;
+          console.log(data);
+        });
+        setTimeout(() => {
+        this.chart.reinit();
+      }, 800);
+      setTimeout(() => {
+        this.chart1.reinit();
+      }, 800);
+      }
+
+      else{
       this._dataService.getDataDailyAllV(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
       .subscribe(data => 
         {
@@ -541,11 +729,12 @@ export class CompanyDropComponent implements OnInit {
         });
         setTimeout(() => {
         this.chart.reinit();
-      }, 450);
+      }, 800);
       setTimeout(() => {
         this.chart1.reinit();
-      }, 450);
+      }, 800);
     }
+  }
   }
 
 
@@ -584,7 +773,6 @@ export class CompanyDropComponent implements OnInit {
     }
     else if(this.house=="Monthly")
     {
-      console.log("MONTHLY");
       if(this.selectedModel.take=="Stock Price")
       {
         this.setPrice();
@@ -640,6 +828,15 @@ export class CompanyDropComponent implements OnInit {
             {label:'Stock Price', value:{take: 'Stock Price'}},
             {label:'Volume', value:{take: 'Volume'}}
         ];
+
+      this.Friday = [
+            {label:'Only Companies', value:{give: 'Only Companies'}},
+            {label:'Companies and Sectors', value:{give: 'Companies and Sectors'}}
+        ];
+      
+
+
+
         this.data2 = 
         {
             labels: [],
@@ -772,8 +969,8 @@ export class CompanyDropComponent implements OnInit {
     this._dataService.cast1.subscribe(decider=> this.decider=decider);
     this._dataService.ultra1.subscribe(shareCompanies=> this.shareCompanies=shareCompanies);
     this._dataService.ultra2.subscribe(shareSectors=> this.shareSectors=shareSectors);
-    this._dataService.cast2.subscribe(startDate=> this.startDate=startDate);
-    this._dataService.cast3.subscribe(endDate=> this.endDate=endDate);
+    // this._dataService.cast2.subscribe(startDate=> this.startDate=startDate);
+    // this._dataService.cast3.subscribe(endDate=> this.endDate=endDate);
     // this._dataService.cast4.subscribe(grouping=> this.grouping=grouping);
     this.users = [
       { month: 'January', pre: '65',post:'28' },
@@ -789,8 +986,54 @@ export class CompanyDropComponent implements OnInit {
         { field: 'pre', header: 'PRE-COVID' },
         { field: 'post', header: 'POST-COVID' },
     ];
+
+        let today = new Date();
+        let firstDate = new Date('01/01/2020');
+        this.rangeDates = [ firstDate, today];
+        let month = today.getMonth();
+        let year = today.getFullYear();
+        let prevMonth = (month === 0) ? 11 : month -1;
+        let prevYear = (prevMonth === 11) ? year - 1 : year;
+        let nextMonth = (month === 11) ? 0 : month + 1;
+        let nextYear = (nextMonth === 0) ? year + 1 : year;
+
   }
 
+  sendDates(){
+    console.log(this.rangeDates);
+    let start = this.rangeDates[0];
+    var startString = new Date(start.getTime() - (start.getTimezoneOffset() * 60000 ))
+                    .toISOString()
+                    .split("T")[0];
+    let end = this.rangeDates[1];
+    var endString = new Date(end.getTime() - (end.getTimezoneOffset() * 60000 ))
+                    .toISOString()
+                    .split("T")[0];
+    let range = [startString, endString];
+    this.picks=range;
+    console.log(this.picks);
+    this.startDate=this.picks[0];
+    this.endDate=this.picks[1];
+    // this._dataService.editInterim2(this.picks[0]);
+    // this._dataService.editInterim3(this.picks[1]);
+    // console.log(this.selectedDate.name);
+    // this._dataService.editInterim4(this.selectedDate.name);
+    // this._datastoreservice.getDates(range);
+}
+
+sendDatesGrid(){
+  let start = this.rangeDates[0];
+  var startString = new Date(start.getTime() - (start.getTimezoneOffset() * 60000 ))
+                  .toISOString()
+                  .split("T")[0];
+  let end = this.rangeDates[1];
+  var endString = new Date(end.getTime() - (end.getTimezoneOffset() * 60000 ))
+                  .toISOString()
+                  .split("T")[0];
+  let range = [startString, endString];
+  this._datastoreservice.getDates(range);
+}
+        
   setPrice(){
     this._dataService.editHola1(this.selectedCompanies);
     this._dataService.editHola2(this.selectedSectors);
@@ -815,8 +1058,11 @@ export interface User {
 }
 interface Modes {
   take: string;
-
 }
 interface DateRange {
   name: string;
+}
+
+interface Toggy {
+  give: string;
 }
