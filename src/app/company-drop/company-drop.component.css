@@ -112,19 +112,32 @@
             margin-top:70px;
         }
 
-        /* .checko{
-            position:absolute;
-            margin-left:0px;
-            margin-top:0px;
-            width:10%;
-            height:5%;
-            margin-bottom:10px;
+        .motion{
+            margin-left:33%;
         }
-        .pros{
-            width:10%;
-            height:5%;
+
+        .sbutMini{
+            border-radius: 6px;
+            border: 2px solid skyblue;
+            transition-duration: 0.4s;
+            height: 25px;
+        }
+
+        .sbutMini:hover{
+                background: lightblue;
+        }
+
+        .vitaly{
+            position:relative;
+            margin-left:5%;
+            display:inline-block;
+        }
+
+        /* .turbo{
             position:absolute;
-            margin-left:240px;
-            margin-top:0px;
-            margin-bottom:10px;
+            margin-top:200px;
+        } */
+
+        /* :host ::ng-deep .ui-tabview-nav{
+            height:3px;
         } */

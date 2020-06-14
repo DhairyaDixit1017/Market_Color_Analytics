@@ -13,10 +13,6 @@ import { BarGraphComponent } from './bar-graph/bar-graph.component';
 import {ChartModule} from 'primeng/chart';
 import { GridBaseComponent } from './grid-base/grid-base.component';
 import {TableModule} from 'primeng/table';
-import { AvgvolComponent } from './avgvol/avgvol.component';
-import { AvgstockComponent } from './avgstock/avgstock.component';
-import { AvgvolsecComponent } from './avgvolsec/avgvolsec.component';
-import { AvgstocksecComponent } from './avgstocksec/avgstocksec.component';
 import { SectorDropComponent } from './sector-drop/sector-drop.component';
 import {MultiSelectModule} from 'primeng/multiselect';
 import { CompanyDropComponent } from './company-drop/company-drop.component';
@@ -33,10 +29,6 @@ import { GridModule, PagerModule } from '@syncfusion/ej2-angular-grids';
     FilterSectorComponent,
     BarGraphComponent,
     GridBaseComponent,
-    AvgvolComponent,
-    AvgstockComponent,
-    AvgvolsecComponent,
-    AvgstocksecComponent,
     SectorDropComponent,
     CompanyDropComponent,
     CalComponent,

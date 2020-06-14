@@ -3,8 +3,6 @@ import {HttpClient, HttpParams} from '@angular/common/http'
 import {IData} from './data';
 import {IGoal} from './goal';
 import { Observable } from 'rxjs';
-import {AvgvolComponent} from './avgvol/avgvol.component';
-import{AvgstockComponent} from './avgstock/avgstock.component';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
@@ -52,6 +50,8 @@ export class DataservService {
 
   private _baseurlsDataDailyAllCompP: string = "http://localhost:51535/data/chartCDCompanySector/";
 
+   private _baseGraphurl: string = "http://localhost:51535/data/chart/";
+
 
 
   private interim1 = new BehaviorSubject<string>('');
@@ -75,6 +75,87 @@ export class DataservService {
     return this.http.get(this._baseurl + tckr);
   }
 
+  getDataCovP(tckr,tckr1,tckr2): Observable<IGoal[]>{
+    let my1 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"type=price"+"&"+"group=covid");
+    return my1;
+  }
+
+  getDataCovV(tckr,tckr1,tckr2): Observable<IGoal[]>{
+    let my2 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"type=volume"+"&"+"group=covid");
+    return my2;
+  }
+
+  getDataCovSectP(tckr,tckr1,tckr2): Observable<IGoal[]>{
+    let my3 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?sectorList="+tckr2+"&"+"type=price"+"&"+"group=covid");
+    return my3;
+  }
+
+  getDataCovSectV(tckr,tckr1,tckr2): Observable<IGoal[]>{
+    let my4 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?sectorList="+tckr2+"&"+"type=volume"+"&"+"group=covid");
+    return my4;
+  }
+
+  getDataCovOCompP(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let my5 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=price"+"&"+"group=covid");
+    return my5;
+  }
+
+  getDataCovAllP(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let my6 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=price"+"&"+"group=covid"+"&"+"option=both");
+    return my6;
+  }
+
+  getDataCovOCompV(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let my7 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=volume"+"&"+"group=covid");
+    return my7;
+  }
+
+  getDataCovAllV(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let my8 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=volume"+"&"+"group=covid"+"&"+"option=both");
+    return my8;
+  }
+
+  getDataCovCustDateP(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let myobj99 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"type=price"+"&"+"group=covid"+"&"+"boundaryDate="+tckr3);
+    return myobj99;
+  }
+
+  getDataCovCustDateSectP(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let my9 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?sectorList="+tckr2+"&"+"type=price"+"&"+"group=covid"+"&"+"boundaryDate="+tckr3);
+    return my9;
+  }
+
+  getDataCovCustDateOCompP(tckr,tckr1,tckr2,tckr3,tckr4): Observable<IGoal[]>{
+    let my10 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=price"+"&"+"group=covid"+"&"+"boundaryDate="+tckr4);
+    return my10;
+  }
+
+  getDataCovCustDateAllP(tckr,tckr1,tckr2,tckr3,tckr4): Observable<IGoal[]>{
+    let my11 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=price"+"&"+"group=covid"+"&"+"option=both"+"&"+"boundaryDate="+tckr4);
+    return my11;
+  }
+
+  getDataCovCustDateV(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let myobj99 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"type=volume"+"&"+"group=covid"+"&"+"boundaryDate="+tckr3);
+    return myobj99;
+  }
+
+  getDataCovCustDateSectV(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let my9 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?sectorList="+tckr2+"&"+"type=volume"+"&"+"group=covid"+"&"+"boundaryDate="+tckr3);
+    return my9;
+  }
+
+  getDataCovCustDateOCompV(tckr,tckr1,tckr2,tckr3,tckr4): Observable<IGoal[]>{
+    let my10 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=volume"+"&"+"group=covid"+"&"+"boundaryDate="+tckr4);
+    return my10;
+  }
+
+  getDataCovCustDateAllV(tckr,tckr1,tckr2,tckr3,tckr4): Observable<IGoal[]>{
+    let my11 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=volume"+"&"+"group=covid"+"&"+"option=both"+"&"+"boundaryDate="+tckr4);
+    return my11;
+  }
+
+
   getDataS(tckr): Observable<any>{
     let myobj =  this.http.get(this._baseurls + tckr +"?type=price");
     return myobj;
@@ -85,115 +166,130 @@ export class DataservService {
     return myobj1;
   }
 
-  getDataSecP(tckr): Observable<any>{
-    let myobj2 =  this.http.get(this._baseurlsSect + tckr +"?type=price");
-    return myobj2;
-  }
-
-  getDataSecV(tckr): Observable<any>{
-    let myobj3 =  this.http.get(this._baseurlsSect + tckr +"?type=volume");
-    return myobj3;
-  }
-
-  getDataAllP(tckr,tckr1): Observable<any>{
-    let myobj4 =  this.http.get(this._baseurlsSelectAll + tckr +"/"+ tckr1 +"?type=price");
-    return myobj4;
-  }
-
-  getDataAllV(tckr,tckr1): Observable<any>{
-    let myobj5 =  this.http.get(this._baseurlsSelectAll + tckr +"/"+ tckr1 +"?type=volume");
-    return myobj5;
-  }
-
   getDataMonthP(tckr,tckr1,tckr2): Observable<IGoal[]>{
-    let myobj6 =  this.http.get<IGoal[]>(this._baseurlsDataMonthP + tckr +"/"+ tckr1 +"/"+ tckr2+"?type=price");
+    let myobj6 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"type=price"+"&"+"group=monthly");
     return myobj6;
   }
 
   getDataMonthV(tckr,tckr1,tckr2): Observable<IGoal[]>{
-    let myobj7 =  this.http.get<IGoal[]>(this._baseurlsDataMonthP + tckr +"/"+ tckr1 +"/"+ tckr2 +"?type=volume");
+    let myobj7 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"type=volume"+"&"+"group=monthly");
     return myobj7;
   }
 
   getDataMonthSectP(tckr,tckr1,tckr2): Observable<IGoal[]>{
-    let myobj8 =  this.http.get<IGoal[]>(this._baseurlsDataMonthSectP + tckr +"/"+ tckr1 +"/"+ tckr2+"?type=price");
+    let myobj8 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?sectorList="+tckr2+"&"+"type=price"+"&"+"group=monthly");
     return myobj8;
   }
 
   getDataMonthSectV(tckr,tckr1,tckr2): Observable<IGoal[]>{
-    let myobj9 =  this.http.get<IGoal[]>(this._baseurlsDataMonthSectP + tckr +"/"+ tckr1 +"/"+ tckr2+"?type=volume");
+    let myobj9 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?sectorList="+tckr2+"&"+"type=volume"+"&"+"group=monthly");
     return myobj9;
   }
 
+
+  getDataMonthOCompP(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let myobj10 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=price"+"&"+"group=monthly");
+    return myobj10;
+  }
+
+  getDataMonthOCompV(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let myobj10 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=volume"+"&"+"group=monthly");
+    return myobj10;
+  }
+
+
   getDataMonthAllP(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
-    let myobj10 =  this.http.get<IGoal[]>(this._baseurlsDataMonthAllP + tckr +"/"+ tckr1 +"/"+ tckr2 +"/"+ tckr3+"?type=price");
+    let myobj10 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=price"+"&"+"group=monthly"+"&"+"option=both");
     return myobj10;
   }
 
   getDataMonthAllV(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
-    let myobj11 =  this.http.get<IGoal[]>(this._baseurlsDataMonthAllP + tckr +"/"+ tckr1 +"/"+ tckr2 +"/"+ tckr3+"?type=volume");
+    let myobj11 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=volume"+"&"+"group=monthly"+"&"+"option=both");
     return myobj11;
   }
 
   getDataWeekP(tckr,tckr1,tckr2): Observable<IGoal[]>{
-    let myobj12 =  this.http.get<IGoal[]>(this._baseurlsDataWeekP + tckr +"/"+ tckr1 +"/"+ tckr2+"?type=price");
+    let myobj12 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"type=price"+"&"+"group=weekly");
     return myobj12;
   }
 
-   getDataWeekV(tckr,tckr1,tckr2): Observable<IGoal[]>{
-    let myobj13 =  this.http.get<IGoal[]>(this._baseurlsDataWeekP + tckr +"/"+ tckr1 +"/"+ tckr2+"?type=volume");
+  getDataWeekV(tckr,tckr1,tckr2): Observable<IGoal[]>{
+    let myobj13 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"type=volume"+"&"+"group=weekly");
     return myobj13;
   }
 
   getDataWeekSectP(tckr,tckr1,tckr2): Observable<IGoal[]>{
-    let myobj14 =  this.http.get<IGoal[]>(this._baseurlsDataWeekSectP + tckr +"/"+ tckr1 +"/"+ tckr2+"?type=price");
+    let myobj14 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?sectorList="+tckr2+"&"+"type=price"+"&"+"group=weekly");
     return myobj14;
   }
 
   getDataWeekSectV(tckr,tckr1,tckr2): Observable<IGoal[]>{
-    let myobj15 =  this.http.get<IGoal[]>(this._baseurlsDataWeekSectP + tckr +"/"+ tckr1 +"/"+ tckr2+"?type=volume");
+    let myobj15 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?sectorList="+tckr2+"&"+"type=volume"+"&"+"group=weekly");
     return myobj15;
   }
 
-  getDataWeekAllP(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
-    let myobj16 =  this.http.get<IGoal[]>(this._baseurlsDataWeekAllP + tckr +"/"+ tckr1 +"/"+ tckr2 +"/"+ tckr3+"?type=price");
+  getDataWeekOCompP(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let myobj16 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=price"+"&"+"group=weekly");
     return myobj16;
   }
 
-  getDataWeekAllV(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
-    let myobj17 =  this.http.get<IGoal[]>(this._baseurlsDataWeekAllP + tckr +"/"+ tckr1 +"/"+ tckr2 +"/"+ tckr3+"?type=volume");
+  getDataWeekOCompV(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let myobj17 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=volume"+"&"+"group=weekly");
     return myobj17;
   }
 
-  getDataDailyP(tckr,tckr1,tckr2): Observable<IGoal[]>{
-    let myobj18 =  this.http.get<IGoal[]>(this._baseurlsDataDailyP + tckr +"/"+ tckr1 +"/"+ tckr2+"?type=price");
+
+  getDataWeekAllP(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let myobj18 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=price"+"&"+"group=weekly"+"&"+"option=both");
     return myobj18;
   }
 
-  getDataDailyV(tckr,tckr1,tckr2): Observable<IGoal[]>{
-    let myobj19 =  this.http.get<IGoal[]>(this._baseurlsDataDailyP + tckr +"/"+ tckr1 +"/"+ tckr2+"?type=volume");
+  getDataWeekAllV(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let myobj19 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=volume"+"&"+"group=weekly"+"&"+"option=both");
     return myobj19;
   }
 
-  getDataDailySectP(tckr,tckr1,tckr2): Observable<IGoal[]>{
-    let myobj20 =  this.http.get<IGoal[]>(this._baseurlsDataDailySectP + tckr +"/"+ tckr1 +"/"+ tckr2+"?type=price");
+  getDataDailyP(tckr,tckr1,tckr2): Observable<IGoal[]>{
+    let myobj20 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"type=price"+"&"+"group=daily");
     return myobj20;
   }
 
-  getDataDailySectV(tckr,tckr1,tckr2): Observable<IGoal[]>{
-    let myobj21 =  this.http.get<IGoal[]>(this._baseurlsDataDailySectP + tckr +"/"+ tckr1 +"/"+ tckr2+"?type=volume");
+  getDataDailyV(tckr,tckr1,tckr2): Observable<IGoal[]>{
+    let myobj21 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"type=volume"+"&"+"group=daily");
     return myobj21;
   }
 
-  getDataDailyAllP(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
-    let myobj22 =  this.http.get<IGoal[]>(this._baseurlsDataDailyAllP + tckr +"/"+ tckr1 +"/"+ tckr2 +"/"+ tckr3+"?type=price");
+  getDataDailySectP(tckr,tckr1,tckr2): Observable<IGoal[]>{
+    let myobj22 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?sectorList="+tckr2+"&"+"type=price"+"&"+"group=daily");
     return myobj22;
   }
 
-  getDataDailyAllV(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
-    let myobj23 =  this.http.get<IGoal[]>(this._baseurlsDataDailyAllP + tckr +"/"+ tckr1 +"/"+ tckr2 +"/"+ tckr3+"?type=volume");
+  getDataDailySectV(tckr,tckr1,tckr2): Observable<IGoal[]>{
+    let myobj23 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?sectorList="+tckr2+"&"+"type=volume"+"&"+"group=daily");
     return myobj23;
   }
+
+  getDataDailyOCompP(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let myobj24 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=price"+"&"+"group=daily");
+    return myobj24;
+  }
+
+  getDataDailyOCompV(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let myobj25 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=volume"+"&"+"group=daily");
+    return myobj25;
+  }
+
+
+  getDataDailyAllP(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let myobj26 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=price"+"&"+"group=daily"+"&"+"option=both");
+    return myobj26;
+  }
+
+  getDataDailyAllV(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
+    let myobj27 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=volume"+"&"+"group=daily"+"&"+"option=both");
+    return myobj27;
+  }
+
 
   getDataVolSec(sec): Observable<IData[]>{
     console.log("in getdata this is "+ sec);
@@ -205,48 +301,7 @@ export class DataservService {
     return this.http.get<IData[]>(this._baseurlstocksec + sec);
   }
 
-  getDataCompP(tckr,tckr1): Observable<any>{
-    let myobj24 =  this.http.get(this._baseurlsSelectCompAll +tckr +"/"+tckr1 +"?type=price");
-    return myobj24;
-  }
-
-  getDataCompV(tckr,tckr1): Observable<any>{
-    let myobj25 =  this.http.get(this._baseurlsSelectCompAll +tckr +"/"+tckr1 +"?type=volume");
-    return myobj25;
-  }
-
-  getDataMonthAllCompP(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
-    let myobj26 =  this.http.get<IGoal[]>(this._baseurlsDataMonthAllCompP + tckr +"/"+ tckr1 +"/"+ tckr2 +"/"+ tckr3+"?type=price");
-    return myobj26;
-  }
-
-  getDataMonthAllCompV(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
-    let myobj27 =  this.http.get<IGoal[]>(this._baseurlsDataMonthAllCompP + tckr +"/"+ tckr1 +"/"+ tckr2 +"/"+ tckr3+"?type=volume");
-    return myobj27;
-  }
-
-   getDataWeekAllCompP(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
-    let myobj28 =  this.http.get<IGoal[]>(this._baseurlsDataWeekAllCompP + tckr +"/"+ tckr1 +"/"+ tckr2 +"/"+ tckr3+"?type=price");
-    return myobj28;
-  }
-
-   getDataWeekAllCompV(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
-    let myobj29 =  this.http.get<IGoal[]>(this._baseurlsDataWeekAllCompP + tckr +"/"+ tckr1 +"/"+ tckr2 +"/"+ tckr3+"?type=volume");
-    return myobj29;
-  }
-
-  getDataDailyAllCompP(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
-    let myobj30 =  this.http.get<IGoal[]>(this._baseurlsDataDailyAllCompP + tckr +"/"+ tckr1 +"/"+ tckr2 +"/"+ tckr3+"?type=price");
-    return myobj30;
-  }
-
-  getDataDailyAllCompV(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
-    let myobj31 =  this.http.get<IGoal[]>(this._baseurlsDataDailyAllCompP + tckr +"/"+ tckr1 +"/"+ tckr2 +"/"+ tckr3+"?type=volume");
-    return myobj31;
-  }
-
-
-
+  
   sendDataTo(tot){
     this.data2 = tot;
     this.getDataTo();

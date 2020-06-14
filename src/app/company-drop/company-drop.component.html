@@ -9,15 +9,15 @@
 </div>
 <div class="calen">
     <h4>Filter By Time Range</h4>
-    <p-calendar [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" [showIcon]="true"></p-calendar>
+    <p-calendar (onClickOutside)="calcli($event)" (onClose)="calcli($event)" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" [showIcon]="true"></p-calendar>
 </div>
 <div class="drange">
     <h4>Filter By Group</h4>
-    <p-dropdown [options]="datesmodef" [(ngModel)]="selectedDate" placeholder="-- Select --" optionLabel="name"></p-dropdown>
+    <p-dropdown (onClick)="checkCov()"  [options]="datesmodef" [(ngModel)]="selectedDate" placeholder="-- Select --" optionLabel="name"></p-dropdown>
 </div>
-<button class="sbut" (click)="sendSelected();sendSelectedSector(); setModeG(); shouldTime(); sendDatesGrid(); sendDates()"><b>Apply</b></button>
+<button class="sbut" [disabled]="dest" (click)="sendSelected();sendSelectedSector(); setModeG(); shouldTime(); sendDatesGrid(); sendDates()"><b>Apply</b></button>
 
-<!-- <div *ngIf="choose===false; else dhairya">
+<!-- <div *ngIf="choose===false; else dhairya"> 
     <div class="almost">
     <p-tabView>
         <p-tabPanel header="GRID">
@@ -38,47 +38,44 @@
     
 </div> -->
 
-<!-- <ng-template #dhairya> -->
     <div class="almost">
         <p-tabView>
-            <p-tabPanel header="GRID">
+            <p-tabPanel header="GRID" [headerStyle]="{'height':'27px'}" >
                 <app-grid-base></app-grid-base>
             </p-tabPanel>
-            <p-tabPanel header="GRAPHS">
+            <p-tabPanel header="GRAPHS" [headerStyle]="{'height':'27px'}" >
                 <p-tabView>
-                    <p-tabPanel header="BAR GRAPH">
-                        <p-dropdown (onClick)="setchoose(); soft($event)"  [options]="Mode" [(ngModel)]="selectedModel" placeholder="Select a Mode"></p-dropdown>       
-                        <div *ngIf="choose===false; else dhairya1">
-                        <!-- <p>Dhairya 1</p> -->
+                    <p-tabPanel header="BAR GRAPH" [headerStyle]="{'height':'27px'}">
+                        <p-dropdown (onChange)="soft($event)" [options]="Mode" [(ngModel)]="selectedModel"></p-dropdown>       
+                         <div *ngIf="toll===true" class="vitaly">
+                             <p-dropdown (onChange)="soft($event)" [options]="Friday" [(ngModel)]="selectedFri"></p-dropdown>       
                         </div>
-                        <ng-template #dhairya1>
-                         <div  *ngIf="toll===true">
-                             <p-dropdown (onClick)="soft($event)" [options]="Friday" [(ngModel)]="selectedFri" placeholder="Select View Option"></p-dropdown>       
-                        </div>
-                        <p-chart #chart type="bar" [data]="data2" width="93vw" height="87vh"></p-chart>
-                        <!-- <div>
+                        <br>
+                        <br>
+                        <div class="turbo">
+                        <p-chart #chart type="bar" [data]="data2" [options]="options" width="90vw" height="63vh"></p-chart>
+                        <div *ngIf="atom===true" class="motion">
                             <p-calendar [(ngModel)]="date1" [showIcon]="true" ></p-calendar>
-                        </div> -->
-                        </ng-template>
+                            <button class="sbutMini" (click)="oneDate(); shouldTransTime()" ><b>Change Trans Date</b></button>
+                        </div>
+                        </div>
                     </p-tabPanel>
-                    <p-tabPanel header="LINE GRAPH">
-                        <p-dropdown (onClick)="setchoose();soft($event)" [options]="Mode" [(ngModel)]="selectedModel" placeholder="Select a Mode"></p-dropdown>
-                        <div *ngIf="choose===false; else dhairya2">
-                        <!-- <p>Dhairya 2</p> -->
+                    <p-tabPanel header="LINE GRAPH" [headerStyle]="{'height':'27px'}" >
+                        <p-dropdown (onChange)="soft($event)" [options]="Mode" [(ngModel)]="selectedModel"></p-dropdown>
+                        <div *ngIf="toll===true" class="vitaly">
+                             <p-dropdown (onChange)="soft($event)" [options]="Friday" [(ngModel)]="selectedFri"></p-dropdown>       
                         </div>
-                        <ng-template #dhairya2>
-                        <div *ngIf="toll===true">
-                             <p-dropdown (onClick)="soft($event)" [options]="Friday" [(ngModel)]="selectedFri" placeholder="Select View Option"></p-dropdown>       
-                        </div>
-                        <p-chart #chartline type="line" [data]="data2" width="93vw" height="87vh"></p-chart>
-                        <!-- <div>
+                        <br>
+                        <br>
+                        <div class="turbo">
+                        <p-chart #chartline type="line" [data]="data2"  [options]="options" width="90vw" height="63vh"></p-chart>
+                        <div *ngIf="atom===true" class="motion">
                             <p-calendar [(ngModel)]="date1" [showIcon]="true" ></p-calendar>
-                        </div> -->
-                        </ng-template>
+                             <button class="sbutMini" (click)="oneDate(); shouldTransTime()" ><b>Change Trans Date</b></button>
+                        </div>
+                        </div>
                     </p-tabPanel>
                 </p-tabView>
             </p-tabPanel>
         </p-tabView>
     </div>
-<!-- </ng-template> -->
-<!-- *appGraphDir  -->

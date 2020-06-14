@@ -6,6 +6,8 @@ import { SimpleChanges } from '@angular/core';
 import { UIChart } from 'primeng/primeng';
 import { DatastoreService } from '../datastore.service';
 import {IGoal} from '.././goal';
+// import * as Chart from 'chart.js';
+// import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 
 @Component({
   selector: 'app-company-drop',
@@ -23,13 +25,14 @@ export class CompanyDropComponent implements OnInit {
   public decider:string;
   public data:any;
   data2:IGoal;
-  choose=false;
+  // choose=false;
   users: User[];
   cols: any[];
   Mode: SelectItem[];
   selectedModel: Modes;
   startDate:string;
   endDate:string;
+  daycare:string;
   Friday: SelectItem[];
   selectedFri:Toggy;
   // grouping:string;
@@ -38,8 +41,14 @@ export class CompanyDropComponent implements OnInit {
   house:string;
   toll=false;
   date1: Date;
+  today: Date;
+  firstDate: Date;
   rangeDates: Date[];
   picks:any;
+  atom=false;
+  CovidDate:string = "2020-02-09";
+  dest=false;
+  options:any;
 
   @ViewChild('chart') chart: UIChart;
   @ViewChild('chartline') chart1: UIChart;
@@ -74,128 +83,300 @@ export class CompanyDropComponent implements OnInit {
   }
 
   shouldTime(){
-    if(this.choose==true)
-    {
       setTimeout(() => {
         this.soft(event);
-      }, 500);
+      }, 600);
     }
-  }
 
-
-
+  shouldTransTime(){
+      setTimeout(() => {
+        this.soft(event);
+      }, 600);
+    }
+  
   sendPrice(){
-    if(this.shareSectors.length==0)
+    
+    if(this.CovidDate!="2020-02-09")
     {
-      this.toll=false;
-      console.log(100);
-      this._dataService.getDataS(this.shareCompanies)
-      .subscribe(data => 
-        {
-          this.data =data;
-          this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
-          this.data2.datasets = this.data;
-          console.log(data);
-        });
-        setTimeout(() => {
-        this.chart.reinit();
-      }, 500);
-      setTimeout(() => {
-        this.chart1.reinit();
-      }, 500);
-    }
-    else if(this.shareCompanies.length==0)
-    {
-      this.toll=false;
-      console.log(500);
-      this._dataService.getDataSecP(this.shareSectors)
-      .subscribe(data => 
-        {
-          this.data =data;
-          this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
-          this.data2.datasets = this.data;
-          console.log(data);
-        });
-        setTimeout(() => {
-        this.chart.reinit();
-      }, 500);
-      setTimeout(() => {
-        this.chart1.reinit();
-      }, 500);
-    }
-    else{
-      this.toll=true;
-      console.log(3000);
-
-      if(this.selectedFri.give=="Only Companies")
+        if(this.shareSectors.length==0)
       {
-        this._dataService.getDataCompP(this.shareCompanies,this.shareSectors)
-      .subscribe(data => 
-        {
-          this.data =data;
-          this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
-          this.data2.datasets = this.data;
-          console.log(data);
-        });
+        this.toll=false;
+        console.log(100);
+        this._dataService.getDataCovCustDateP(this.startDate,this.endDate,this.shareCompanies,this.CovidDate)
+        .subscribe(data => 
+          {
+            this.data =data;
+            this.data2.labels = ['PRE-SELECTED TRANS DATE', 'POST-SELECTED TRANS DATE'];
+            this.data2.datasets = this.data.datasets;
+            console.log(data);
+          });
+          setTimeout(() => {
+          this.chart.reinit();
+        }, 500);
         setTimeout(() => {
-        this.chart.reinit();
-      }, 800);
-      setTimeout(() => {
-        this.chart1.reinit();
-      }, 800);
-
+          this.chart1.reinit();
+        }, 500);
       }
-
-      else{
-      this._dataService.getDataAllP(this.shareCompanies,this.shareSectors)
-      .subscribe(data => 
-        {
-          this.data =data;
-          this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
-          this.data2.datasets = this.data;
-          console.log(data);
-        });
+      else if(this.shareCompanies.length==0)
+      {
+        this.toll=false;
+        console.log(500);
+         this._dataService.getDataCovCustDateSectP(this.startDate,this.endDate,this.shareSectors,this.CovidDate)
+        .subscribe(data => 
+          {
+            this.data =data;
+            this.data2.labels = ['PRE-SELECTED TRANS DATE', 'POST-SELECTED TRANS DATE'];
+            this.data2.datasets = this.data.datasets;
+            console.log(data);
+          });
+          setTimeout(() => {
+          this.chart.reinit();
+        }, 500);
         setTimeout(() => {
-        this.chart.reinit();
-      }, 800);
-      setTimeout(() => {
-        this.chart1.reinit();
-      }, 800);
+          this.chart1.reinit();
+        }, 500);
+      }
+      else{
+        this.toll=true;
+        console.log(3000);
+
+        if(this.selectedFri.give=="Only Companies")
+        {
+          this._dataService.getDataCovCustDateOCompP(this.startDate,this.endDate,this.shareCompanies,this.shareSectors,this.CovidDate)
+        .subscribe(data => 
+          {
+            this.data =data;
+            this.data2.labels = ['PRE-SELECTED TRANS DATE', 'POST-SELECTED TRANS DATE'];
+            this.data2.datasets = this.data.datasets;
+            console.log(data);
+          });
+          setTimeout(() => {
+          this.chart.reinit();
+        }, 800);
+        setTimeout(() => {
+          this.chart1.reinit();
+        }, 800);
+
+        }
+
+        else{
+         this._dataService.getDataCovCustDateAllP(this.startDate,this.endDate,this.shareCompanies,this.shareSectors,this.CovidDate)
+        .subscribe(data => 
+          {
+            this.data =data;
+            this.data2.labels = ['PRE-SELECTED TRANS DATE', 'POST-SELECTED TRANS DATE'];
+            this.data2.datasets = this.data.datasets;
+            console.log(data);
+          });
+          setTimeout(() => {
+          this.chart.reinit();
+        }, 800);
+        setTimeout(() => {
+          this.chart1.reinit();
+        }, 800);
+      }
+      }
     }
+
+    else
+    {
+      if(this.shareSectors.length==0)
+      {
+        this.toll=false;
+        console.log(100);
+        this._dataService.getDataCovP(this.startDate,this.endDate,this.shareCompanies)
+        .subscribe(data => 
+          {
+            this.data =data;
+            this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
+            this.data2.datasets = this.data.datasets;
+            console.log(data);
+          });
+          setTimeout(() => {
+          this.chart.reinit();
+        }, 500);
+        setTimeout(() => {
+          this.chart1.reinit();
+        }, 500);
+      }
+      else if(this.shareCompanies.length==0)
+      {
+        this.toll=false;
+        console.log(500);
+        this._dataService.getDataCovSectP(this.startDate,this.endDate,this.shareSectors)
+        .subscribe(data => 
+          {
+            this.data =data;
+            this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
+            this.data2.datasets = this.data.datasets;
+            console.log(data);
+          });
+          setTimeout(() => {
+          this.chart.reinit();
+        }, 500);
+        setTimeout(() => {
+          this.chart1.reinit();
+        }, 500);
+      }
+      else{
+        this.toll=true;
+        console.log(3000);
+
+        if(this.selectedFri.give=="Only Companies")
+        {
+          this._dataService.getDataCovOCompP(this.startDate,this.endDate,this.shareCompanies,this.shareSectors)
+        .subscribe(data => 
+          {
+            this.data =data;
+            this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
+            this.data2.datasets = this.data.datasets;
+            console.log(data);
+          });
+          setTimeout(() => {
+          this.chart.reinit();
+        }, 800);
+        setTimeout(() => {
+          this.chart1.reinit();
+        }, 800);
+
+        }
+
+        else{
+        this._dataService.getDataCovAllP(this.startDate,this.endDate,this.shareCompanies,this.shareSectors)
+        .subscribe(data => 
+          {
+            this.data =data;
+            this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
+            this.data2.datasets = this.data.datasets;
+            console.log(data);
+          });
+          setTimeout(() => {
+          this.chart.reinit();
+        }, 800);
+        setTimeout(() => {
+          this.chart1.reinit();
+        }, 800);
+      }
+      }
     }
   }
 
 
   sendVols(){
-     if(this.shareSectors.length==0)
+    
+    if(this.CovidDate!="2020-02-09")
     {
-      this.toll=false;
-    console.log(100);
-    this._dataService.getDataV(this.shareCompanies)
-      .subscribe(data => 
-        {
-          this.data =data;
-          this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
-          this.data2.datasets = this.data;
-          console.log(data);
-        });
+        if(this.shareSectors.length==0)
+      {
+        this.toll=false;
+        console.log(100);
+        this._dataService.getDataCovCustDateV(this.startDate,this.endDate,this.shareCompanies,this.CovidDate)
+        .subscribe(data => 
+          {
+            this.data =data;
+            this.data2.labels = ['PRE-SELECTED TRANS DATE', 'POST-SELECTED TRANS DATE'];
+            this.data2.datasets = this.data.datasets;
+            console.log(data);
+          });
+          setTimeout(() => {
+          this.chart.reinit();
+        }, 500);
         setTimeout(() => {
-        this.chart.reinit();
-      }, 500);
-      setTimeout(() => {
-        this.chart1.reinit();
-      }, 500);
+          this.chart1.reinit();
+        }, 500);
+      }
+      else if(this.shareCompanies.length==0)
+      {
+        this.toll=false;
+        console.log(500);
+         this._dataService.getDataCovCustDateSectV(this.startDate,this.endDate,this.shareSectors,this.CovidDate)
+        .subscribe(data => 
+          {
+            this.data =data;
+            this.data2.labels = ['PRE-SELECTED TRANS DATE', 'POST-SELECTED TRANS DATE'];
+            this.data2.datasets = this.data.datasets;
+            console.log(data);
+          });
+          setTimeout(() => {
+          this.chart.reinit();
+        }, 500);
+        setTimeout(() => {
+          this.chart1.reinit();
+        }, 500);
+      }
+      else{
+        this.toll=true;
+        console.log(3000);
+
+        if(this.selectedFri.give=="Only Companies")
+        {
+          this._dataService.getDataCovCustDateOCompV(this.startDate,this.endDate,this.shareCompanies,this.shareSectors,this.CovidDate)
+        .subscribe(data => 
+          {
+            this.data =data;
+            this.data2.labels = ['PRE-SELECTED TRANS DATE', 'POST-SELECTED TRANS DATE'];
+            this.data2.datasets = this.data.datasets;
+            console.log(data);
+          });
+          setTimeout(() => {
+          this.chart.reinit();
+        }, 800);
+        setTimeout(() => {
+          this.chart1.reinit();
+        }, 800);
+
+        }
+
+        else{
+         this._dataService.getDataCovCustDateAllV(this.startDate,this.endDate,this.shareCompanies,this.shareSectors,this.CovidDate)
+        .subscribe(data => 
+          {
+            this.data =data;
+            this.data2.labels = ['PRE-SELECTED TRANS DATE', 'POST-SELECTED TRANS DATE'];
+            this.data2.datasets = this.data.datasets;
+            console.log(data);
+          });
+          setTimeout(() => {
+          this.chart.reinit();
+        }, 800);
+        setTimeout(() => {
+          this.chart1.reinit();
+        }, 800);
+      }
+      }
     }
-    else if(this.shareCompanies.length==0)
+    
+    else
     {
+     if(this.shareSectors.length==0)
+      {
+        this.toll=false;
+        console.log(100);
+        this._dataService.getDataCovV(this.startDate,this.endDate,this.shareCompanies)
+        .subscribe(data => 
+          {
+            this.data =data;
+            this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
+            this.data2.datasets = this.data.datasets;
+            console.log(data);
+          });
+          setTimeout(() => {
+          this.chart.reinit();
+        }, 500);
+        setTimeout(() => {
+          this.chart1.reinit();
+        }, 500);
+      }
+      else if(this.shareCompanies.length==0)
+      {
       this.toll=false;
       console.log(500);
-      this._dataService.getDataSecV(this.shareSectors)
+      this._dataService.getDataCovSectV(this.startDate,this.endDate,this.shareSectors)
       .subscribe(data => 
         {
           this.data =data;
           this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
-          this.data2.datasets = this.data;
+          this.data2.datasets = this.data.datasets;
           console.log(data);
         });
         setTimeout(() => {
@@ -204,53 +385,58 @@ export class CompanyDropComponent implements OnInit {
       setTimeout(() => {
         this.chart1.reinit();
       }, 500);
-    }
-    else{
+      }
+      else{
       this.toll=true;
       console.log(3000);
      if(this.selectedFri.give=="Only Companies")
-      {
-        this._dataService.getDataCompV(this.shareCompanies,this.shareSectors)
-      .subscribe(data => 
         {
-          this.data =data;
-          this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
-          this.data2.datasets = this.data;
-          console.log(data);
-        });
+          this._dataService.getDataCovOCompV(this.startDate,this.endDate,this.shareCompanies,this.shareSectors)
+        .subscribe(data => 
+          {
+            this.data =data;
+            this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
+            this.data2.datasets = this.data.datasets;
+            console.log(data);
+          });
+          setTimeout(() => {
+          this.chart.reinit();
+        }, 800);
         setTimeout(() => {
-        this.chart.reinit();
-      }, 800);
-      setTimeout(() => {
-        this.chart1.reinit();
-      }, 800);
+          this.chart1.reinit();
+        }, 800);
 
-      }
-      else{
-      this._dataService.getDataAllV(this.shareCompanies,this.shareSectors)
-      .subscribe(data => 
-        {
-          this.data =data;
-          this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
-          this.data2.datasets = this.data;
-          console.log(data);
-        });
+        }
+
+        else{
+        this._dataService.getDataCovAllV(this.startDate,this.endDate,this.shareCompanies,this.shareSectors)
+        .subscribe(data => 
+          {
+            this.data =data;
+            this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
+            this.data2.datasets = this.data.datasets;
+            console.log(data);
+          });
+          setTimeout(() => {
+          this.chart.reinit();
+        }, 800);
         setTimeout(() => {
-        this.chart.reinit();
-      }, 800);
-      setTimeout(() => {
-        this.chart1.reinit();
-      }, 800);
-    }
+          this.chart1.reinit();
+        }, 800);
+      }
     }
   }
+  }
+
+
+
 
   sendMonthPrice(){
     if(this.shareSectors.length==0)
     {
       this.toll=false;
       console.log(100);
-      this._dataService.getDataMonthP(this.shareCompanies ,this.startDate,this.endDate)
+      this._dataService.getDataMonthP(this.startDate,this.endDate,this.shareCompanies)
       .subscribe(data => 
         {
           this.data =data;
@@ -269,7 +455,7 @@ export class CompanyDropComponent implements OnInit {
     {
       this.toll=false;
       console.log(500);
-      this._dataService.getDataMonthSectP(this.shareSectors, this.startDate,this.endDate)
+      this._dataService.getDataMonthSectP(this.startDate,this.endDate,this.shareSectors)
       .subscribe(data => 
         {
           this.data =data;
@@ -290,7 +476,7 @@ export class CompanyDropComponent implements OnInit {
 
        if(this.selectedFri.give=="Only Companies")
       {
-        this._dataService.getDataMonthAllCompP(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+        this._dataService. getDataMonthOCompP(this.startDate,this.endDate,this.shareCompanies,this.shareSectors)
       .subscribe(data => 
         {
           this.data =data;
@@ -307,7 +493,7 @@ export class CompanyDropComponent implements OnInit {
       }
 
       else{
-      this._dataService.getDataMonthAllP(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+      this._dataService.getDataMonthAllP(this.startDate,this.endDate,this.shareCompanies,this.shareSectors)
       .subscribe(data => 
         {
           this.data =data;
@@ -332,7 +518,7 @@ export class CompanyDropComponent implements OnInit {
     {
       this.toll=false;
       console.log(100);
-      this._dataService.getDataMonthV(this.shareCompanies ,this.startDate,this.endDate)
+      this._dataService.getDataMonthV(this.startDate,this.endDate,this.shareCompanies)
       .subscribe(data => 
         {
           this.data =data;
@@ -351,7 +537,7 @@ export class CompanyDropComponent implements OnInit {
     {
       this.toll=false;
       console.log(500);
-      this._dataService.getDataMonthSectV(this.shareSectors, this.startDate,this.endDate)
+      this._dataService.getDataMonthSectV(this.startDate,this.endDate,this.shareSectors)
       .subscribe(data => 
         {
           this.data =data;
@@ -371,7 +557,7 @@ export class CompanyDropComponent implements OnInit {
       console.log(3000);
        if(this.selectedFri.give=="Only Companies")
       {
-        this._dataService.getDataMonthAllCompV(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+        this._dataService.getDataMonthOCompV(this.startDate,this.endDate,this.shareCompanies,this.shareSectors)
       .subscribe(data => 
         {
           this.data =data;
@@ -388,7 +574,7 @@ export class CompanyDropComponent implements OnInit {
       }
 
       else{
-      this._dataService.getDataMonthAllV(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+      this._dataService.getDataMonthAllV(this.startDate,this.endDate,this.shareCompanies,this.shareSectors)
       .subscribe(data => 
         {
           this.data =data;
@@ -413,7 +599,7 @@ export class CompanyDropComponent implements OnInit {
     {
       this.toll=false;
       console.log(100);
-      this._dataService.getDataWeekP(this.shareCompanies ,this.startDate,this.endDate)
+      this._dataService.getDataWeekP(this.startDate,this.endDate,this.shareCompanies)
       .subscribe(data => 
         {
           this.data =data;
@@ -432,7 +618,7 @@ export class CompanyDropComponent implements OnInit {
     {
       this.toll=false;
       console.log(500);
-      this._dataService.getDataWeekSectP(this.shareSectors, this.startDate,this.endDate)
+      this._dataService.getDataWeekSectP(this.startDate,this.endDate,this.shareSectors)
       .subscribe(data => 
         {
           this.data =data;
@@ -453,7 +639,7 @@ export class CompanyDropComponent implements OnInit {
 
        if(this.selectedFri.give=="Only Companies")
       {
-        this._dataService.getDataWeekAllCompP(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+        this._dataService.getDataWeekOCompP(this.startDate,this.endDate,this.shareCompanies,this.shareSectors)
       .subscribe(data => 
         {
           this.data =data;
@@ -470,7 +656,7 @@ export class CompanyDropComponent implements OnInit {
       }
 
       else{
-      this._dataService.getDataWeekAllP(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+      this._dataService.getDataWeekAllP(this.startDate,this.endDate,this.shareCompanies,this.shareSectors)
       .subscribe(data => 
         {
           this.data =data;
@@ -496,7 +682,7 @@ export class CompanyDropComponent implements OnInit {
     {
       this.toll=false;
       console.log(100);
-      this._dataService.getDataWeekV(this.shareCompanies ,this.startDate,this.endDate)
+      this._dataService.getDataWeekV(this.startDate,this.endDate,this.shareCompanies)
       .subscribe(data => 
         {
           this.data =data;
@@ -515,7 +701,7 @@ export class CompanyDropComponent implements OnInit {
     {
       this.toll=false;
       console.log(500);
-      this._dataService.getDataWeekSectV(this.shareSectors, this.startDate,this.endDate)
+      this._dataService.getDataWeekSectV(this.startDate,this.endDate,this.shareSectors)
       .subscribe(data => 
         {
           this.data =data;
@@ -536,7 +722,7 @@ export class CompanyDropComponent implements OnInit {
 
        if(this.selectedFri.give=="Only Companies")
       {
-        this._dataService.getDataWeekAllCompV(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+        this._dataService.getDataWeekOCompV(this.startDate,this.endDate,this.shareCompanies,this.shareSectors)
       .subscribe(data => 
         {
           this.data =data;
@@ -553,7 +739,7 @@ export class CompanyDropComponent implements OnInit {
       }
 
       else{
-      this._dataService.getDataWeekAllV(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+      this._dataService.getDataWeekAllV(this.startDate,this.endDate,this.shareCompanies,this.shareSectors)
       .subscribe(data => 
         {
           this.data =data;
@@ -580,7 +766,7 @@ export class CompanyDropComponent implements OnInit {
     {
       this.toll=false;
       console.log(100);
-      this._dataService.getDataDailyP(this.shareCompanies ,this.startDate,this.endDate)
+      this._dataService.getDataDailyP(this.startDate,this.endDate,this.shareCompanies)
       .subscribe(data => 
         {
           this.data =data;
@@ -599,7 +785,7 @@ export class CompanyDropComponent implements OnInit {
     {
       this.toll=false;
       console.log(500);
-      this._dataService.getDataDailySectP(this.shareSectors, this.startDate,this.endDate)
+      this._dataService.getDataDailySectP(this.startDate,this.endDate,this.shareSectors)
       .subscribe(data => 
         {
           this.data =data;
@@ -620,7 +806,7 @@ export class CompanyDropComponent implements OnInit {
 
        if(this.selectedFri.give=="Only Companies")
       {
-        this._dataService.getDataDailyAllCompP(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+        this._dataService.getDataDailyOCompP(this.startDate,this.endDate,this.shareCompanies,this.shareSectors)
       .subscribe(data => 
         {
           this.data =data;
@@ -637,7 +823,7 @@ export class CompanyDropComponent implements OnInit {
       }
 
       else{
-      this._dataService.getDataDailyAllP(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+      this._dataService.getDataDailyAllP(this.startDate,this.endDate,this.shareCompanies,this.shareSectors)
       .subscribe(data => 
         {
           this.data =data;
@@ -662,7 +848,7 @@ export class CompanyDropComponent implements OnInit {
     {
       this.toll=false;
       console.log(100);
-      this._dataService.getDataDailyV(this.shareCompanies ,this.startDate,this.endDate)
+      this._dataService.getDataDailyV(this.startDate,this.endDate,this.shareCompanies)
       .subscribe(data => 
         {
           this.data =data;
@@ -681,7 +867,7 @@ export class CompanyDropComponent implements OnInit {
     {
       this.toll=false;
       console.log(500);
-      this._dataService.getDataDailySectV(this.shareSectors, this.startDate,this.endDate)
+      this._dataService.getDataDailySectV(this.startDate,this.endDate,this.shareSectors)
       .subscribe(data => 
         {
           this.data =data;
@@ -702,7 +888,7 @@ export class CompanyDropComponent implements OnInit {
 
        if(this.selectedFri.give=="Only Companies")
       {
-        this._dataService.getDataDailyAllCompV(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+        this._dataService.getDataDailyOCompV(this.startDate,this.endDate,this.shareCompanies,this.shareSectors)
       .subscribe(data => 
         {
           this.data =data;
@@ -719,7 +905,7 @@ export class CompanyDropComponent implements OnInit {
       }
 
       else{
-      this._dataService.getDataDailyAllV(this.shareCompanies,this.shareSectors, this.startDate,this.endDate)
+      this._dataService.getDataDailyAllV(this.startDate,this.endDate,this.shareCompanies,this.shareSectors)
       .subscribe(data => 
         {
           this.data =data;
@@ -740,9 +926,9 @@ export class CompanyDropComponent implements OnInit {
 
 
 
-  setchoose(){
-      this.choose=true;
-  }
+  // setchoose(){
+  //     this.choose=true;
+  // }
 
   // setTime(){
   //   setTimeout(() => {
@@ -760,6 +946,7 @@ export class CompanyDropComponent implements OnInit {
     console.log(this.data2);
     if(this.house=="Pre Covid vs Post Covid")
     {
+      this.atom=true;
       if(this.selectedModel.take=="Stock Price")
       {
         this.setPrice();
@@ -773,6 +960,7 @@ export class CompanyDropComponent implements OnInit {
     }
     else if(this.house=="Monthly")
     {
+      this.atom=false;
       if(this.selectedModel.take=="Stock Price")
       {
         this.setPrice();
@@ -786,6 +974,7 @@ export class CompanyDropComponent implements OnInit {
     }
     else if(this.house=="Weekly")
     {
+      this.atom=false;
       if(this.selectedModel.take=="Stock Price")
       {
         this.setPrice();
@@ -799,6 +988,7 @@ export class CompanyDropComponent implements OnInit {
     }
     else if(this.house=="Daily")
     {
+      this.atom=false;
       if(this.selectedModel.take=="Stock Price")
       {
         this.setPrice();
@@ -812,6 +1002,52 @@ export class CompanyDropComponent implements OnInit {
     }
   }
 
+
+  // hard(){
+  //   if(this.house=="Pre Covid vs Post Covid")
+  //   {
+  //     this.atom=true;
+  //     this.setPrice();
+  //     this.sendPrice();
+  //   }
+  //   else if(this.house=="Monthly")
+  //   {
+  //     this.atom=false;
+  //     this.setPrice();
+  //     this.sendMonthPrice();
+  //   }
+  //   else if(this.house=="Weekly")
+  //   {
+  //     this.atom=false;
+  //     this.setPrice();
+  //     this.sendWeekPrice();
+  //   }
+  //   else if(this.house=="Daily")
+  //   {
+  //     this.atom=false;
+  //     this.setPrice();
+  //     this.sendDailyPrice();
+  //   }
+  // }
+
+    calcli(event){
+      this.checkCov();
+    }
+
+    checkCov(){
+      this.dest=false;
+      if(this.selectedDate.name=="Pre Covid vs Post Covid")
+      {
+        this.daycare= new Date(this.today.getTime() - (this.today.getTimezoneOffset() * 60000 ))
+                    .toISOString()
+                    .split("T")[0];
+        this.sendDates();
+        if(this.startDate!="2020-01-01" || this.endDate!=this.daycare)
+        {
+          this.dest=true;
+        }
+      }
+    }
 
     constructor(private _dataService: DataservService, private _datastoreservice: DatastoreService) {
 
@@ -830,12 +1066,32 @@ export class CompanyDropComponent implements OnInit {
         ];
 
       this.Friday = [
-            {label:'Only Companies', value:{give: 'Only Companies'}},
-            {label:'Companies and Sectors', value:{give: 'Companies and Sectors'}}
+            {label:'Companies and Sectors', value:{give: 'Companies and Sectors'}},
+            {label:'Only Companies', value:{give: 'Only Companies'}}
         ];
       
+      this.options = {
+        
+        // plugins: {
+        //     datalabels:
+        //     {
+        //       clamp: true,
+        //       align: 'end',
+        //       anchor: 'end',
+        //       borderRadius: 4,
+        //       backgroundColor:"teal",
+        //       color: "white",
+        //       font: 
+        //       {
+        //         weight: 'bold'
+        //       }
+        //     }
+        //   },
 
-
+        legend: {
+                position: 'right'
+            }
+        };
 
         this.data2 = 
         {
@@ -987,16 +1243,30 @@ export class CompanyDropComponent implements OnInit {
         { field: 'post', header: 'POST-COVID' },
     ];
 
-        let today = new Date();
-        let firstDate = new Date('01/01/2020');
-        this.rangeDates = [ firstDate, today];
-        let month = today.getMonth();
-        let year = today.getFullYear();
+        this.today = new Date();
+        this.firstDate = new Date('01/01/2020');
+        let TransDate = new Date('02/09/2020');
+        this.rangeDates = [ this.firstDate, this.today];
+        this.date1 = TransDate;
+        let month = this.today.getMonth();
+        let year = this.today.getFullYear();
         let prevMonth = (month === 0) ? 11 : month -1;
         let prevYear = (prevMonth === 11) ? year - 1 : year;
         let nextMonth = (month === 11) ? 0 : month + 1;
         let nextYear = (nextMonth === 0) ? year + 1 : year;
+        // this.selectedModel.take="Stock Price";
+        // console.log( this.selectedModel.take);
+        this.selectedModel = {take: 'Stock Price'};
+        this.selectedFri = {give: 'Companies and Sectors'};
+  }
 
+  oneDate(){
+     let Trans = this.date1;
+     let TransD = new Date(Trans.getTime() - (Trans.getTimezoneOffset() * 60000 ))
+                    .toISOString()
+                    .split("T")[0];
+      this.CovidDate = TransD;
+      console.log(this.CovidDate);
   }
 
   sendDates(){

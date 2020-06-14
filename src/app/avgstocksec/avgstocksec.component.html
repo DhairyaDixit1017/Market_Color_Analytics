@@ -1,8 +1,0 @@
-
-<select #dropsecstock>
-    <option selected>Select Sector</option>
-    <option *ngFor="let sec of sectors" [value]="sec">{{sec}}</option>
-    </select>
-    <button (click)="sendVal(dropsecstock.value); dis(dropsecstock.value)" >Submit</button> 
-    
-    <h2 id="demostocksec" style="display:none">{{data | json}}</h2>
