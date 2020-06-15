@@ -1088,8 +1088,37 @@ export class CompanyDropComponent implements OnInit {
         //     }
         //   },
 
+        // ticks:{
+        //         labels: {
+        //         fontColor: 'white'
+        //     }
+        // },
+        scales: {
+                yAxes: [{
+                ticks: {
+                  fontColor: 'white'
+                },
+                gridLines:{
+                  color:'white'
+                }
+                }],
+
+                xAxes: [{
+                ticks: {
+                  fontColor: 'white'
+                },
+                gridLines:{
+                  color:'white'
+                }
+                }]
+                },
+
         legend: {
+                labels: {
+                fontColor: 'white'
+            },
                 position: 'right'
+
             }
         };
 
