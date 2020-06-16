@@ -1,11 +1,4 @@
 import { Component, OnInit} from '@angular/core';
-import { InterService } from './Services/inter.service';
-
-
-interface DateRange {
-  name: string;
-}
-
 
 @Component({
   selector: 'app-root',
@@ -13,18 +6,10 @@ interface DateRange {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  sectorVals:string;
-  listVals:string;
   title = 'market-color-analytics';
-  // datesmodef: DateRange[];
-  // selectedDate:string;
 
-  constructor( private connect:InterService ) {
-
+  constructor() {
    }
    ngOnInit(): void {
-	  this.connect.cast.subscribe(sectorVals=> this.sectorVals=sectorVals);
-    this.connect.ultra.subscribe(listVals=> this.listVals=listVals);
   }
-
 }

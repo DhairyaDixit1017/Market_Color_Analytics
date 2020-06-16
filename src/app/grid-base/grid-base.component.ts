@@ -3,7 +3,7 @@ import { PageSettingsModel } from '@syncfusion/ej2-angular-grids';
 import {Observable} from 'rxjs';
 import { DataStateChangeEventArgs } from '@syncfusion/ej2-angular-grids';
 import {DatastoreService} from '../datastore.service';
-import {CompanyDropComponent} from '../company-drop/company-drop.component';
+import { MastersComponent } from '../masters/masters.component';
 
 
 @Component({
@@ -11,19 +11,18 @@ import {CompanyDropComponent} from '../company-drop/company-drop.component';
   templateUrl: './grid-base.component.html',
   styleUrls: ['./grid-base.component.css']
 })
-export class GridBaseComponent implements OnInit {
-  
+
+export class GridBaseComponent implements OnInit 
+{
   public data: Observable<DataStateChangeEventArgs>;
-
   public pageSettings: PageSettingsModel = {pageSize: 5};
+  private mast: MastersComponent;
 
-  private companydrop: CompanyDropComponent;
-
-  constructor(private dataService: DatastoreService){
+  constructor(private dataService: DatastoreService)
+  {
     this.data = dataService;
-}
+  }
 
-ngOnInit() {
-}
-
+  ngOnInit() {
+  }
 }

@@ -1,57 +1,16 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http'
-import {IData} from './data';
 import {IGoal} from './goal';
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 
-
-export class DataservService {
-
+export class DataservService 
+{
   public data2:any;
 
-  private _baseurl: string = "http://localhost:51535/data/average-volume-company/";
-
-  private _baseurls: string = "http://localhost:51535/data/chartCompanyObject/";
-
-  private _baseurlsSect: string = "http://localhost:51535/data/chartSectorObject/";
-
-  private _baseurlsSelectCompAll: string = "http://localhost:51535/data/chartCompanySectorObject/";
-
-  private _baseurlsSelectAll: string = "http://localhost:51535/data/chartAvgCompanySectorObject/";
-
-  private _baseurlvolsec: string = "http://localhost:51535/data/average-volume-sector/";
-
-  private _baseurlstocksec: string = "http://localhost:51535/data/average-price-sector/";
-
-  private _baseurlsDataMonthP: string = "http://localhost:51535/data/chartCMCompany/";
-
-  private _baseurlsDataMonthSectP: string = "http://localhost:51535/data/chartCMSector/";
-
-  private _baseurlsDataMonthAllP: string = "http://localhost:51535/data/chartCMAvgCompanySector/";
-
-  private _baseurlsDataMonthAllCompP: string = "http://localhost:51535/data/chartCMCompanySector/";
-
-  private _baseurlsDataWeekP: string = "http://localhost:51535/data/chartCWCompany/";
-
-  private _baseurlsDataWeekSectP: string = "http://localhost:51535/data/chartCWSector/";
-
-  private _baseurlsDataWeekAllP: string = "http://localhost:51535/data/chartCWAvgCompanySector/";
-
-  private _baseurlsDataWeekAllCompP: string = "http://localhost:51535/data/chartCWCompanySector/";
-
-  private _baseurlsDataDailyP: string = "http://localhost:51535/data/chartCDCompany/";
-
-  private _baseurlsDataDailySectP: string = "http://localhost:51535/data/chartCDSector/";
-
-  private _baseurlsDataDailyAllP: string = "http://localhost:51535/data/chartCDAvgCompanySector/";
-
-  private _baseurlsDataDailyAllCompP: string = "http://localhost:51535/data/chartCDCompanySector/";
-
-   private _baseGraphurl: string = "http://localhost:51535/data/chart/";
-
+  private _baseGraphurl: string = "http://localhost:51535/data/chart/";
 
 
   private interim1 = new BehaviorSubject<string>('');
@@ -64,16 +23,8 @@ export class DataservService {
   cast2 = this.interim2.asObservable();
   private interim3 = new BehaviorSubject<string>('');
   cast3 = this.interim3.asObservable();
-   private interim4 = new BehaviorSubject<string>('');
-  cast4 = this.interim4.asObservable();
-
 
   constructor(private http: HttpClient) { }
-
-  getData(tckr): Observable<any>{
-    console.log("in getdata this is "+ tckr);
-    return this.http.get(this._baseurl + tckr);
-  }
 
   getDataCovP(tckr,tckr1,tckr2): Observable<IGoal[]>{
     let my1 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"type=price"+"&"+"group=covid");
@@ -153,17 +104,6 @@ export class DataservService {
   getDataCovCustDateAllV(tckr,tckr1,tckr2,tckr3,tckr4): Observable<IGoal[]>{
     let my11 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=volume"+"&"+"group=covid"+"&"+"option=both"+"&"+"boundaryDate="+tckr4);
     return my11;
-  }
-
-
-  getDataS(tckr): Observable<any>{
-    let myobj =  this.http.get(this._baseurls + tckr +"?type=price");
-    return myobj;
-  }
-
-  getDataV(tckr): Observable<any>{
-    let myobj1 =  this.http.get(this._baseurls + tckr +"?type=volume");
-    return myobj1;
   }
 
   getDataMonthP(tckr,tckr1,tckr2): Observable<IGoal[]>{
@@ -279,7 +219,6 @@ export class DataservService {
     return myobj25;
   }
 
-
   getDataDailyAllP(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
     let myobj26 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=price"+"&"+"group=daily"+"&"+"option=both");
     return myobj26;
@@ -288,27 +227,6 @@ export class DataservService {
   getDataDailyAllV(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
     let myobj27 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=volume"+"&"+"group=daily"+"&"+"option=both");
     return myobj27;
-  }
-
-
-  getDataVolSec(sec): Observable<IData[]>{
-    console.log("in getdata this is "+ sec);
-    return this.http.get<IData[]>(this._baseurlvolsec + sec);
-  }
-
-  getDataStockSec(sec): Observable<IData[]>{
-    console.log("in getdata this is "+ sec);
-    return this.http.get<IData[]>(this._baseurlstocksec + sec);
-  }
-
-  
-  sendDataTo(tot){
-    this.data2 = tot;
-    this.getDataTo();
-  }
-
-  getDataTo(){
-    return this.data2;
   }
 
   editInterim1(newInterim1){
@@ -330,8 +248,4 @@ export class DataservService {
   editInterim3(newInterim3){
     this.interim3.next(newInterim3);
   }
-  editInterim4(newInterim4){
-    this.interim4.next(newInterim4);
-  }
-
 }
