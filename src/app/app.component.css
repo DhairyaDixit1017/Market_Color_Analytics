@@ -5,14 +5,19 @@
 }
 
 .citi-logo {
-    
     position: relative;
     z-index: 2500;
+}
+
+.logo{
+    width: 100px;
+    height: 70px;
 }
 
 img{
     height: 86px;
     width:150px;
+    float: left;
 }
 
 .centered {
@@ -23,47 +28,12 @@ img{
     transform: translate(-50%, -50%);
     font-size: xx-large;
     color: midnightblue;
-  }
-
-
-h4{
-    margin-top:0px;
 }
+
 
 .Input-Bar{
      height:70px;
      background-color: lightgray;
      color:white;
-}
-
-.drange{
-        position:absolute;
-        float:left;
-        width:15%;
-        margin-left:880px;
-        margin-top:0px;
-        }
-
-
-button{
-    margin-left: 200px;
-    margin-right: 20px;
-    border-radius: 6px;
-    border: 2px solid lightblue;
-    transition-duration: 0.4s;
-}
-  
-
-.Tabs{
-    position:absolute;
-    margin-top:50px;
-}
-
-button:hover {
-    background-color: dodgerblue; 
-    color: white;
-  }
-h1{
-     font-family: "Times New Roman";
-      text-align: center;
+     margin-bottom: 0px;
 }

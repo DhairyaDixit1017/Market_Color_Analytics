@@ -1,10 +1,10 @@
 <ejs-grid [dataSource]="data | async" [allowPaging]="true" [pageSettings]="pageSettings">
     <e-columns>
-        <e-column field="date" headerText="Date" ></e-column>
-        <e-column class="head" field="companyName" headerText='Company' style="font-style:bold"></e-column>
-        <e-column field="sector" headerText="Sector"></e-column>
-        <e-column field="ticker" headerText="Ticker"></e-column>
-        <e-column field="price" headerText="Stock Price"></e-column>
-        <e-column field="volume" headerText="Volume"></e-column>
+        <e-column field="date" headerText="Date" textAlign='center' ></e-column>
+        <e-column class="head" field="companyName" textAlign='center' headerText='Company' style="font-style:bold"></e-column>
+        <e-column field="sector" headerText="Sector" textAlign='center'></e-column>
+        <e-column field="ticker" headerText="Ticker" textAlign='center'></e-column>
+        <e-column field="price" headerText="Stock Price" textAlign='right'></e-column>
+        <e-column field="volume" headerText="Volume" textAlign='right'></e-column>
     </e-columns>
-  </ejs-grid>
+</ejs-grid>
