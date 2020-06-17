@@ -1,38 +1,48 @@
+<!-- Company Multi-select Box -->
 <div class="hard">
     <h4>Filter By Company</h4>
     <p-multiSelect [options]="companies" [(ngModel)]="selectedCompanies" [virtualScroll]="true" [filter]="true" ></p-multiSelect>
 </div>
 
+<!-- Sector Multi-select Box -->
 <div class="work">
     <h4>Filter By Sector</h4>
     <p-multiSelect [options]="sectors" [(ngModel)]="selectedSectors" [virtualScroll]="true" [filter]="true" ></p-multiSelect>
 </div>
 
+<!-- Calendar To Select Rnage Of Dates -->
 <div class="calen">
     <h4>Filter By Time Range</h4>
     <p-calendar (onClickOutside)="calcli($event)" (onClose)="calcli($event)" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" [showIcon]="true"></p-calendar>
 </div>
 
+<!-- Dropdown For Selecting Data Grouping Method  -->
 <div class="drange">
     <h4>Filter By Group</h4>
     <p-dropdown (onClick)="checkCov()"  [options]="datesmodef" [(ngModel)]="selectedDate" placeholder="-- Select --" optionLabel="name"></p-dropdown>
 </div>
 
+<!-- Button To Trigger Grid and Graph for Selected Filters  -->
 <button class="sbut" [disabled]="dest" (click)="sendSelected();sendSelectedSector(); setModeG(); shouldTime(); sendDatesGrid(); sendDates()"><b>Apply</b></button>
 
 
+<!-- Tabview for Grid and Graphs  -->
 <div class="almost">
     <p-tabView>
 
+        <!-- Grid Tab  -->
         <p-tabPanel header="GRID" [headerStyle]="{'height':'28px'}" >
             <app-grid-base></app-grid-base>
         </p-tabPanel>
-
+        
+        <!-- Graph Tab  -->
         <p-tabPanel header="GRAPHS" [headerStyle]="{'height':'28px'}" >
             <p-tabView>
-
+                <!--  Bar Graph Nested Tab  -->
                 <p-tabPanel header="BAR GRAPH" [headerStyle]="{'height':'28px'}">
-                    <p-dropdown (onChange)="soft($event)" [options]="Mode" [(ngModel)]="selectedModel"></p-dropdown>       
+                    <!-- Stock Price/Volume Dropdown  -->
+                    <p-dropdown (onChange)="soft($event)" [options]="Mode" [(ngModel)]="selectedModel"></p-dropdown>
+                    <!-- Companies/Sectors Dropdown  -->
                     <div *ngIf="toll===true" class="vitaly">
                         <p-dropdown (onChange)="soft($event)" [options]="Friday" [(ngModel)]="selectedFri"></p-dropdown>       
                     </div>
@@ -41,14 +51,18 @@
                     <div class="turbo">
                         <p-chart #chart type="bar" [data]="data2" [options]="options" width="90vw" height="63vh"></p-chart>
                         <div *ngIf="atom===true" class="motion">
+                            <!-- Companies/Sectors Dropdown  -->
                             <p-calendar [(ngModel)]="date1" [showIcon]="true" ></p-calendar>
                             <button class="sbutMini" (click)="oneDate(); shouldTransTime()" ><b>Change Trans Date</b></button>
                         </div>
                     </div>
                 </p-tabPanel>
 
+                <!--  Line Graph Nested Tab  -->
                 <p-tabPanel header="LINE GRAPH" [headerStyle]="{'height':'28px'}" >
+                    <!-- Stock Price/Volume Dropdown  -->
                     <p-dropdown (onChange)="soft($event)" [options]="Mode" [(ngModel)]="selectedModel"></p-dropdown>
+                    <!-- Calendar for Transition Date  -->
                     <div *ngIf="toll===true" class="vitaly">
                             <p-dropdown (onChange)="soft($event)" [options]="Friday" [(ngModel)]="selectedFri"></p-dropdown>       
                     </div>
@@ -57,6 +71,7 @@
                     <div class="turbo">
                         <p-chart #chartline type="line" [data]="data2"  [options]="options" width="90vw" height="63vh"></p-chart>
                         <div *ngIf="atom===true" class="motion">
+                            <!-- Calendar for Transition Date  -->
                             <p-calendar [(ngModel)]="date1" [showIcon]="true" ></p-calendar>
                             <button class="sbutMini" (click)="oneDate(); shouldTransTime()" ><b>Change Trans Date</b></button>
                         </div>

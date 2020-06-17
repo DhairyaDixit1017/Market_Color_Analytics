@@ -49,24 +49,29 @@ export class MastersComponent implements OnInit
   @ViewChild('chart') chart: UIChart;
   @ViewChild('chartline') chart1: UIChart;
  
+
+  // Lock Selected Companies from Filters
   sendSelected()
   {
     console.log(this.selectedCompanies+" this is from sendSelected() inside companydrop");
     this._datastoreservice.getSelCom(this.selectedCompanies);
   }
 
+  // Lock Selected Sectors from Filters
   sendSelectedSector()
   {
     console.log(this.selectedSectors+" this is from sendSelectedSector() inside companydrop");
     this._datastoreservice.getSelSec(this.selectedSectors);
   }
 
+  // Lock Selected Grouping Method from Filters
   setModeG()
   {
     this.house=this.selectedDate.name;
     console.log(this.house);
   }
 
+  // Function to call soft on clicking APPLY, after 600ms
   shouldTime()
   {
     setTimeout(() => {
@@ -74,6 +79,7 @@ export class MastersComponent implements OnInit
     }, 600);
   }
 
+  // Function to call soft on chaning Transition Date, after 600ms
   shouldTransTime()
   {
     setTimeout(() => {
@@ -82,6 +88,7 @@ export class MastersComponent implements OnInit
   }
   
 
+  // Function to get Stock Price info for Pre vs Post Covid Grouping
   sendPrice()
   {
     if(this.CovidDate!="2020-02-09")
@@ -252,6 +259,7 @@ export class MastersComponent implements OnInit
   }
 
 
+  // Function to get Volume info for Pre vs Post Covid Grouping
   sendVols()
   {
     if(this.CovidDate!="2020-02-09")
@@ -423,6 +431,7 @@ export class MastersComponent implements OnInit
   }
 
 
+  // Function to get Stock Price info for Monthly Grouping
   sendMonthPrice()
   {
     if(this.shareSectors.length==0)
@@ -507,6 +516,7 @@ export class MastersComponent implements OnInit
   }
 
 
+  // Function to get Volume info for Monthly Grouping
   sendMonthVolume()
   {
     if(this.shareSectors.length==0)
@@ -591,6 +601,7 @@ export class MastersComponent implements OnInit
   }
 
 
+  // Function to get Stock Price info for Weekly Grouping
   sendWeekPrice()
   {
     if(this.shareSectors.length==0)
@@ -675,6 +686,7 @@ export class MastersComponent implements OnInit
   }
 
 
+  // Function to get Volume info for Weekly Grouping
   sendWeekVolume()
   {
     if(this.shareSectors.length==0)
@@ -759,6 +771,7 @@ export class MastersComponent implements OnInit
   }
 
 
+  // Function to get Stock Price info for Daily Grouping
   sendDailyPrice()
   {
     if(this.shareSectors.length==0)
@@ -843,6 +856,7 @@ export class MastersComponent implements OnInit
   }
 
 
+  // Function to get Volume info for Daily Grouping
   sendDailyVolume()
   {
     if(this.shareSectors.length==0)
@@ -928,6 +942,7 @@ export class MastersComponent implements OnInit
 
 
 
+  //Function to call the above defined functions as per User Input
   soft(event)
   {
     console.log("Soft");
@@ -994,6 +1009,7 @@ export class MastersComponent implements OnInit
   }
 
 
+  //Check if Pre vs Post Covid Grouping can be selected for entered Date Range
   calcli(event)
   {
     this.checkCov();
@@ -1017,6 +1033,7 @@ export class MastersComponent implements OnInit
   }
 
 
+  //Function to get Date entered by User in the Calendar for Transition Date
   oneDate()
   {
     let Trans = this.date1;
@@ -1028,6 +1045,7 @@ export class MastersComponent implements OnInit
   }
 
 
+  //Function to Lock the User Entered Date Range for Filters, for Graph
   sendDates()
   {
     console.log(this.rangeDates);
@@ -1046,7 +1064,7 @@ export class MastersComponent implements OnInit
     this.endDate=this.picks[1];
   }
 
-
+  //Function to Lock the User Entered Date Range for Filters, for Grid
   sendDatesGrid()
   {
     let start = this.rangeDates[0];
@@ -1062,6 +1080,7 @@ export class MastersComponent implements OnInit
   }
         
 
+  //Function to set data for Stock Price Variant
   setPrice()
   {
     this._dataService.editHola1(this.selectedCompanies);
@@ -1071,6 +1090,7 @@ export class MastersComponent implements OnInit
     this._dataService.editInterim1("Price");
   }
 
+  //Function to set data for Volume Variant
   setVolume()
   {
     this._dataService.editHola1(this.selectedCompanies);
@@ -1099,7 +1119,9 @@ export class MastersComponent implements OnInit
       {label:'Companies and Sectors', value:{give: 'Companies and Sectors'}},
       {label:'Only Companies', value:{give: 'Only Companies'}}
     ];
-      
+    
+
+    // Graph Styling Options
     this.options = {
       scales: {
         yAxes: [{
@@ -1158,6 +1180,7 @@ export class MastersComponent implements OnInit
       datasets:[]
     }
 
+    //Companies in the Company Multi-select Box
     this.companies = [
       {label: 'AAPL - APPLE INC', value: 'AAPL'},
       {label: 'ABT - ABBOTT LABORATORIES', value: 'ABT'},
@@ -1261,6 +1284,7 @@ export class MastersComponent implements OnInit
       {label: 'WFC - WELLS FARGO & CO', value: 'WFC'},      
     ];
 
+    //Secotrs in the Sector Multi-select Box
     this.sectors = [
       {label: 'BASIC INDUSTRIES', value: 'Basic Industries'},
       {label: 'CAPITAL GOODS', value: 'Capital Goods'},
@@ -1283,6 +1307,7 @@ export class MastersComponent implements OnInit
     this._dataService.ultra1.subscribe(shareCompanies=> this.shareCompanies=shareCompanies);
     this._dataService.ultra2.subscribe(shareSectors=> this.shareSectors=shareSectors);
 
+    //Calendar Settings
     this.today = new Date();
     this.firstDate = new Date('01/01/2020');
     let TransDate = new Date('02/09/2020');

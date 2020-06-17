@@ -10,6 +10,7 @@ export class DataservService
 {
   public data2:any;
 
+  // Base Url for Getting Data for Graph from Backend
   private _baseGraphurl: string = "http://localhost:51535/data/chart/";
 
 
@@ -24,7 +25,11 @@ export class DataservService
   private interim3 = new BehaviorSubject<string>('');
   cast3 = this.interim3.asObservable();
 
+
   constructor(private http: HttpClient) { }
+
+
+  //Pre vs Post Covid Data Getting Functions
 
   getDataCovP(tckr,tckr1,tckr2): Observable<IGoal[]>{
     let my1 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"type=price"+"&"+"group=covid");
@@ -66,6 +71,9 @@ export class DataservService
     return my8;
   }
 
+
+  //Pre vs Post Covid Data Getting Functions For Custom Transition Date
+
   getDataCovCustDateP(tckr,tckr1,tckr2,tckr3): Observable<IGoal[]>{
     let myobj99 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"type=price"+"&"+"group=covid"+"&"+"boundaryDate="+tckr3);
     return myobj99;
@@ -105,6 +113,9 @@ export class DataservService
     let my11 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=volume"+"&"+"group=covid"+"&"+"option=both"+"&"+"boundaryDate="+tckr4);
     return my11;
   }
+
+
+  //Monthly Data Getting Functions
 
   getDataMonthP(tckr,tckr1,tckr2): Observable<IGoal[]>{
     let myobj6 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"type=price"+"&"+"group=monthly");
@@ -148,6 +159,9 @@ export class DataservService
     return myobj11;
   }
 
+
+  //Weekly Data Getting Functions
+
   getDataWeekP(tckr,tckr1,tckr2): Observable<IGoal[]>{
     let myobj12 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"type=price"+"&"+"group=weekly");
     return myobj12;
@@ -188,6 +202,9 @@ export class DataservService
     let myobj19 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"sectorList="+tckr3+"&"+"type=volume"+"&"+"group=weekly"+"&"+"option=both");
     return myobj19;
   }
+
+
+  //Daily Data Getting Functions
 
   getDataDailyP(tckr,tckr1,tckr2): Observable<IGoal[]>{
     let myobj20 =  this.http.get<IGoal[]>(this._baseGraphurl+tckr+"/"+tckr1+"?tickerList="+tckr2+"&"+"type=price"+"&"+"group=daily");
