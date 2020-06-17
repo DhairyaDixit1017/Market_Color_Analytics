@@ -15,5 +15,9 @@
 }
 
 .e-grid .e-altrow{
-    background-color: rgb(224, 241, 247);
+    background-color: rgb(245, 245, 245);
 }
+
+.e-grid.e-gridhover tr.e-row:hover .e-rowcell:not(.e-cellselectionbackground):not(.e-active):not(.e-updatedtd):not(.e-indentcell){ 
+    background-color: lightblue !important; 
+  } 
