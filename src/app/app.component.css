@@ -1,0 +1,39 @@
+.citi-blue-bar {
+    height: 70px;
+    background: url("src/assets/img/bluebar.jpg") repeat-x;
+    
+}
+
+.citi-logo {
+    position: relative;
+    z-index: 2500;
+}
+
+.logo{
+    width: 100px;
+    height: 70px;
+}
+
+img{
+    height: 86px;
+    width:150px;
+    float: left;
+}
+
+.centered {
+    position: absolute;
+    margin-top:40px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: xx-large;
+    color: midnightblue;
+}
+
+
+.Input-Bar{
+     height:70px;
+     background-color: lightgray;
+     color:white;
+     margin-bottom: 0px;
+}
