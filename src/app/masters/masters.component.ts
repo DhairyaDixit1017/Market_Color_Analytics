@@ -101,7 +101,7 @@ export class MastersComponent implements OnInit
         .subscribe(data => 
         {
           this.data =data;
-          this.data2.labels = ['PRE-SELECTED TRANS DATE', 'POST-SELECTED TRANS DATE'];
+          this.data2.labels = this.data.labels;
           this.data2.datasets = this.data.datasets;
           console.log(data);
         });
@@ -121,7 +121,7 @@ export class MastersComponent implements OnInit
         .subscribe(data => 
         {
           this.data =data;
-          this.data2.labels = ['PRE-SELECTED TRANS DATE', 'POST-SELECTED TRANS DATE'];
+          this.data2.labels = this.data.labels;
           this.data2.datasets = this.data.datasets;
           console.log(data);
         });
@@ -143,7 +143,7 @@ export class MastersComponent implements OnInit
           .subscribe(data => 
             {
               this.data =data;
-              this.data2.labels = ['PRE-SELECTED TRANS DATE', 'POST-SELECTED TRANS DATE'];
+              this.data2.labels = this.data.labels;
               this.data2.datasets = this.data.datasets;
               console.log(data);
             });
@@ -160,7 +160,7 @@ export class MastersComponent implements OnInit
           .subscribe(data => 
           {
             this.data =data;
-            this.data2.labels = ['PRE-SELECTED TRANS DATE', 'POST-SELECTED TRANS DATE'];
+            this.data2.labels = this.data.labels;
             this.data2.datasets = this.data.datasets;
             console.log(data);
           });
@@ -184,7 +184,7 @@ export class MastersComponent implements OnInit
         .subscribe(data => 
         {
           this.data =data;
-          this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
+          this.data2.labels = this.data.labels;
           this.data2.datasets = this.data.datasets;
           console.log(data);
         });
@@ -204,7 +204,7 @@ export class MastersComponent implements OnInit
         .subscribe(data => 
         {
           this.data =data;
-          this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
+          this.data2.labels = this.data.labels;
           this.data2.datasets = this.data.datasets;
           console.log(data);
         });
@@ -226,7 +226,7 @@ export class MastersComponent implements OnInit
           .subscribe(data => 
           {
             this.data =data;
-            this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
+            this.data2.labels = this.data.labels;
             this.data2.datasets = this.data.datasets;
             console.log(data);
           });
@@ -243,7 +243,7 @@ export class MastersComponent implements OnInit
           .subscribe(data => 
           {
             this.data =data;
-            this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
+            this.data2.labels = this.data.labels;
             this.data2.datasets = this.data.datasets;
             console.log(data);
           });
@@ -272,7 +272,7 @@ export class MastersComponent implements OnInit
         .subscribe(data => 
         {
           this.data =data;
-          this.data2.labels = ['PRE-SELECTED TRANS DATE', 'POST-SELECTED TRANS DATE'];
+          this.data2.labels = this.data.labels;
           this.data2.datasets = this.data.datasets;
           console.log(data);
         });
@@ -292,7 +292,7 @@ export class MastersComponent implements OnInit
         .subscribe(data => 
         {
           this.data =data;
-          this.data2.labels = ['PRE-SELECTED TRANS DATE', 'POST-SELECTED TRANS DATE'];
+          this.data2.labels = this.data.labels;
           this.data2.datasets = this.data.datasets;
           console.log(data);
         });
@@ -314,7 +314,7 @@ export class MastersComponent implements OnInit
           .subscribe(data => 
           {
             this.data =data;
-            this.data2.labels = ['PRE-SELECTED TRANS DATE', 'POST-SELECTED TRANS DATE'];
+            this.data2.labels = this.data.labels;
             this.data2.datasets = this.data.datasets;
             console.log(data);
           });
@@ -332,7 +332,7 @@ export class MastersComponent implements OnInit
           .subscribe(data => 
           {
             this.data =data;
-            this.data2.labels = ['PRE-SELECTED TRANS DATE', 'POST-SELECTED TRANS DATE'];
+            this.data2.labels = this.data.labels;
             this.data2.datasets = this.data.datasets;
             console.log(data);
           });
@@ -356,7 +356,7 @@ export class MastersComponent implements OnInit
         .subscribe(data => 
         {
           this.data =data;
-          this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
+          this.data2.labels = this.data.labels;
           this.data2.datasets = this.data.datasets;
           console.log(data);
         });
@@ -376,7 +376,7 @@ export class MastersComponent implements OnInit
         .subscribe(data => 
           {
             this.data =data;
-            this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
+            this.data2.labels = this.data.labels;
             this.data2.datasets = this.data.datasets;
             console.log(data);
           });
@@ -398,7 +398,7 @@ export class MastersComponent implements OnInit
           .subscribe(data => 
           {
             this.data =data;
-            this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
+            this.data2.labels = this.data.labels;
             this.data2.datasets = this.data.datasets;
             console.log(data);
           });
@@ -415,7 +415,7 @@ export class MastersComponent implements OnInit
           .subscribe(data => 
           {
             this.data =data;
-            this.data2.labels = ['PRE-COVID - 1-Jan-2020 to 09-Feb-2020', 'POST-COVID - 10-Feb-2020 till Today'];
+            this.data2.labels = this.data.labels;
             this.data2.datasets = this.data.datasets;
             console.log(data);
           });
